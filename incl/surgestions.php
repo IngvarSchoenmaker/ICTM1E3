@@ -1,5 +1,4 @@
 <?php
-require_once "db.php";
 if(isset($_REQUEST["term"])){
     // Prepare a select statement
     $sql = "SELECT * FROM stockitems WHERE SearchDetails LIKE ?";
@@ -32,7 +31,4 @@ if(isset($_REQUEST["term"])){
     // Close statement
     mysqli_stmt_close($stmt);
 }
-
-// close connection
-mysqli_close($conn);
 ?>

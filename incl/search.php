@@ -1,9 +1,6 @@
-<?php
-require_once "db.php";
-?>
-<h1>Search page</h1>
 <div class="article-container">
     <?php
+    require 'db.php';
     if(isset($_POST['submit-search'])){
         $search = mysqli_real_escape_string($conn, $_POST['search']);
         $sql = "SELECT * FROM stockitems WHERE SearchDetails LIKE '%$search%'";
