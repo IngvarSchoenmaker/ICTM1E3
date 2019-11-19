@@ -1,7 +1,6 @@
 <?php
 include '../incl/header.php'
 ?>
-    <link rel="stylesheet" href="../style/style.css">
 
     <div class="container" style="margin-top:150px">
         <div class="row">
@@ -63,7 +62,7 @@ include '../incl/header.php'
                 </div>
             </div>
         </div>
-        <div class="row top-buffer">
+        <div class="row" style="margin-top: 15px; margin-bottom: 15px">
             <div class="col-lg-6">
                 <img src="https://picsum.photos/1200?random=4" style="width: 540px; height: 200px;">
             </div>

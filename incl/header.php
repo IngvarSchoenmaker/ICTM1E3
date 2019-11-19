@@ -40,14 +40,12 @@ require 'surgestions.php';
             </div>
             <div class="col-7">
                 <form class="form-inline align-self-center" action="search.php" method="POST">
-                    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-                        <div class="input-group">
-                            <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                        <div class="input-group p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                            <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light rounded rounded-pill">
                             <div class="input-group-append">
                                 <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
-                    </div>
                 </form>
             </div>
         </div>
