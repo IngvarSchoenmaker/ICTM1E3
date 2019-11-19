@@ -1,4 +1,5 @@
 <?php
+require '../incl/db.php';
 
 $wachtwoord = 'zackaria';
 

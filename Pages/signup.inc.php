@@ -1,10 +1,10 @@
 <?php
-        require 'database toevoegen.php';
+        require '../incl/db.php';
 
 
 if (isset($_POST['sumbit'])) {
 
-    require 'databasetoevoegen.php';
+    require '../incl/db.php';
     $gebruikersnaam = $_POST['gebruikersnaam'];
     $wachtwoord = $_POST['wachtwoord'];
     $wachtwoordherhaal = $_POST['wachtwoord-repeat'];

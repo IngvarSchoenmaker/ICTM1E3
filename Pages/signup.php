@@ -1020,6 +1020,7 @@ if (isset($_GET['1'])) {
         print("wachtwoord komt niet overeen!");
     }
 }
+include '../incl/footer.php';
 ?>
 
 
