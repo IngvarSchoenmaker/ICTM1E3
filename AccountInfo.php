@@ -14,13 +14,8 @@ include 'Database.php';
 <!--Laat de account gegevens van de gebruiker zien in een form
 De gebruiker kan hier zijn gegevens ook wijzigen. -->
 <div class="AccForm">
-    <form action="AccountInfo.php" method="get">
-        <input onclick="ChangeForm()" id="wijzig" type="button" value="Wijzig" class="Button"> <br>
-        <?php
-        if(isset($_GET['wijzig'])) {
-            print("<input id='opslaan' type='button' value='opslaan' class='Button'><br>");
-        }
-        ?>
+    <form action="AccountInfo.php" method="post">
+        <input onclick="ChangeForm(); myFunction()" id="wijzig" name="wijzig" type="button" value="Wijzig" class="Button"> <br>
         <div id="form-inputs">
             Voornaam*: <br> <input type="text" id="voor" name="voornaam" value="<?=($voornaam) ?>" readonly><br>
             Tussenvoegsels: <br> <input type="text" id="tussenv" name="tussenvoegsel" value="<?=($tussenvoegsels) ?>" readonly><br>
@@ -35,9 +30,7 @@ De gebruiker kan hier zijn gegevens ook wijzigen. -->
     </form>
 </div>
 
-<?php
-if(isset($_GET['wijzig']))
-
-?>
-
+<div id="hide" style="display: none">
+    <input id='opslaan' type='button' value='Opslaan' class='Button' onclick="myFunction()"><br>
+</div>
 <a href="MijnAccount.php"><--Terug naar dashboard></a>
