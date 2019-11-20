@@ -2,6 +2,7 @@
 if(isset($_REQUEST["term"])){
     // Prepare a select statement
     $sql = "SELECT * FROM stockitems WHERE SearchDetails LIKE ?";
+    require '../../incl/db.php';
 
     if($stmt = mysqli_prepare($conn, $sql)){
         // Bind variables to the prepared statement as parameters

@@ -7,8 +7,6 @@
  */
 
 require 'db.php';
-require 'search.php';
-require 'surgestions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +21,7 @@ require 'surgestions.php';
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../JS/serchbar.js"></script>
+    <script type="text/javascript" src="../JS/searchbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
@@ -39,13 +37,14 @@ require 'surgestions.php';
                 </button>
             </div>
             <div class="col-7">
-                <form class="form-inline align-self-center" action="search.php" method="POST">
-                        <div class="input-group p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-                            <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light rounded rounded-pill">
-                            <div class="input-group-append">
-                                <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
-                            </div>
+                <form class="form-inline align-self-center" action="../Pages/search/search.php" method="POST">
+                    <div class="search-box input-group p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                        <input type="search" placeholder="What're you searching for?" name="submit-search" autocomplete="off" class="form-control border-0 bg-light rounded rounded-pill">
+                        <div class="input-group-append">
+                            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
                         </div>
+                        <div class="result"></div>
+                    </div>
                 </form>
             </div>
         </div>
