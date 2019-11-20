@@ -16,17 +16,24 @@ include 'Database.php';
 mogelijkheid tot wijzigen -->
 
 <div class="afleveradres">
-    <form action="Afleveradres.php" method="get">
+    <form action="Database.php" method="post">
         <input onclick="ChangeForm()" id="wijzig" type="button" value="Wijzig" class="Button"> <br>
         <div id="form-inputs">
-            Ter attentie van:*: <br> <input type="text" id="naam" name="naam" value="<?=($fullname) ?>" readonly><br>
+            Ter attentie van:* <br> <input type="text" id="naam" name="naam" value="<?=($fullname) ?>" readonly><br>
+            Plaats*: <br> <input type="text" id="plaats" name="plaats" value="<?=($plaats) ?>" readonly><br>
             Postcode*: <br> <input type="text" id="postcode" name="postcode" value="<?=($postcode) ?>" readonly><br>
-            Adres*: <br> <input type="text" id="adres" name="adres" value="<?=($adres) ?>" readonly><br>
-            Provincie*: <br> <input type="text" id="provincie" name="provincie" value="<?=$provincie?>" readonly><br>
+            Straat*: <br> <input type="text" id="straat" name="straat" value="<?=($straat) ?>" readonly><br>
+            Huisnummer*: <br> <input type="text" id="huisnnr" name="huisnnr" value="<?=($huisnummer) ?>" readonly><br>
+            Toevoegsel: <br> <input type="text" id="toev" name="toevoegsel" value="<?=($toevoegsel) ?>" readonly><br>
             Land*: <br> <input type="text" id="land" name="land" value="Nederland" readonly><br>
             Telefoonnummer: <br> <input type="tel" id="telefoonnr" name="telefoonnr" value="<?=$telefoonnr?>" readonly><br>
+            <input type='submit' id='opslaan' value='Opslaan' name="opslaanAfleveradres"><br>
         </div>
     </form>
 </div>
+
+
+
+
 
 <a href="MijnAccount.php"><--Terug naar dashboard></a>
