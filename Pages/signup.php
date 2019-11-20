@@ -1042,9 +1042,12 @@ if (isset($_GET['error'])) {
     } elseif ($_GET['2'] === "wwnietgoed") {
         print("wachtwoord komt niet overeen!");
     }
+
 }
 
 
+
+include '../incl/footer.php';
 
 ?>
 

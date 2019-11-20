@@ -1,7 +1,9 @@
 <?php
         require '../incl/db.php';
+
 // ingevoerde gegevens van de input velden.
 if (isset($_POST['registreer'])) {
+
 
         $voornaam = $_POST['Voornaam'];
         $Tussenvoegsels = $_POST['Tussenvoegsel'];
@@ -17,6 +19,13 @@ if (isset($_POST['registreer'])) {
         $Wachtwoord  = $_POST['Wachtwoord'];
         $Wachtwoordherhaal = $_POST['Wachtwood-herhaal'];
 
+
+
+    require '../incl/db.php';
+    $gebruikersnaam = $_POST['gebruikersnaam'];
+    $wachtwoord = $_POST['wachtwoord'];
+    $wachtwoordherhaal = $_POST['wachtwoord-repeat'];
+    $email = $_POST['emailadres'];
 
 
 
