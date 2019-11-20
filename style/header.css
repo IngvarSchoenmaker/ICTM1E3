@@ -33,6 +33,13 @@
     box-sizing: border-box;
 }
 /* Formatting result items */
+.result{
+    position: absolute;
+    z-index: 999;
+    top: 100%;
+    left: 0;
+    background-color: white;
+}
 .result p{
     margin: 0;
     padding: 7px 10px;
