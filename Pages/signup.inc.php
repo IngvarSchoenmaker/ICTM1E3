@@ -1,20 +1,29 @@
 <?php
-        require 'database toevoegen.php';
+        require '../incl/db.php';
+// ingevoerde gegevens van de input velden.
+if (isset($_POST['registreer'])) {
+
+        $voornaam = $_POST['Voornaam'];
+        $Tussenvoegsels = $_POST['Tussenvoegsel'];
+        $Achternaam = $_POST['Achternaam'];
+        $Emailadres = $_POST['Emailadres'];
+        $Type = $_POST['typeklant'];
+        $Postcode  = $_POST['Postcode'];
+        $Straatnaam  = $_POST['Straatnaam'];
+        $Huisnummer  = $_POST['Huisnummer'];
+        $Toevoeging  = $_POST['Toevoeging'];
+        $Plaats   = $_POST['Plaats'];
+        $Land  = $_POST['Land'];
+        $Wachtwoord  = $_POST['Wachtwoord'];
+        $Wachtwoordherhaal = $_POST['Wachtwood-herhaal'];
 
 
-if (isset($_POST['sumbit'])) {
 
-    require 'databasetoevoegen.php';
-    $gebruikersnaam = $_POST['gebruikersnaam'];
-    $wachtwoord = $_POST['wachtwoord'];
-    $wachtwoordherhaal = $_POST['wachtwoord-repeat'];
-    $email = $_POST['emailadres'];
 
-    if (empty($_POST['gebruikersnaam']) || empty($_POST['wachtwoord']) || empty($_POST['wachtwoord-repeat']) || empty($_POST['emailadres'])) {
-        header("Location: signup.php?1=misveld&2=".$gebruikersnaam."&3=".$wachtwoord."&4=".$wachtwoordherhaal."&5=".$email);
+// hier wordt het wachtwoord gecontroleerd of ze gelijk zijn. Zo niet dan wordt je terug verwezen naar de signup pagina met een error melding
+    if ($_POST['Wachtwoord'] !== $_POST['Wachtwoord-herhaal']) {
+        header("location: signup.php?error=wachtwoord");
 
-    } elseif ($_POST['wachtwoord'] !== $_POST['wachtwoord-repeat']) {
-        header("Location: signup.php?1=wwnietgoed&2=".$gebruikersnaam."&3=".$wachtwoord."&4="."&5=".$email);
 
     } elseif (!filter_var($_POST['emailadres'], FILTER_VALIDATE_EMAIL)) {
         print("je emailadres is niet geldig!");
@@ -26,7 +35,6 @@ if (isset($_POST['sumbit'])) {
 
     }
 }
-
 
 
 
