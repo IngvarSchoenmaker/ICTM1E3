@@ -63,6 +63,9 @@ require 'db.php';
                 <li class="nav-item">
                     <a class="nav-link" href="../Pages/login.php">login</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Pages/all_products.php">Producten</a>
+                </li>
 <!--                <li class="nav-item dropdown">-->
 <!--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
 <!--                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->

@@ -9,10 +9,11 @@ if($queryResult > 0){
 <div class="container" style="margin-top:150px; margin-bottom: 50px; text-align: left">
     <?php
     while ($row = mysqli_fetch_assoc($result)){
-        echo "<p>".$row['StockItemName']."</p>";
+        echo "<p>Item: ". $row['StockItemName'] ."<br> Size: " . $row['Size']. "<br> prijs: " . $row['RecommendedRetailPrice'] . "</p>";
     }
 }
 ?>
 </div>
 <?php
 include '../incl/footer.php';
+?>
