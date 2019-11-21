@@ -3,27 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="cce7b6e2-96d5-4748-b752-5db5fc910e39" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AccountInfo.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Afleveradres.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Factuuradres.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Functions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JS/Functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/JS/Functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MijnAccount.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MijnBestellingen.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MijnWinkelwagen.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Myacc.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/account/AccountInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/account/AccountInfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/account/Afleveradres.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/account/Afleveradres.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/account/Factuuradres.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/account/Factuuradres.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/account/MijnAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/account/MijnAccount.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/account/MijnBestellingen.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/account/MijnBestellingen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/account/MijnWinkelwagen.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/account/MijnWinkelwagen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/account/Myacc.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/incl/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/incl/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/incl/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/incl/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/auth/signup.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/auth/signup.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/auth/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/auth/signup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/om aan te passen 1.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/om aan te passen 2.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/signup.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/signup.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/incl/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/incl/db.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
