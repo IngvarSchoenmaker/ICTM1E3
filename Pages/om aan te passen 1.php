@@ -9,7 +9,7 @@ if (isset($_POST['registreer'])) {
     $Tussenvoegsels = $_POST['Tussenvoegsel'];
     $Achternaam = $_POST['Achternaam'];
     $Emailadres = $_POST['Emailadres'];
-    $Type = $_POST['typeklant'];
+    //$Type = $_POST['typeklant'];
     $Postcode = $_POST['Postcode'];
     $Straatnaam = $_POST['Straatnaam'];
     $Huisnummer = $_POST['Huisnummer'];
