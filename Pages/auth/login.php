@@ -36,7 +36,15 @@ if(isset($_POST['registeren'])) {
         print("De verplichte velden zijn niet ingevuld!");
 
     } else {
-        header("location: index.php?login=success");
+        $query = "SELECT Customer_ID FROM Customer WHERE Email = '$email' AND Password = '$password'";
+        $statement = mysqli_prepare($conn, $sql);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
+        if(!empty($result)) {
+            session_start();
+            $_SESSION["ID"] = $result;
+            header("Location: ../Pages/index.php");
+        }
     }
 }
 require '../../incl/footer.php';
