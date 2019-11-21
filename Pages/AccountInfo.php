@@ -9,6 +9,9 @@ include '../incl/Database.php';
 
 <script type="text/javascript" src="../JS/Functions.js"></script>
 
+    <div class="container" style="margin-top:150px">
+        <div class="row">
+            <div class="col-lg-12">
 <h1 class="AccInfo">Account informatie</h1>
 
 <!--Laat de account gegevens van de gebruiker zien in een form
@@ -34,6 +37,9 @@ De gebruiker kan hier zijn gegevens ook wijzigen. -->
     <input id='opslaan' type='button' value='Opslaan' class='Button' onclick="myFunction()"><br>
 </div>
 <a href="MijnAccount.php"><--Terug naar dashboard></a>
+            </div>
+        </div>
+    </div>
 <?php
 include '../incl/footer.php';
 ?>

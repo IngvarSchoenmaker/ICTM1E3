@@ -8,7 +8,9 @@ include '../incl/Database.php';
 ?>
 
 <script type="text/javascript" src="../JS/Functions.js"></script>
-
+    <div class="container" style="margin-top:150px">
+        <div class="row">
+            <div class="col-lg-12">
 <h1>Factuuradres</h1>
 
 <!-- Formulier waar factuuradres te zien is
@@ -33,5 +35,8 @@ mogelijkheid tot wijzigen -->
 </div>
 
 <a href="MijnAccount.php"><--Terug naar dashboard></a>
+            </div>
+        </div>
+    </div>
 <?php
 include '../incl/footer.php';
