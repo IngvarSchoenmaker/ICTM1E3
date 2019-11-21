@@ -7,7 +7,7 @@ include '../../incl/header.php';
 include '../../incl/Database.php';
 ?>
 
-<script type="text/javascript" src="../JS/Functions.js"></script>
+<script type="text/javascript" src="../../JS/Functions.js"></script>
 
     <div class="container" style="margin-top:150px">
         <div class="row">

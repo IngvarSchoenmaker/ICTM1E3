@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pboer
- * Date: 14-11-2019
- * Time: 11:40
- */
-
 require 'db.php';
 ?>
 <!DOCTYPE html>
@@ -39,9 +32,9 @@ require 'db.php';
             <div class="col-7">
                 <form class="form-inline align-self-center" action="../Pages/search/search.php" method="POST">
                     <div class="search-box input-group p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-                        <input type="search" placeholder="What're you searching for?" name="submit-search" autocomplete="off" class="form-control border-0 bg-light rounded rounded-pill">
+                        <input type="search" placeholder="What're you searching for?" name="search" autocomplete="off" class="form-control border-0 bg-light rounded rounded-pill">
                         <div class="input-group-append">
-                            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                            <button id="button-addon1" type="submit" class="btn btn-link text-primary" name="submit-search"><i class="fa fa-search"></i></button>
                         </div>
                         <div class="result"></div>
                     </div>
@@ -52,16 +45,20 @@ require 'db.php';
 </nav>
 <div class="row">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-top: 70px;">
-        <div class="collapse navbar-collapse container" id="navbarSupportedContent">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="container">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="../Pages/index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Pages/signup.php">registreer</a>
+                    <a class="nav-link" href="../Pages/auth/signup.php">registreer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Pages/login.php">login</a>
+                    <a class="nav-link" href="../Pages/auth/login.php">login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../Pages/all_products.php">Producten</a>
@@ -82,6 +79,7 @@ require 'db.php';
 <!--                    <a class="nav-link disabled" href="#">Disabled</a>-->
 <!--                </li>-->
             </ul>
+            </div>
         </div>
     </nav>
 </div>

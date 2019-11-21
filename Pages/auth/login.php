@@ -1,5 +1,5 @@
 <?php
-require '../incl/header.php';
+require '../../incl/header.php';
 ?>
 <div class="container" style="margin-top:200px; margin-bottom: 233px; text-align: center">
     <div class="row">
@@ -39,5 +39,5 @@ if(isset($_POST['registeren'])) {
         header("location: index.php?login=success");
     }
 }
-require '../incl/footer.php';
+require '../../incl/footer.php';
 ?>

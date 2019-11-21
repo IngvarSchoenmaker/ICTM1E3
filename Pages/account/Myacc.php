@@ -1,6 +1,6 @@
 <?php
 //Laadt de header in.
-include '../incl/header.php';
+include '../../incl/header.php';
 ?>
 
 <h1>This is a Heading</h1>
@@ -8,4 +8,4 @@ include '../incl/header.php';
 <p><a href="MijnAccount.php">Mijn account</a></p>
 
 <?php
-require '../incl/footer.php';
+require '../../incl/footer.php';

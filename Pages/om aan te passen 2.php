@@ -25,7 +25,7 @@ require "../incl/header.php";
 <body>
     <!–– toelichting zie line 36. -->
     <!--hier staan de accountinformatie van de klant-->
-<form action="signup.inc.php" method="post">
+<form action="auth/signup.inc.php" method="post">
     <br>
     <br>
     <br>

@@ -1,6 +1,6 @@
 <?php
 //Laadt de header in.
-include '../incl/header.php';
+include '../../incl/header.php';
 ?>
     <style>
         .AccDash {
@@ -38,4 +38,4 @@ include '../incl/header.php';
 
 </body>
 <?php
-require '../incl/footer.php';
+require '../../incl/footer.php';

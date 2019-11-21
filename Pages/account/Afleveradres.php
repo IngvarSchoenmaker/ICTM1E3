@@ -2,13 +2,13 @@
 //Start sessie.
 session_start();
 //Laadt de header in.
-include '../incl/header.php';
+include '../../incl/header.php';
 //Laadt Database.php in zodat ik daar queries en variablen van kan gebruiken.
-include '../incl/Database.php';
+include '../../incl/Database.php';
 ?>
 
 <!-- Laadt javascript functies in-->
-<script type="text/javascript" src="../JS/Functions.js"></script>
+<script type="text/javascript" src="../../JS/Functions.js"></script>
 
 <h1>Afleveradres</h1>
 
@@ -36,5 +36,5 @@ mogelijkheid tot wijzigen -->
 
 <a href="MijnAccount.php"><--Terug naar dashboard></a>
 <?php
-include '../incl/footer.php';
+include '../../incl/footer.php';
 ?>

@@ -1,5 +1,5 @@
 <?php
-require '../incl/db.php';
+require '../../incl/db.php';
 
 // ingevoerde gegevens van de input velden.
 if (isset($_POST['registreer'])) {

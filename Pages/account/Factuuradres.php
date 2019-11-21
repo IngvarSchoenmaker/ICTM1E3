@@ -2,12 +2,12 @@
 //Start sessie.
 session_start();
 //Laadt de header in.
-include '../incl/header.php';
+include '../../incl/header.php';
 //Laadt Database.php in zodat ik daar queries en variablen van kan gebruiken.
-include '../incl/Database.php';
+include '../../incl/Database.php';
 ?>
 
-<script type="text/javascript" src="../JS/Functions.js"></script>
+<script type="text/javascript" src="../../JS/Functions.js"></script>
     <div class="container" style="margin-top:150px">
         <div class="row">
             <div class="col-lg-12">
@@ -39,4 +39,4 @@ mogelijkheid tot wijzigen -->
         </div>
     </div>
 <?php
-include '../incl/footer.php';
+include '../../incl/footer.php';
