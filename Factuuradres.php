@@ -15,23 +15,21 @@ include 'Database.php';
 mogelijkheid tot wijzigen -->
 
 <div class="factuuradres">
-    <form action="Factuuradres.php" method="post">
-        <input onclick="ChangeForm(); myFunction()" id="wijzig" type="button" value="Wijzig" class="Button"> <br>
+    <form action="Database.php" method="post">
+        <input onclick="ChangeForm()" id="wijzig" type="button" value="Wijzig" class="Button"> <br>
         <div id="form-inputs">
             Ter attentie van:*: <br> <input type="text" id="naam" name="naam" value="<?=($fullname) ?>" readonly><br>
+            Plaats*: <br> <input type="text" id="naam" name="plaats" value="<?=($plaats) ?>" readonly><br>
             Postcode*: <br> <input type="text" id="postcode" name="postcode" value="<?=($postcode) ?>" readonly><br>
             Straat*: <br> <input type="text" id="straat" name="straat" value="<?=($straat) ?>" readonly><br>
             Huisnummer*: <br> <input type="text" id="huisnnr" name="huisnnr" value="<?=($huisnummer) ?>" readonly><br>
             Toevoegsel: <br> <input type="text" id="toev" name="toevoegsel" value="<?=($toevoegsel) ?>"><br>
             Land*: <br> <input type="text" id="land" name="land" value="Nederland" readonly><br>
+            <input id='opslaan' type='submit' name="opslaanFactuuradres" value='Opslaan'>
         </div>
     </form>
 </div>
 
-<div id="hide" style="display: none">
-    <input id='opslaan' type='button' value='Opslaan' class='Button' onclick="myFunction()"><br>
-</div>
+
 
 <a href="MijnAccount.php"><--Terug naar dashboard></a>
-
-?>

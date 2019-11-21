@@ -14,6 +14,7 @@ include 'Database.php';
 <!--Laat de account gegevens van de gebruiker zien in een form
 De gebruiker kan hier zijn gegevens ook wijzigen. -->
 <div class="AccForm">
+
     <form action="Database.php" method="post">
         <input onclick="ChangeForm()" id="wijzig" name="wijzig" type="button" value="Wijzig" class="Button"> <br>
         <div id="form-inputs">
@@ -21,6 +22,7 @@ De gebruiker kan hier zijn gegevens ook wijzigen. -->
             Tussenvoegsels: <br> <input type="text" id="tussenv" name="tussenvoegsel" value="<?=($tussenvoegsels) ?>" readonly><br>
             Achternaam*: <br> <input type="text" id="achter" name="achternaam" value="<?=($achternaam) ?>" readonly><br>
             E-mail*: <br> <input type="email" id="mail" name="email" value="<?=$email?>" readonly><br>
+            Geboortedatum*: <br> <input type="text" id="datum" name="gbdatum" value="<?=($gbdatum) ?>" readonly>dd-mm-jj <br>
 
             <h3>Wachtwoord veranderen</h3>
             Huidig wachtwoord* <br> <input type="password" id="huidigpass" name="wachtwoord"><br>

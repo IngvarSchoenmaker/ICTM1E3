@@ -33,6 +33,7 @@ $telefoonnr = SqlQuery("SELECT Phone FROM customer WHERE Customer_ID = 1");
 $voornaam = SqlQuery("SELECT First_Name FROM customer WHERE Customer_ID = 1" );
 $achternaam = SqlQuery("SELECT Last_Name FROM customer WHERE Customer_ID = 1");
 $tussenvoegsels = SqlQuery("SELECT Middle_Name FROM customer WHERE Customer_ID = 1");
+$gbdatum = SqlQuery("SELECT Birthdate FROM customer WHERE Customer_ID = 1");
 
 //Controleren of er wat in de variable tussenvoegsels staat
 if (strlen($tussenvoegsels) > 1) {
@@ -92,7 +93,6 @@ if (isset($_POST['opslaanAfleveradres'])) {
 //        print("Het is alleen mogelijk om te verzenden naar Nederland.");
 //    }
     $telefoonnrDB = $_POST['telefoonnr'];
-    print("hallo");
 
     $sql = "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET C.Phone =?, A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = 1";
     $statement = mysqli_prepare($conn, "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET C.Phone =?, A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = 1");
@@ -102,4 +102,24 @@ if (isset($_POST['opslaanAfleveradres'])) {
     $result = mysqli_stmt_get_result($statement);
 
     header("Location: Afleveradres.php");
+}
+
+if (isset($_POST['opslaanFactuuradres'])) {
+    $plaatsDB = $_POST['plaats'];
+    $postcodeDB = $_POST['postcode'];
+    $straatDB = $_POST['straat'];
+    $huisnummerDB = $_POST['huisnnr'];
+    $toevoegselDB = $_POST['toevoegsel'];
+//    if(strtoupper($_POST['land']) != "NEDERLAND") {
+//        print("Het is alleen mogelijk om te verzenden naar Nederland.");
+//    }
+
+    $sql = "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = 1";
+    $statement = mysqli_prepare($conn, "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = 1");
+
+    mysqli_stmt_bind_param($statement, 'sssis', $plaatsDB, $postcodeDB, $straatDB, $huisnummerDB, $toevoegselDB);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+
+    header("Location: Factuuradres.php");
 }
