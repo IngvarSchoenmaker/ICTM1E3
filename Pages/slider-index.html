@@ -1,0 +1,72 @@
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Price Filter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+</head>
+<body>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/redmond/jquery-ui.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+<div class="demo">
+
+<!-- Titel en "styling" van de slider -->
+    <p>
+        <label for="amount">Prijs klasse:</label>
+        <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" />
+    </p>
+
+<!-- Hier komen de producten -->
+    <div id="slider-range"></div>
+    <ul id="products">
+        <li data-price="10">product - 10 euries</li>
+        <li data-price="50">product - 50 euries</li>
+        <li data-price="180">product - 180 euries</li>
+        <li data-price="700">product - 700 euries</li>
+        <li data-price="6500">product - 6500 euries</li>
+    </ul>
+</div>
+
+<!--JavaScript voor de slider & display-->
+<script>
+    function showProducts(minPrice, maxPrice) {
+        $("#products li").hide().filter(function() {                    // #products gaat over de <ul> van line 22
+            var price = parseInt($(this).data("price"), 10);
+            return price >= minPrice && price <= maxPrice;
+        }).show();
+    }
+
+    $(function() {
+        var prices = $('#products li').map(function() {                  // #products gaat over de <ul> van line 22
+            return $(this).data('price');
+        }).get();
+        var options = {
+                range: true,
+                min: Math.min.apply(Math, prices),
+                max: Math.max.apply(Math, prices),
+                values: [50, 300],
+                slide: function(event, ui) {
+                    var min = ui.values[0],
+                        max = ui.values[1];
+
+                    $("#amount").val("€" + min + " - €" + max);           // #amount gaat over de input van line 17
+                    showProducts(min, max);
+                }
+            },
+            min, max;
+
+        $("#slider-range").slider(options);
+
+        min = $("#slider-range").slider("values", 0);                       // #slider-range gaat over <div> van line 21
+        max = $("#slider-range").slider("values", 1);
+
+        $("#amount").val("€" + min + " - €" + max);
+
+        showProducts(min, max);                                              // aanroepen van de min en max
+    });
+</script>
+
+
+</body>
+</html>
