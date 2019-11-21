@@ -25,57 +25,26 @@ require "../incl/header.php";
 <body>
     <!–– toelichting zie line 36. -->
     <!--hier staan de accountinformatie van de klant-->
-<div class="container" style="margin-top:150px; margin-bottom: 100px; text-align: left">
-    <div style="display: inline-block">
-<form action="signup.inc.php" method="post" class="form-3">
+<form action="signup.inc.php" method="post">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="border: 1px solid black">
     <fieldset>
-    <legend style="border-radius: 20px; margin-left: 450px">accountinformatie</legend>
-        <p class="clearfix">
-        <label for="Voornaam" style="margin-right: 55px; margin-left: 400px">Voornaam:</label>
-        <input type="text" name="Voornaam" <?php if(isset($_GET['voornaam'])) {if (!empty($_GET['voornaam'])) {echo 'value="' . $_GET['voornaam'] . '"';}else{echo 'placeholder="voornaam"';}}else{echo 'placeholder="voornaam"';}?> required>
-        </p>
-        <p class="clearfix">
-            <label for="Tussenvoegsel" style="margin-right: 19px; margin-left: 400px">Tussenvoegsels:</label>
-            <input type="text" name="Tussenvoegsel" <?php if(isset($_GET['Tussenvoegsel'])) {if (!empty($_GET['Tussenvoegsel'])) {echo 'value="' . $_GET['Tussenvoegsel'] . '"';}else{echo 'placeholder="Tussenvoegsel"';}}else{echo 'placeholder="Tussenvoegsel"';}?>>
-        </p>
-        <p class="clearfix">
-            <label for="Achternaam" style="margin-right: 42px; margin-left: 400px">Achternaam:</label>
-            <input type="text" name="Achternaam" <?php if(isset($_GET['Achternaam'])) {if (!empty($_GET['Achternaam'])) {echo 'value="' . $_GET['Achternaam'] . '"';}else{echo 'placeholder="Achternaam"';}}else{echo 'placeholder="Achternaam"';}?> required >
-        </p>
-        <p class="clearfix">
-            <label for="Emailadres" style="margin-right: 52px; margin-left: 400px">Emailadres:</label>
-            <input type="text" name="Emailadres" <?php if (isset($_GET['5'])) {if (!empty($_GET['5'])) {echo 'value="' . $_GET['5'] . '"';}else{echo 'placeholder="emailadres"';}}else{echo 'placeholder="emailadres"';}?> required> <br>
-        </p>
-        <p class="clearfix">
-            <label for="typeklant" style="margin-right: 95px; margin-left: 400px">Type:</label>
-            <select name="typeklant">
-                        <option>Zakelijk</option>
-                        <option>Particulier</option>
-            </select>
-        </p class="clearfix">
+    <legend style="border-radius: 20px">accountinformatie</legend>
 
-<!--        $voornaam = $_POST['voornaam']-->
-<!--        $Tussenvoegsels $_POST['Tussenvoegsel']-->
-<!--        $Achternaam $_POST['Achternaam']-->
-<!--        $Emailadres $_POST['Emailadres']-->
-<!---->
-<!--        Landnummer = $_POST['Landnummer']-->
-<!--        Telefoonnummer = $_POST['Telefoonnummer']-->
-<!--        Geboortedatum $_POST['Geboortedatum']-->
-<!---->
-<!--        Postcode-->
-<!--        Straatnaam-->
-<!--        Huisnummer-->
-<!--        Toevoeging-->
-<!--        Plaats-->
-<!--        Land-->
-<!---->
-<!--        Wachtwoord-->
-<!--        Wachtwoord-herhaal-->
-<!---->
-        <p class="clearfix">
-            <label for="Landnummer" style="margin-right: 37px; margin-left: 400px">landnummer:</label>
-            <select style="width: 150px" data-countries="[[93,&quot;AF&quot;,&quot;Afghanistan&quot;],[355,&quot;AL&quot;,&quot;Albani\u00eb&quot;],[213,&quot;DZ&quot;,&quot;Algerije&quot;],[1,&quot;AS&quot;,&quot;Amerikaans-Samoa&quot;],[1,&quot;VI&quot;,&quot;Amerikaanse Maagdeneilanden&quot;],[376,&quot;AD&quot;,&quot;Andorra&quot;],[244,&quot;AO&quot;,&quot;Angola&quot;],[1,&quot;AI&quot;,&quot;Anguilla&quot;],[1,&quot;AG&quot;,&quot;Antigua en Barbuda&quot;],[54,&quot;AR&quot;,&quot;Argentini\u00eb&quot;],[374,&quot;AM&quot;,&quot;Armeni\u00eb&quot;],[297,&quot;AW&quot;,&quot;Aruba&quot;],[61,&quot;AU&quot;,&quot;Australi\u00eb&quot;],[994,&quot;AZ&quot;,&quot;Azerbeidzjan&quot;],[1,&quot;BS&quot;,&quot;Bahama's&quot;],[973,&quot;BH&quot;,&quot;Bahrein&quot;],[880,&quot;BD&quot;,&quot;Bangladesh&quot;],[1,&quot;BB&quot;,&quot;Barbados&quot;],[32,&quot;BE&quot;,&quot;Belgi\u00eb&quot;],[501,&quot;BZ&quot;,&quot;Belize&quot;],[229,&quot;BJ&quot;,&quot;Benin&quot;],[1,&quot;BM&quot;,&quot;Bermuda&quot;],[975,&quot;BT&quot;,&quot;Bhutan&quot;],[591,&quot;BO&quot;,&quot;Bolivia&quot;],[387,&quot;BA&quot;,&quot;Bosni\u00eb en Herzegovina&quot;],[267,&quot;BW&quot;,&quot;Botswana&quot;],[55,&quot;BR&quot;,&quot;Brazili\u00eb&quot;],[246,&quot;IO&quot;,&quot;Brits Territorium in de Indische Oceaan&quot;],[1,&quot;VG&quot;,&quot;Britse Maagdeneilanden&quot;],[673,&quot;BN&quot;,&quot;Brunei&quot;],[359,&quot;BG&quot;,&quot;Bulgarije&quot;],[226,&quot;BF&quot;,&quot;Burkina Faso&quot;],[257,&quot;BI&quot;,&quot;Burundi&quot;],[855,&quot;KH&quot;,&quot;Cambodja&quot;],[1,&quot;CA&quot;,&quot;Canada&quot;],[236,&quot;CF&quot;,&quot;Centraal-Afrikaanse Republiek&quot;],[56,&quot;CL&quot;,&quot;Chili&quot;],[86,&quot;CN&quot;,&quot;China&quot;],[61,&quot;CX&quot;,&quot;Christmaseiland&quot;],[61,&quot;CC&quot;,&quot;Cocoseilanden&quot;],[57,&quot;CO&quot;,&quot;Colombia&quot;],[269,&quot;KM&quot;,&quot;Comoren&quot;],[242,&quot;CG&quot;,&quot;Congo-Brazzaville&quot;],[243,&quot;CD&quot;,&quot;Congo-Kinshasa&quot;],[682,&quot;CK&quot;,&quot;Cookeilanden&quot;],[506,&quot;CR&quot;,&quot;Costa Rica&quot;],[53,&quot;CU&quot;,&quot;Cuba&quot;],[357,&quot;CY&quot;,&quot;Cyprus&quot;],[45,&quot;DK&quot;,&quot;Denemarken&quot;],[253,&quot;DJ&quot;,&quot;Djibouti&quot;],[1,&quot;DM&quot;,&quot;Dominica&quot;],[1,&quot;DO&quot;,&quot;Dominicaanse Republiek&quot;],[49,&quot;DE&quot;,&quot;Duitsland&quot;],[593,&quot;EC&quot;,&quot;Ecuador&quot;],[20,&quot;EG&quot;,&quot;Egypte&quot;],[503,&quot;SV&quot;,&quot;El Salvador&quot;],[240,&quot;GQ&quot;,&quot;Equatoriaal-Guinea&quot;],[291,&quot;ER&quot;,&quot;Eritrea&quot;],[372,&quot;EE&quot;,&quot;Estland&quot;],[251,&quot;ET&quot;,&quot;Ethiopi\u00eb&quot;],[298,&quot;FO&quot;,&quot;Faer\u00f6er&quot;],[500,&quot;FK&quot;,&quot;Falklandeilanden&quot;],[679,&quot;FJ&quot;,&quot;Fiji&quot;],[63,&quot;PH&quot;,&quot;Filipijnen&quot;],[358,&quot;FI&quot;,&quot;Finland&quot;],[33,&quot;FR&quot;,&quot;Frankrijk&quot;],[594,&quot;GF&quot;,&quot;Frans-Guyana&quot;],[689,&quot;PF&quot;,&quot;Frans-Polynesi\u00eb&quot;],[241,&quot;GA&quot;,&quot;Gabon&quot;],[220,&quot;GM&quot;,&quot;Gambia&quot;],[995,&quot;GE&quot;,&quot;Georgi\u00eb&quot;],[233,&quot;GH&quot;,&quot;Ghana&quot;],[350,&quot;GI&quot;,&quot;Gibraltar&quot;],[1,&quot;GD&quot;,&quot;Grenada&quot;],[30,&quot;GR&quot;,&quot;Griekenland&quot;],[299,&quot;GL&quot;,&quot;Groenland&quot;],[590,&quot;GP&quot;,&quot;Guadeloupe&quot;],[1,&quot;GU&quot;,&quot;Guam&quot;],[502,&quot;GT&quot;,&quot;Guatemala&quot;],[224,&quot;GN&quot;,&quot;Guinee&quot;],[245,&quot;GW&quot;,&quot;Guinee-Bissau&quot;],[592,&quot;GY&quot;,&quot;Guyana&quot;],[509,&quot;HT&quot;,&quot;Ha\u00efti&quot;],[504,&quot;HN&quot;,&quot;Honduras&quot;],[36,&quot;HU&quot;,&quot;Hongarije&quot;],[852,&quot;HK&quot;,&quot;Hongkong&quot;],[354,&quot;IS&quot;,&quot;IJsland&quot;],[353,&quot;IE&quot;,&quot;Ierland&quot;],[91,&quot;IN&quot;,&quot;India&quot;],[62,&quot;ID&quot;,&quot;Indonesi\u00eb&quot;],[964,&quot;IQ&quot;,&quot;Irak&quot;],[98,&quot;IR&quot;,&quot;Iran&quot;],[972,&quot;IL&quot;,&quot;Isra\u00ebl&quot;],[39,&quot;IT&quot;,&quot;Itali\u00eb&quot;],[225,&quot;CI&quot;,&quot;Ivoorkust&quot;],[1,&quot;JM&quot;,&quot;Jamaica&quot;],[81,&quot;JP&quot;,&quot;Japan&quot;],[967,&quot;YE&quot;,&quot;Jemen&quot;],[962,&quot;JO&quot;,&quot;Jordani\u00eb&quot;],[1,&quot;KY&quot;,&quot;Kaaimaneilanden&quot;],[238,&quot;CV&quot;,&quot;Kaapverdi\u00eb&quot;],[237,&quot;CM&quot;,&quot;Kameroen&quot;],[7,&quot;KZ&quot;,&quot;Kazachstan&quot;],[254,&quot;KE&quot;,&quot;Kenia&quot;],[996,&quot;KG&quot;,&quot;Kirgizi\u00eb&quot;],[686,&quot;KI&quot;,&quot;Kiribati&quot;],[965,&quot;KW&quot;,&quot;Koeweit&quot;],[385,&quot;HR&quot;,&quot;Kroati\u00eb&quot;],[856,&quot;LA&quot;,&quot;Laos&quot;],[266,&quot;LS&quot;,&quot;Lesotho&quot;],[371,&quot;LV&quot;,&quot;Letland&quot;],[961,&quot;LB&quot;,&quot;Libanon&quot;],[231,&quot;LR&quot;,&quot;Liberia&quot;],[218,&quot;LY&quot;,&quot;Libi\u00eb&quot;],[423,&quot;LI&quot;,&quot;Liechtenstein&quot;],[370,&quot;LT&quot;,&quot;Litouwen&quot;],[352,&quot;LU&quot;,&quot;Luxemburg&quot;],[853,&quot;MO&quot;,&quot;Macau&quot;],[389,&quot;MK&quot;,&quot;Macedoni\u00eb&quot;],[261,&quot;MG&quot;,&quot;Madagaskar&quot;],[265,&quot;MW&quot;,&quot;Malawi&quot;],[960,&quot;MV&quot;,&quot;Maldiven&quot;],[60,&quot;MY&quot;,&quot;Maleisi\u00eb&quot;],[223,&quot;ML&quot;,&quot;Mali&quot;],[356,&quot;MT&quot;,&quot;Malta&quot;],[212,&quot;MA&quot;,&quot;Marokko&quot;],[692,&quot;MH&quot;,&quot;Marshalleilanden&quot;],[596,&quot;MQ&quot;,&quot;Martinique&quot;],[222,&quot;MR&quot;,&quot;Mauritani\u00eb&quot;],[230,&quot;MU&quot;,&quot;Mauritius&quot;],[262,&quot;YT&quot;,&quot;Mayotte&quot;],[52,&quot;MX&quot;,&quot;Mexico&quot;],[691,&quot;FM&quot;,&quot;Micronesia&quot;],[373,&quot;MD&quot;,&quot;Moldavi\u00eb&quot;],[377,&quot;MC&quot;,&quot;Monaco&quot;],[976,&quot;MN&quot;,&quot;Mongoli\u00eb&quot;],[382,&quot;ME&quot;,&quot;Montenegro&quot;],[1,&quot;MS&quot;,&quot;Montserrat&quot;],[258,&quot;MZ&quot;,&quot;Mozambique&quot;],[95,&quot;MM&quot;,&quot;Myanmar&quot;],[264,&quot;NA&quot;,&quot;Namibi\u00eb&quot;],[674,&quot;NR&quot;,&quot;Nauru&quot;],[31,&quot;NL&quot;,&quot;Nederland&quot;],[599,&quot;AN&quot;,&quot;Nederlandse Antillen&quot;],[977,&quot;NP&quot;,&quot;Nepal&quot;],[505,&quot;NI&quot;,&quot;Nicaragua&quot;],[687,&quot;NC&quot;,&quot;Nieuw-Caledoni\u00eb&quot;],[64,&quot;NZ&quot;,&quot;Nieuw-Zeeland&quot;],[227,&quot;NE&quot;,&quot;Niger&quot;],[234,&quot;NG&quot;,&quot;Nigeria&quot;],[683,&quot;NU&quot;,&quot;Niue&quot;],[850,&quot;KP&quot;,&quot;Noord-Korea&quot;],[1,&quot;MP&quot;,&quot;Noordelijke Marianen&quot;],[47,&quot;NO&quot;,&quot;Noorwegen&quot;],[672,&quot;NF&quot;,&quot;Norfolk&quot;],[256,&quot;UG&quot;,&quot;Oeganda&quot;],[380,&quot;UA&quot;,&quot;Oekra\u00efne&quot;],[998,&quot;UZ&quot;,&quot;Oezbekistan&quot;],[968,&quot;OM&quot;,&quot;Oman&quot;],[670,&quot;TL&quot;,&quot;Oost-Timor&quot;],[43,&quot;AT&quot;,&quot;Oostenrijk&quot;],[92,&quot;PK&quot;,&quot;Pakistan&quot;],[680,&quot;PW&quot;,&quot;Palau&quot;],[970,&quot;PS&quot;,&quot;Palestijnse Autoriteit&quot;],[507,&quot;PA&quot;,&quot;Panama&quot;],[675,&quot;PG&quot;,&quot;Papoea-Nieuw-Guinea&quot;],[595,&quot;PY&quot;,&quot;Paraguay&quot;],[51,&quot;PE&quot;,&quot;Peru&quot;],[48,&quot;PL&quot;,&quot;Polen&quot;],[351,&quot;PT&quot;,&quot;Portugal&quot;],[1,&quot;PR&quot;,&quot;Puerto Rico&quot;],[974,&quot;QA&quot;,&quot;Qatar&quot;],[40,&quot;RO&quot;,&quot;Roemeni\u00eb&quot;],[7,&quot;RU&quot;,&quot;Rusland&quot;],[250,&quot;RW&quot;,&quot;Rwanda&quot;],[262,&quot;RE&quot;,&quot;R\u00e9union&quot;],[1,&quot;KN&quot;,&quot;Saint Kitts en Nevis&quot;],[1,&quot;LC&quot;,&quot;Saint Lucia&quot;],[1,&quot;VC&quot;,&quot;Saint Vincent en de Grenadines&quot;],[508,&quot;PM&quot;,&quot;Saint-Pierre en Miquelon&quot;],[677,&quot;SB&quot;,&quot;Salomonseilanden&quot;],[685,&quot;WS&quot;,&quot;Samoa&quot;],[378,&quot;SM&quot;,&quot;San Marino&quot;],[239,&quot;ST&quot;,&quot;Sao Tom\u00e9 en Principe&quot;],[966,&quot;SA&quot;,&quot;Saoedi-Arabi\u00eb&quot;],[221,&quot;SN&quot;,&quot;Senegal&quot;],[381,&quot;RS&quot;,&quot;Servi\u00eb&quot;],[248,&quot;SC&quot;,&quot;Seychellen&quot;],[232,&quot;SL&quot;,&quot;Sierra Leone&quot;],[65,&quot;SG&quot;,&quot;Singapore&quot;],[290,&quot;SH&quot;,&quot;Sint-Helena&quot;],[386,&quot;SI&quot;,&quot;Sloveni\u00eb&quot;],[421,&quot;SK&quot;,&quot;Slowakije&quot;],[249,&quot;SD&quot;,&quot;Soedan&quot;],[252,&quot;SO&quot;,&quot;Somali\u00eb&quot;],[34,&quot;ES&quot;,&quot;Spanje&quot;],[47,&quot;SJ&quot;,&quot;Spitsbergen en Jan Mayen&quot;],[94,&quot;LK&quot;,&quot;Sri Lanka&quot;],[597,&quot;SR&quot;,&quot;Suriname&quot;],[268,&quot;SZ&quot;,&quot;Swaziland&quot;],[963,&quot;SY&quot;,&quot;Syri\u00eb&quot;],[992,&quot;TJ&quot;,&quot;Tadzjikistan&quot;],[886,&quot;TW&quot;,&quot;Taiwan&quot;],[255,&quot;TZ&quot;,&quot;Tanzania&quot;],[66,&quot;TH&quot;,&quot;Thailand&quot;],[228,&quot;TG&quot;,&quot;Togo&quot;],[690,&quot;TK&quot;,&quot;Tokelau-eilanden&quot;],[676,&quot;TO&quot;,&quot;Tonga&quot;],[1,&quot;TT&quot;,&quot;Trinidad en Tobago&quot;],[235,&quot;TD&quot;,&quot;Tsjaad&quot;],[420,&quot;CZ&quot;,&quot;Tsjechi\u00eb&quot;],[216,&quot;TN&quot;,&quot;Tunesi\u00eb&quot;],[90,&quot;TR&quot;,&quot;Turkije&quot;],[993,&quot;TM&quot;,&quot;Turkmenistan&quot;],[1,&quot;TC&quot;,&quot;Turks- en Caicoseilanden&quot;],[688,&quot;TV&quot;,&quot;Tuvalu&quot;],[598,&quot;UY&quot;,&quot;Uruguay&quot;],[678,&quot;VU&quot;,&quot;Vanuatu&quot;],[379,&quot;VA&quot;,&quot;Vaticaanstad&quot;],[58,&quot;VE&quot;,&quot;Venezuela&quot;],[44,&quot;GB&quot;,&quot;Verenigd Koninkrijk&quot;],[971,&quot;AE&quot;,&quot;Verenigde Arabische Emiraten&quot;],[1,&quot;US&quot;,&quot;Verenigde Staten&quot;],[84,&quot;VN&quot;,&quot;Vietnam&quot;],[681,&quot;WF&quot;,&quot;Wallis en Futuna&quot;],[375,&quot;BY&quot;,&quot;Wit-Rusland&quot;],[260,&quot;ZM&quot;,&quot;Zambia&quot;],[263,&quot;ZW&quot;,&quot;Zimbabwe&quot;],[27,&quot;ZA&quot;,&quot;Zuid-Afrika&quot;],[82,&quot;KR&quot;,&quot;Zuid-Korea&quot;],[46,&quot;SE&quot;,&quot;Zweden&quot;],[41,&quot;CH&quot;,&quot;Zwitserland&quot;]]" class="js-gui-form-details-phone-number-code gui-form-details-phone-number-code" name="Landnummer">
+    Voornaam:<br><input type="text" name="Voornaam" <?php if(isset($_GET['voornaam'])) {if (!empty($_GET['voornaam'])) {echo 'value="' . $_GET['voornaam'] . '"';}else{echo 'placeholder="voornaam"';}}else{echo 'placeholder="voornaam"';}?> required> <br><br>
+    Tussenvoegsels:<br><input type="text" name="Tussenvoegsel" <?php if(isset($_GET['Tussenvoegsel'])) {if (!empty($_GET['Tussenvoegsel'])) {echo 'value="' . $_GET['Tussenvoegsel'] . '"';}else{echo 'placeholder="Tussenvoegsel"';}}else{echo 'placeholder="Tussenvoegsel"';}?>> <br><br>
+    Achternaam:<br><input type="text" name="Achternaam" <?php if(isset($_GET['Achternaam'])) {if (!empty($_GET['Achternaam'])) {echo 'value="' . $_GET['Achternaam'] . '"';}else{echo 'placeholder="Achternaam"';}}else{echo 'placeholder="Achternaam"';}?> required> <br><br>
+    Emailadres:<br><input type="text" name="Emailadres" <?php if (isset($_GET['5'])) {if (!empty($_GET['5'])) {echo 'value="' . $_GET['5'] . '"';}else{echo 'placeholder="emailadres"';}}else{echo 'placeholder="emailadres"';}?> required> <br><br>
+    Type:<br><select name="typeklant">
+            <option>Zakelijk</option>
+            <option>Particulier</option>
+        </select> <br><br>
+
+
+        <select style="width: 150px" data-countries="[[93,&quot;AF&quot;,&quot;Afghanistan&quot;],[355,&quot;AL&quot;,&quot;Albani\u00eb&quot;],[213,&quot;DZ&quot;,&quot;Algerije&quot;],[1,&quot;AS&quot;,&quot;Amerikaans-Samoa&quot;],[1,&quot;VI&quot;,&quot;Amerikaanse Maagdeneilanden&quot;],[376,&quot;AD&quot;,&quot;Andorra&quot;],[244,&quot;AO&quot;,&quot;Angola&quot;],[1,&quot;AI&quot;,&quot;Anguilla&quot;],[1,&quot;AG&quot;,&quot;Antigua en Barbuda&quot;],[54,&quot;AR&quot;,&quot;Argentini\u00eb&quot;],[374,&quot;AM&quot;,&quot;Armeni\u00eb&quot;],[297,&quot;AW&quot;,&quot;Aruba&quot;],[61,&quot;AU&quot;,&quot;Australi\u00eb&quot;],[994,&quot;AZ&quot;,&quot;Azerbeidzjan&quot;],[1,&quot;BS&quot;,&quot;Bahama's&quot;],[973,&quot;BH&quot;,&quot;Bahrein&quot;],[880,&quot;BD&quot;,&quot;Bangladesh&quot;],[1,&quot;BB&quot;,&quot;Barbados&quot;],[32,&quot;BE&quot;,&quot;Belgi\u00eb&quot;],[501,&quot;BZ&quot;,&quot;Belize&quot;],[229,&quot;BJ&quot;,&quot;Benin&quot;],[1,&quot;BM&quot;,&quot;Bermuda&quot;],[975,&quot;BT&quot;,&quot;Bhutan&quot;],[591,&quot;BO&quot;,&quot;Bolivia&quot;],[387,&quot;BA&quot;,&quot;Bosni\u00eb en Herzegovina&quot;],[267,&quot;BW&quot;,&quot;Botswana&quot;],[55,&quot;BR&quot;,&quot;Brazili\u00eb&quot;],[246,&quot;IO&quot;,&quot;Brits Territorium in de Indische Oceaan&quot;],[1,&quot;VG&quot;,&quot;Britse Maagdeneilanden&quot;],[673,&quot;BN&quot;,&quot;Brunei&quot;],[359,&quot;BG&quot;,&quot;Bulgarije&quot;],[226,&quot;BF&quot;,&quot;Burkina Faso&quot;],[257,&quot;BI&quot;,&quot;Burundi&quot;],[855,&quot;KH&quot;,&quot;Cambodja&quot;],[1,&quot;CA&quot;,&quot;Canada&quot;],[236,&quot;CF&quot;,&quot;Centraal-Afrikaanse Republiek&quot;],[56,&quot;CL&quot;,&quot;Chili&quot;],[86,&quot;CN&quot;,&quot;China&quot;],[61,&quot;CX&quot;,&quot;Christmaseiland&quot;],[61,&quot;CC&quot;,&quot;Cocoseilanden&quot;],[57,&quot;CO&quot;,&quot;Colombia&quot;],[269,&quot;KM&quot;,&quot;Comoren&quot;],[242,&quot;CG&quot;,&quot;Congo-Brazzaville&quot;],[243,&quot;CD&quot;,&quot;Congo-Kinshasa&quot;],[682,&quot;CK&quot;,&quot;Cookeilanden&quot;],[506,&quot;CR&quot;,&quot;Costa Rica&quot;],[53,&quot;CU&quot;,&quot;Cuba&quot;],[357,&quot;CY&quot;,&quot;Cyprus&quot;],[45,&quot;DK&quot;,&quot;Denemarken&quot;],[253,&quot;DJ&quot;,&quot;Djibouti&quot;],[1,&quot;DM&quot;,&quot;Dominica&quot;],[1,&quot;DO&quot;,&quot;Dominicaanse Republiek&quot;],[49,&quot;DE&quot;,&quot;Duitsland&quot;],[593,&quot;EC&quot;,&quot;Ecuador&quot;],[20,&quot;EG&quot;,&quot;Egypte&quot;],[503,&quot;SV&quot;,&quot;El Salvador&quot;],[240,&quot;GQ&quot;,&quot;Equatoriaal-Guinea&quot;],[291,&quot;ER&quot;,&quot;Eritrea&quot;],[372,&quot;EE&quot;,&quot;Estland&quot;],[251,&quot;ET&quot;,&quot;Ethiopi\u00eb&quot;],[298,&quot;FO&quot;,&quot;Faer\u00f6er&quot;],[500,&quot;FK&quot;,&quot;Falklandeilanden&quot;],[679,&quot;FJ&quot;,&quot;Fiji&quot;],[63,&quot;PH&quot;,&quot;Filipijnen&quot;],[358,&quot;FI&quot;,&quot;Finland&quot;],[33,&quot;FR&quot;,&quot;Frankrijk&quot;],[594,&quot;GF&quot;,&quot;Frans-Guyana&quot;],[689,&quot;PF&quot;,&quot;Frans-Polynesi\u00eb&quot;],[241,&quot;GA&quot;,&quot;Gabon&quot;],[220,&quot;GM&quot;,&quot;Gambia&quot;],[995,&quot;GE&quot;,&quot;Georgi\u00eb&quot;],[233,&quot;GH&quot;,&quot;Ghana&quot;],[350,&quot;GI&quot;,&quot;Gibraltar&quot;],[1,&quot;GD&quot;,&quot;Grenada&quot;],[30,&quot;GR&quot;,&quot;Griekenland&quot;],[299,&quot;GL&quot;,&quot;Groenland&quot;],[590,&quot;GP&quot;,&quot;Guadeloupe&quot;],[1,&quot;GU&quot;,&quot;Guam&quot;],[502,&quot;GT&quot;,&quot;Guatemala&quot;],[224,&quot;GN&quot;,&quot;Guinee&quot;],[245,&quot;GW&quot;,&quot;Guinee-Bissau&quot;],[592,&quot;GY&quot;,&quot;Guyana&quot;],[509,&quot;HT&quot;,&quot;Ha\u00efti&quot;],[504,&quot;HN&quot;,&quot;Honduras&quot;],[36,&quot;HU&quot;,&quot;Hongarije&quot;],[852,&quot;HK&quot;,&quot;Hongkong&quot;],[354,&quot;IS&quot;,&quot;IJsland&quot;],[353,&quot;IE&quot;,&quot;Ierland&quot;],[91,&quot;IN&quot;,&quot;India&quot;],[62,&quot;ID&quot;,&quot;Indonesi\u00eb&quot;],[964,&quot;IQ&quot;,&quot;Irak&quot;],[98,&quot;IR&quot;,&quot;Iran&quot;],[972,&quot;IL&quot;,&quot;Isra\u00ebl&quot;],[39,&quot;IT&quot;,&quot;Itali\u00eb&quot;],[225,&quot;CI&quot;,&quot;Ivoorkust&quot;],[1,&quot;JM&quot;,&quot;Jamaica&quot;],[81,&quot;JP&quot;,&quot;Japan&quot;],[967,&quot;YE&quot;,&quot;Jemen&quot;],[962,&quot;JO&quot;,&quot;Jordani\u00eb&quot;],[1,&quot;KY&quot;,&quot;Kaaimaneilanden&quot;],[238,&quot;CV&quot;,&quot;Kaapverdi\u00eb&quot;],[237,&quot;CM&quot;,&quot;Kameroen&quot;],[7,&quot;KZ&quot;,&quot;Kazachstan&quot;],[254,&quot;KE&quot;,&quot;Kenia&quot;],[996,&quot;KG&quot;,&quot;Kirgizi\u00eb&quot;],[686,&quot;KI&quot;,&quot;Kiribati&quot;],[965,&quot;KW&quot;,&quot;Koeweit&quot;],[385,&quot;HR&quot;,&quot;Kroati\u00eb&quot;],[856,&quot;LA&quot;,&quot;Laos&quot;],[266,&quot;LS&quot;,&quot;Lesotho&quot;],[371,&quot;LV&quot;,&quot;Letland&quot;],[961,&quot;LB&quot;,&quot;Libanon&quot;],[231,&quot;LR&quot;,&quot;Liberia&quot;],[218,&quot;LY&quot;,&quot;Libi\u00eb&quot;],[423,&quot;LI&quot;,&quot;Liechtenstein&quot;],[370,&quot;LT&quot;,&quot;Litouwen&quot;],[352,&quot;LU&quot;,&quot;Luxemburg&quot;],[853,&quot;MO&quot;,&quot;Macau&quot;],[389,&quot;MK&quot;,&quot;Macedoni\u00eb&quot;],[261,&quot;MG&quot;,&quot;Madagaskar&quot;],[265,&quot;MW&quot;,&quot;Malawi&quot;],[960,&quot;MV&quot;,&quot;Maldiven&quot;],[60,&quot;MY&quot;,&quot;Maleisi\u00eb&quot;],[223,&quot;ML&quot;,&quot;Mali&quot;],[356,&quot;MT&quot;,&quot;Malta&quot;],[212,&quot;MA&quot;,&quot;Marokko&quot;],[692,&quot;MH&quot;,&quot;Marshalleilanden&quot;],[596,&quot;MQ&quot;,&quot;Martinique&quot;],[222,&quot;MR&quot;,&quot;Mauritani\u00eb&quot;],[230,&quot;MU&quot;,&quot;Mauritius&quot;],[262,&quot;YT&quot;,&quot;Mayotte&quot;],[52,&quot;MX&quot;,&quot;Mexico&quot;],[691,&quot;FM&quot;,&quot;Micronesia&quot;],[373,&quot;MD&quot;,&quot;Moldavi\u00eb&quot;],[377,&quot;MC&quot;,&quot;Monaco&quot;],[976,&quot;MN&quot;,&quot;Mongoli\u00eb&quot;],[382,&quot;ME&quot;,&quot;Montenegro&quot;],[1,&quot;MS&quot;,&quot;Montserrat&quot;],[258,&quot;MZ&quot;,&quot;Mozambique&quot;],[95,&quot;MM&quot;,&quot;Myanmar&quot;],[264,&quot;NA&quot;,&quot;Namibi\u00eb&quot;],[674,&quot;NR&quot;,&quot;Nauru&quot;],[31,&quot;NL&quot;,&quot;Nederland&quot;],[599,&quot;AN&quot;,&quot;Nederlandse Antillen&quot;],[977,&quot;NP&quot;,&quot;Nepal&quot;],[505,&quot;NI&quot;,&quot;Nicaragua&quot;],[687,&quot;NC&quot;,&quot;Nieuw-Caledoni\u00eb&quot;],[64,&quot;NZ&quot;,&quot;Nieuw-Zeeland&quot;],[227,&quot;NE&quot;,&quot;Niger&quot;],[234,&quot;NG&quot;,&quot;Nigeria&quot;],[683,&quot;NU&quot;,&quot;Niue&quot;],[850,&quot;KP&quot;,&quot;Noord-Korea&quot;],[1,&quot;MP&quot;,&quot;Noordelijke Marianen&quot;],[47,&quot;NO&quot;,&quot;Noorwegen&quot;],[672,&quot;NF&quot;,&quot;Norfolk&quot;],[256,&quot;UG&quot;,&quot;Oeganda&quot;],[380,&quot;UA&quot;,&quot;Oekra\u00efne&quot;],[998,&quot;UZ&quot;,&quot;Oezbekistan&quot;],[968,&quot;OM&quot;,&quot;Oman&quot;],[670,&quot;TL&quot;,&quot;Oost-Timor&quot;],[43,&quot;AT&quot;,&quot;Oostenrijk&quot;],[92,&quot;PK&quot;,&quot;Pakistan&quot;],[680,&quot;PW&quot;,&quot;Palau&quot;],[970,&quot;PS&quot;,&quot;Palestijnse Autoriteit&quot;],[507,&quot;PA&quot;,&quot;Panama&quot;],[675,&quot;PG&quot;,&quot;Papoea-Nieuw-Guinea&quot;],[595,&quot;PY&quot;,&quot;Paraguay&quot;],[51,&quot;PE&quot;,&quot;Peru&quot;],[48,&quot;PL&quot;,&quot;Polen&quot;],[351,&quot;PT&quot;,&quot;Portugal&quot;],[1,&quot;PR&quot;,&quot;Puerto Rico&quot;],[974,&quot;QA&quot;,&quot;Qatar&quot;],[40,&quot;RO&quot;,&quot;Roemeni\u00eb&quot;],[7,&quot;RU&quot;,&quot;Rusland&quot;],[250,&quot;RW&quot;,&quot;Rwanda&quot;],[262,&quot;RE&quot;,&quot;R\u00e9union&quot;],[1,&quot;KN&quot;,&quot;Saint Kitts en Nevis&quot;],[1,&quot;LC&quot;,&quot;Saint Lucia&quot;],[1,&quot;VC&quot;,&quot;Saint Vincent en de Grenadines&quot;],[508,&quot;PM&quot;,&quot;Saint-Pierre en Miquelon&quot;],[677,&quot;SB&quot;,&quot;Salomonseilanden&quot;],[685,&quot;WS&quot;,&quot;Samoa&quot;],[378,&quot;SM&quot;,&quot;San Marino&quot;],[239,&quot;ST&quot;,&quot;Sao Tom\u00e9 en Principe&quot;],[966,&quot;SA&quot;,&quot;Saoedi-Arabi\u00eb&quot;],[221,&quot;SN&quot;,&quot;Senegal&quot;],[381,&quot;RS&quot;,&quot;Servi\u00eb&quot;],[248,&quot;SC&quot;,&quot;Seychellen&quot;],[232,&quot;SL&quot;,&quot;Sierra Leone&quot;],[65,&quot;SG&quot;,&quot;Singapore&quot;],[290,&quot;SH&quot;,&quot;Sint-Helena&quot;],[386,&quot;SI&quot;,&quot;Sloveni\u00eb&quot;],[421,&quot;SK&quot;,&quot;Slowakije&quot;],[249,&quot;SD&quot;,&quot;Soedan&quot;],[252,&quot;SO&quot;,&quot;Somali\u00eb&quot;],[34,&quot;ES&quot;,&quot;Spanje&quot;],[47,&quot;SJ&quot;,&quot;Spitsbergen en Jan Mayen&quot;],[94,&quot;LK&quot;,&quot;Sri Lanka&quot;],[597,&quot;SR&quot;,&quot;Suriname&quot;],[268,&quot;SZ&quot;,&quot;Swaziland&quot;],[963,&quot;SY&quot;,&quot;Syri\u00eb&quot;],[992,&quot;TJ&quot;,&quot;Tadzjikistan&quot;],[886,&quot;TW&quot;,&quot;Taiwan&quot;],[255,&quot;TZ&quot;,&quot;Tanzania&quot;],[66,&quot;TH&quot;,&quot;Thailand&quot;],[228,&quot;TG&quot;,&quot;Togo&quot;],[690,&quot;TK&quot;,&quot;Tokelau-eilanden&quot;],[676,&quot;TO&quot;,&quot;Tonga&quot;],[1,&quot;TT&quot;,&quot;Trinidad en Tobago&quot;],[235,&quot;TD&quot;,&quot;Tsjaad&quot;],[420,&quot;CZ&quot;,&quot;Tsjechi\u00eb&quot;],[216,&quot;TN&quot;,&quot;Tunesi\u00eb&quot;],[90,&quot;TR&quot;,&quot;Turkije&quot;],[993,&quot;TM&quot;,&quot;Turkmenistan&quot;],[1,&quot;TC&quot;,&quot;Turks- en Caicoseilanden&quot;],[688,&quot;TV&quot;,&quot;Tuvalu&quot;],[598,&quot;UY&quot;,&quot;Uruguay&quot;],[678,&quot;VU&quot;,&quot;Vanuatu&quot;],[379,&quot;VA&quot;,&quot;Vaticaanstad&quot;],[58,&quot;VE&quot;,&quot;Venezuela&quot;],[44,&quot;GB&quot;,&quot;Verenigd Koninkrijk&quot;],[971,&quot;AE&quot;,&quot;Verenigde Arabische Emiraten&quot;],[1,&quot;US&quot;,&quot;Verenigde Staten&quot;],[84,&quot;VN&quot;,&quot;Vietnam&quot;],[681,&quot;WF&quot;,&quot;Wallis en Futuna&quot;],[375,&quot;BY&quot;,&quot;Wit-Rusland&quot;],[260,&quot;ZM&quot;,&quot;Zambia&quot;],[263,&quot;ZW&quot;,&quot;Zimbabwe&quot;],[27,&quot;ZA&quot;,&quot;Zuid-Afrika&quot;],[82,&quot;KR&quot;,&quot;Zuid-Korea&quot;],[46,&quot;SE&quot;,&quot;Zweden&quot;],[41,&quot;CH&quot;,&quot;Zwitserland&quot;]]" class="js-gui-form-details-phone-number-code gui-form-details-phone-number-code" name="Landnummer">
 
             <option value="AF|93">
                 Afghanistan (+93)
@@ -1004,28 +973,30 @@ require "../incl/header.php";
             <option value="CH|41">
                 Zwitserland (+41)
             </option>
-        </select>
-        </p>
-        <p class="clearfix">
-            <label for="Telefoonnummer" style="margin-right: 5px; margin-left: 400px">Telefoonnummer:</label>
-            <input type="tel" name="Telefoonnummer" required>
-        </p>
-        <p>
-            <label for="Geboortedatum" style="margin-right: 12px; margin-left: 400px">Geboortedatum:</label>
-            <input type="date" name="Geboortedatum" required>
-        </p>
+        </select> <br>
+
+         Telefoonnummer:<br><input type="tel" name="Telefoonnummer" required><br><br>
+         Geboortedatum:<br><input type="date" name="Geboortedatum" required>
+        <br>
+        <br>
+    </div>
+        <br>
+        <br>
+        <br>
     </fieldset>
 
+
+
 <!-- hier staan gegevens voor factuuradres-->
-    <div id="factuuradres" style="margin-top: 50px">
+    <div id="factuuradres" style="border: 1px solid black">
     <fieldset>
-    <legend style="margin-left: 450px">Factuuradres</legend>
-        <b style="margin-right: 52px; margin-left: 400px">postcode:</b><input type="text" name="Postcode" required>  <br><br>
-        <b style="margin-right: 33px; margin-left: 400px"">straatnaam:</b> <input type="text" name="Straatnaam" required>  <br><br>
-        <b style="margin-right: 20px; margin-left: 400px"">Huisnummer:</b> <input type="text" name="Huisnummer" required>  <br><br>
-        <b style="margin-right: 37px; margin-left: 400px"">toevoeging:</b><input type="text" name="Toevoeging">  <br><br>
-        <b style="margin-right: 77px; margin-left: 400px"">Plaats:</b><input type="text" name="Plaats" required><br><br>
-        <b style="margin-right: 89px; margin-left: 400px"">land:</b><select>
+    <legend>Factuuradres</legend>
+        <b>postcode:</b><br><input type="text" name="Postcode" required>  <br><br>
+        <b>straatnaam:</b><br><input type="text" name="Straatnaam" required>  <br><br>
+        <b>Huisnummer:</b><br><input type="text" name="Huisnummer" required>  <br><br>
+        <b>toevoeging:</b><br><input type="text" name="Toevoeging">  <br><br>
+        <b>Plaats:</b></b><br><input type="text" name="Plaats" required><br><br>
+        <b>land:</b><br><select>
 
             <OPTION VALUE="Albania">Albania
             <OPTION VALUE="Algeria">Algeria
@@ -1250,37 +1221,34 @@ require "../incl/header.php";
             <OPTION VALUE="Yemen">Yemen
             <OPTION VALUE="Zambia">Zambia
             <OPTION VALUE="Zimbabwe (Rhodesia)">Zimbabwe (Rhodesia)
-        </select><br><br>
+        </select>
     </fieldset>
     </div>
     <br>
     <br>
 
 <!--    Hier wordt het wachtwoord ingevoerd en gesubmit naar php-->
-    <div style="">
+    <div style="border: 1px solid black">
         <fieldset>
-         <legend style="margin-left: 450px">Wachtwoord</legend>
-        <b style="margin-right: 83px; margin-left: 400px"">Wachtwoord:</b><input type="password" name="Wachtwoord" required><br><br>
-        <b style="margin-right: 20px; margin-left: 400px"">Herhaal Wachtwoord:</b><input type="password" name="Wachtwoord-herhaal" required><br><br>
-            <input style="margin-left: 400px" type="submit" name="registreer" value="account aanmaken">
+         <legend>Wachtwoord</legend>
+        <b>Wachtwoord:</b><br><input type="password" name="Wachtwoord" required><br><br>
+        <b>Herhaal Wachtwoord:</b><br><input type="password" name="Wachtwoord-herhaal" required>
+            <input type="submit" name="registreer" value="account aanmaken">
         </fieldset>
     </div>
 </form>
-    </div>
-</div>
-</div>
-</div>
 </body>
+</html>
 
 
 
 
 <?php
 // zie bestand signup.inc.php --> line 23
-if (isset($_GET['error'])) {
-    if ($_GET['error'] === "wachtwoord") {
-        print("<p style='color: red'>Het wachtwoord komt niet met elkaar overeen!</p>");
-    } elseif ($_GET['2'] === "wwnietgoed") {
+if (isset($_GET['char'])) {
+    if ($_GET['char'] === "error") {
+        print("<p style='color: red'>controleer uw gegevens die een cijfer of symbolen bevatten</p>");
+    } elseif ($_GET['Tussenvoegsel'] === "wwnietgoed") {
         print("wachtwoord komt niet overeen!");
     }
 
