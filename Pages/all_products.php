@@ -1,8 +1,12 @@
 <?php
 include '../incl/header.php';
-
+$server = "localhost";
+$username = "root";
+$password = "";
+$dbname = "wideworldimporters";
+$conn1 = mysqli_connect($server, $username, $password, $dbname);
 $sql = "SELECT * FROM stockitems ";
-$result = mysqli_query($conn, $sql);
+$result = mysqli_query($conn1, $sql);
 $queryResult = mysqli_num_rows($result);
 if($queryResult > 0){
     ?>

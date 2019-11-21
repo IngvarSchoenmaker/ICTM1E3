@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cce7b6e2-96d5-4748-b752-5db5fc910e39" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/auth/signup.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/auth/signup.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/auth/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/auth/signup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/om aan te passen 1.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/om aan te passen 2.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/signup.inc.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/signup.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/incl/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/incl/db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/all_products.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/all_products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/auth/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/auth/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/auth/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/auth/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/incl/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/incl/header.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

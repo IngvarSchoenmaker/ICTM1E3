@@ -23,8 +23,6 @@ require '../../incl/header.php';
         </div>
     </div>
 </div>
-
-
 <?php
 if(isset($_POST['registeren'])) {
 
@@ -37,14 +35,12 @@ if(isset($_POST['registeren'])) {
 
     } else {
         $query = "SELECT Customer_ID FROM Customer WHERE Email = '$email' AND Password = '$password'";
-        $statement = mysqli_prepare($conn, $sql);
+        $statement = mysqli_prepare($conn, $query);
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
         if(!empty($result)) {
-            session_start();
-            $_SESSION["ID"] = $result;
-            header("Location: ../Pages/index.php");
-        }
+            $_SESSION['ID'] = $result;
+         }
     }
 }
 require '../../incl/footer.php';
