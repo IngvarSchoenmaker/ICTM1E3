@@ -1,13 +1,15 @@
 <?php
 require '../incl/header.php';
 ?>
-<div class="container" style="margin-top:150px">
-    <div class = "inlogscherm ">
+<div class="container" style="margin-top:200px; margin-bottom: 233px; text-align: center">
+    <div class="row">
+        <div class="col-lg-12">
+    <div class = "inlogscherm" style="display: inline-block">
         <form method="post" action="login.php">
             <fieldset>
                 <legend>inloggen:</legend>
                 Emailadres:<br><input type="email" name="emailadres"><br>
-                wachtwoord:<br><input type="password" name="password">
+                wachtwoord:<br><input type="password" name="password"><br><br>
                 <button type="submit" name="registeren"> login</button> <br>
             </fieldset>
             <!--    hier is een verwijzing naar verschillende pagina-->
@@ -17,6 +19,8 @@ require '../incl/header.php';
                 <a href="wachtwoordvergeten.php">Wachtwoord vergeten?</a>
             </div>
         </form>
+    </div>
+        </div>
     </div>
 </div>
 
