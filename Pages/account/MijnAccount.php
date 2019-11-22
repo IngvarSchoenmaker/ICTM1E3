@@ -1,7 +1,7 @@
-<?php
-//Laadt de header in.
-include '../incl/header.php';
-?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
     <style>
         .AccDash {
             display: flex;
@@ -37,5 +37,4 @@ include '../incl/header.php';
 
 
 </body>
-<?php
-require '../incl/footer.php';
+</html>

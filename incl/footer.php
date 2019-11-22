@@ -15,25 +15,10 @@
                     <h5 class="widget-title">Quick Links<span></span></h5>
                     <ul class="thumbnail-widget">
                         <li>
-                            <div class="thumb-content"><a href="#.">Get Started</a></div>
+                            <div class="thumb-content"><a href="../Pages/index.php">Home</a></div>
                         </li>
                         <li>
-                            <div class="thumb-content"><a href="#.">Top Leaders</a></div>
-                        </li>
-                        <li>
-                            <div class="thumb-content"><a href="#.">Success Stories</a></div>
-                        </li>
-                        <li>
-                            <div class="thumb-content"><a href="#.">Event/Tickets</a></div>
-                        </li>
-                        <li>
-                            <div class="thumb-content"><a href="#.">News</a></div>
-                        </li>
-                        <li>
-                            <div class="thumb-content"><a href="#.">Lifestyle</a></div>
-                        </li>
-                        <li>
-                            <div class="thumb-content"><a href="#.">About</a></div>
+                            <div class="thumb-content"><a href="../Pages/all_products.php">All products</a></div>
                         </li>
                     </ul>
                 </div>
@@ -76,5 +61,3 @@
     </div>
 </div>
 </footer>
-</body>
-</html>

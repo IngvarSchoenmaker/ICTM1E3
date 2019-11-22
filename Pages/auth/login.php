@@ -1,5 +1,5 @@
 <?php
-require '../incl/header.php';
+require '../../incl/header.php';
 ?>
 <div class="container" style="margin-top:200px; margin-bottom: 233px; text-align: center">
     <div class="row">
@@ -23,8 +23,6 @@ require '../incl/header.php';
         </div>
     </div>
 </div>
-
-
 <?php
 if(isset($_POST['registeren'])) {
 
@@ -36,8 +34,14 @@ if(isset($_POST['registeren'])) {
         print("De verplichte velden zijn niet ingevuld!");
 
     } else {
-        header("location: index.php?login=success");
+        $query = "SELECT Customer_ID FROM Customer WHERE Email = '$email' AND Password = '$password'";
+        $statement = mysqli_prepare($conn, $query);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
+        if(!empty($result)) {
+            $_SESSION['ID'] = $result;
+         }
     }
 }
-require '../incl/footer.php';
+require '../../incl/footer.php';
 ?>
