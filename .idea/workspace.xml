@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="cce7b6e2-96d5-4748-b752-5db5fc910e39" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="cce7b6e2-96d5-4748-b752-5db5fc910e39" name="Default Changelist" comment="Merge branch 'upload-check' of https://github.com/IngvarSchoenmaker/ICTM1E3 into upload-check&#10;&#10;# Conflicts:&#10;#&#9;Afleveradres.php&#10;#&#9;Database.php&#10;#&#9;Factuuradres.php&#10;#&#9;MijnBestellingen.php&#10;#&#9;styles/default.css">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/all_products.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/all_products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/auth/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/auth/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/auth/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/auth/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/incl/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/incl/header.php" afterDir="false" />
+    </list>
+>>>>>>> Stashed changes
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,12 +25,19 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectId" id="1TpY9sOD3lUunJ7YcKuCKNG96Q9" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< Updated upstream
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Database.php" />
+=======
+    <property name="last_opened_file_path" value="C:/Program Files/Git/cmd/git.exe" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+>>>>>>> Stashed changes
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -34,10 +51,29 @@
       </list>
     </option>
   </component>
+<<<<<<< Updated upstream
   <component name="RunManager">
     <configuration name="Unnamed" type="PhpLocalRunConfigurationType" factoryName="PHP Console" nameIsGenerated="true" path="$PROJECT_DIR$/Database.php">
       <method v="2" />
     </configuration>
+=======
+  <component name="RunManager" selected="PHP Script.Review_Test.php">
+    <configuration name="Review_Test.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/Review_Test.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="Unnamed" type="PhpLocalRunConfigurationType" factoryName="PHP Console" nameIsGenerated="true" path="$PROJECT_DIR$/Database.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="db_test.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/db_test.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.Review_Test.php" />
+        <item itemvalue="PHP Script.db_test.php" />
+      </list>
+    </recent_temporary>
+>>>>>>> Stashed changes
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -58,6 +94,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="SHOW_OTHER_BRANCHES" value="true" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -70,5 +109,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge branch 'upload-check' of https://github.com/IngvarSchoenmaker/ICTM1E3 into upload-check&#10;&#10;# Conflicts:&#10;#&#9;Afleveradres.php&#10;#&#9;Database.php&#10;#&#9;Factuuradres.php&#10;#&#9;MijnBestellingen.php&#10;#&#9;styles/default.css" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'upload-check' of https://github.com/IngvarSchoenmaker/ICTM1E3 into upload-check&#10;&#10;# Conflicts:&#10;#&#9;Afleveradres.php&#10;#&#9;Database.php&#10;#&#9;Factuuradres.php&#10;#&#9;MijnBestellingen.php&#10;#&#9;styles/default.css" />
   </component>
 </project>

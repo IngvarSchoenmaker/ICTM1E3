@@ -2,13 +2,13 @@
 //Start sessie.
 session_start();
 //Laadt de header in.
-include 'Header.html';
+include 'incl/Header.html';
 //Laadt Database.php in zodat ik daar queries en variablen van kan gebruiken.
 include 'Database.php';
 ?>
 
 <!-- Laadt javascript functies in-->
-<script type="text/javascript" src="Functions.js"></script>
+<script type="text/javascript" src="JS/Functions.js"></script>
 
 <h1>Mijn bestellingen</h1>
 

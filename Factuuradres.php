@@ -11,6 +11,13 @@ include 'Database.php';
 
 <h1>Factuuradres</h1>
 
+<?php
+if (!empty($_GET['message'])) {
+    $SuccesMelding = $_GET['message'];
+    print("<h3>" . $SuccesMelding . "</h3>");
+}
+?>
+
 <!-- Formulier waar factuuradres te zien is
 mogelijkheid tot wijzigen -->
 
