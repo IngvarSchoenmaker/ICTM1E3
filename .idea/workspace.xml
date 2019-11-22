@@ -21,6 +21,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Database.php" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -34,10 +35,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHP Script.Unnamed">
     <configuration name="Unnamed" type="PhpLocalRunConfigurationType" factoryName="PHP Console" nameIsGenerated="true" path="$PROJECT_DIR$/Database.php">
       <method v="2" />
     </configuration>
+    <configuration name="db_test.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/db_test.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.db_test.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -51,7 +60,11 @@
       <updated>1574158355140</updated>
       <workItem from="1574158356338" duration="14613000" />
       <workItem from="1574241985807" duration="10033000" />
-      <workItem from="1574284618964" duration="3680000" />
+      <workItem from="1574284618964" duration="6583000" />
+      <workItem from="1574327737437" duration="2244000" />
+      <workItem from="1574363253360" duration="10763000" />
+      <workItem from="1574403953297" duration="2377000" />
+      <workItem from="1574422877825" duration="30000" />
     </task>
     <servers />
   </component>

@@ -32,8 +32,4 @@ mogelijkheid tot wijzigen -->
     </form>
 </div>
 
-
-
-
-
 <a href="MijnAccount.php"><--Terug naar dashboard></a>

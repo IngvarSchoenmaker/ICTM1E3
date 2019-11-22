@@ -23,7 +23,7 @@ mogelijkheid tot wijzigen -->
             Postcode*: <br> <input type="text" id="postcode" name="postcode" value="<?=($postcode) ?>" readonly><br>
             Straat*: <br> <input type="text" id="straat" name="straat" value="<?=($straat) ?>" readonly><br>
             Huisnummer*: <br> <input type="text" id="huisnnr" name="huisnnr" value="<?=($huisnummer) ?>" readonly><br>
-            Toevoegsel: <br> <input type="text" id="toev" name="toevoegsel" value="<?=($toevoegsel) ?>"><br>
+            Toevoegsel: <br> <input type="text" id="toev" name="toevoegsel" value="<?=($toevoegsel) ?>" readonly><br>
             Land*: <br> <input type="text" id="land" name="land" value="Nederland" readonly><br>
             <input id='opslaan' type='submit' name="opslaanFactuuradres" value='Opslaan'>
         </div>
