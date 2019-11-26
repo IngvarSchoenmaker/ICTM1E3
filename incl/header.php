@@ -22,7 +22,7 @@ session_start();
 </head>
 <body>
 <?php
-    if (!empty($_SESSION['ID'])) {
+    if (empty($_SESSION['ID'])) {
         ?>
         <nav class="navbar navbar-expand-sm navbar-custom fixed-top">
             <div class="container">
