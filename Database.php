@@ -102,7 +102,7 @@
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
 
-        header("Location: AccountInfo.php");
+        header("Location: AccountInfo.php?message=Je gegevens zijn succesvol verwerkt!");
     }
 
     if (isset($_POST['opslaanAfleveradres'])) {
@@ -122,7 +122,7 @@
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
 
-        header("Location: Afleveradres.php");
+        header("Location: Afleveradres.php?message=Je gegevens zijn succesvol verwerkt!");
     }
 
 
@@ -136,13 +136,32 @@
         //        print("Het is alleen mogelijk om te verzenden naar Nederland.");
         //    }
 
-
         $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = {$_CustomerID}");
 
         mysqli_stmt_bind_param($statement, 'sssis', $plaatsDB, $postcodeDB, $straatDB, $huisnummerDB, $toevoegselDB);
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
 
-        header("Location: Factuuradres.php");
+        header("Location: Factuuradres.php?message=Je gegevens zijn succesvol verwerkt!");
     }
+
+
+    // ################################################
+    // Review gegevens opslaan.
+    // ################################################
+    if (isset($_POST['plaatsreview'])) {
+        $productDB = 8;
+        $emailDB = $_POST['mail'];
+        $scoreDB = $_POST['star'];
+        $beoordelingDB = $_POST['beoordeling'];
+
+        $statement = mysqli_prepare($conn = get_connection(), "INSERT INTO product_review VALUES(?,?,?,?)");
+
+        mysqli_stmt_bind_param($statement, 'isis', $productDB, $emailDB, $scoreDB, $beoordelingDB);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
+
+        header("Location: Reviews.php?message=Je review is succesvol geplaatst!");
+    }
+    ?>
 
