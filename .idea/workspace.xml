@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cce7b6e2-96d5-4748-b752-5db5fc910e39" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/incl/dbofficial.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/all_products.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/all_products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/auth/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/auth/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/auth/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/auth/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/account/AccountInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/account/AccountInfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/search/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/search/search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/search/surgestions.php" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/search/surgestions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/incl/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/incl/header.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
