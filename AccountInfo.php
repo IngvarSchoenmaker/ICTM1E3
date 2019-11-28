@@ -35,13 +35,16 @@ De gebruiker kan hier zijn gegevens ook wijzigen. -->
             E-mail*: <br> <input type="email" id="mail" name="email" value="<?=$email?>" readonly required><br>
             Geboortedatum*: <br> <input type="text" id="datum" name="gbdatum" value="<?=($gbdatum) ?>" readonly required><br>
             <input type="submit" id='opslaan'name="opslaanAccountinfo" value='Opslaan'><br>
+        </div>
+    </form>
 
+    <form action="Database.php" method="post">
+        <div id="ww-inputs">
             <h3>Wachtwoord veranderen</h3>
             Huidig wachtwoord* <br> <input type="password" id="huidigpass" name="wachtwoord"><br>
             Nieuw wachtwoord* <br> <input type="password" id="newpass" name="nieuwwachtwoord"><br>
             Herhaal wachtwoord* <br> <input type="password" id="herhaalpass" name="herhaalwachtwoord"><br>
             <input type="submit" name="opslaanWachtwoord" value="Verander wachtwoord"><br>
-
         </div>
     </form>
 </div>
