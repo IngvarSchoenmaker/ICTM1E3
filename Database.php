@@ -111,9 +111,6 @@
         $straatDB = $_POST['straat'];
         $huisnummerDB = $_POST['huisnnr'];
         $toevoegselDB = $_POST['toevoegsel'];
-        //    if(strtoupper($_POST['land']) != "NEDERLAND") {
-        //        print("Het is alleen mogelijk om te verzenden naar Nederland.");
-        //    }
         $telefoonnrDB = $_POST['telefoonnr'];
 
         $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET C.Phone =?, A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = {$_CustomerID}");
@@ -132,9 +129,6 @@
         $straatDB = $_POST['straat'];
         $huisnummerDB = $_POST['huisnnr'];
         $toevoegselDB = $_POST['toevoegsel'];
-        //    if(strtoupper($_POST['land']) != "NEDERLAND") {
-        //        print("Het is alleen mogelijk om te verzenden naar Nederland.");
-        //    }
 
         $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = {$_CustomerID}");
 
@@ -144,6 +138,39 @@
 
         header("Location: Factuuradres.php?message=Je gegevens zijn succesvol verwerkt!");
     }
+
+    // ################################################
+    // Wachtwoord veranderen
+    // ################################################
+
+    $pass = "SELECT Password
+             FROM Customer 
+             WHERE Customer_ID = {$_CustomerID}";
+
+    $PassData = GetData($pass, true);
+    $oudeWachtwoord = $PassData['Password'];
+
+    if (isset($_POST['opslaanWachtwoord'])) {
+        if(password_verify($_POST['wachtwoord'], $oudeWachtwoord)) {
+            if($_POST['nieuwwachtwoord'] === $_POST['herhaalwachtwoord']) {
+                $wachtwoord = $_POST['nieuwwachtwoord'];
+                $wachtwoordDB = password_hash($wachtwoord, PASSWORD_DEFAULT);
+
+                $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer SET password =? WHERE Customer_ID = {$_CustomerID}");
+
+                mysqli_stmt_bind_param($statement, 's', $wachtwoordDB);
+                mysqli_stmt_execute($statement);
+                $result = mysqli_stmt_get_result($statement);
+
+                header("Location: AccountInfo.php?messagepass=Je wachtwoord is succesvol gewijzigd!");
+            } else {
+                header("Location: AccountInfo.php?messagepass=Je wachtwoorden komen niet overeen!");
+            }
+        } else {
+            header("Location: AccountInfo.php?messagepass=Je wachtwoord is onjuist!");
+        }
+    }
+
 
 
     // ################################################
