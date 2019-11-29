@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+include "../../incl/header.php";
 ?>
     <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +16,7 @@ session_start();
 </head>
 <body>
 
-<div class="container">
+<div class="container" style="margin-top: 150px">
     <h2>Winkelwagen</h2>
     <p>Verder winkelen knop &emsp; Verder naar bestellen</p>
     <table class="table table-striped">
@@ -118,6 +117,5 @@ session_start();
 </body>
 </html>
 <?php
-
-
+include "../../incl/footer.php";
 ?>
