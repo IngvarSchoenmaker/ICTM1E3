@@ -1,5 +1,6 @@
 <?php
 include "../../incl/header.php";
+include "ShoppingCart Queries.php";
 ?>
     <!DOCTYPE html>
 <html lang="en">
@@ -98,8 +99,8 @@ include "../../incl/header.php";
                 Rating $rating[$ID]<BR>
                 Aantal <input type='number' class='cart-quantity-input' name=\"aantal\"  value= $aantal <?php echo $aantal;?>
             </td>
-            <td>Prijs per stuk <p class='cart-price'>$$unitPrice[$ID]</p>
-            Prijs totaal <div class='item-total'>$$unitTotal</div>
+            <td>Prijs per stuk <p class='cart-price'>$unitPrice[$ID]</p>
+            Prijs totaal <div class='item-total'>$unitTotal</div>
             <button class='btn btn-danger' type=\"button\">VERWIJDEREN</button>
             </td>
         </tr>
@@ -107,7 +108,7 @@ include "../../incl/header.php";
         ");
         $cartTotal+=$unitTotal;
         }
-        print("<tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$$cartTotal</td></tr>")
+        print("<tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$cartTotal</td></tr>")
 
         ?>
         </tbody>

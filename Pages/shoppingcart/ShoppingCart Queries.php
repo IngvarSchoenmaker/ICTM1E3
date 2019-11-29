@@ -1,4 +1,6 @@
 <?php
+session_start();
+include "../../incl/db.php";
 $servername = "localhost";
 $DBusername = "root";
 $DBpassword = "";
