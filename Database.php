@@ -111,9 +111,6 @@
         $straatDB = $_POST['straat'];
         $huisnummerDB = $_POST['huisnnr'];
         $toevoegselDB = $_POST['toevoegsel'];
-        //    if(strtoupper($_POST['land']) != "NEDERLAND") {
-        //        print("Het is alleen mogelijk om te verzenden naar Nederland.");
-        //    }
         $telefoonnrDB = $_POST['telefoonnr'];
 
         $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET C.Phone =?, A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = {$_CustomerID}");
@@ -132,9 +129,6 @@
         $straatDB = $_POST['straat'];
         $huisnummerDB = $_POST['huisnnr'];
         $toevoegselDB = $_POST['toevoegsel'];
-        //    if(strtoupper($_POST['land']) != "NEDERLAND") {
-        //        print("Het is alleen mogelijk om te verzenden naar Nederland.");
-        //    }
 
         $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = {$_CustomerID}");
 
@@ -144,6 +138,71 @@
 
         header("Location: Factuuradres.php?message=Je gegevens zijn succesvol verwerkt!");
     }
+
+    // ################################################
+    // Wachtwoord veranderen
+    // ################################################
+
+    // Check if we have to save password
+    if (isset($_POST['opslaanWachtwoord'])) {
+
+        // yes, we have to change password
+        $passwordChangeResult = ChangePassword($_CustomerID);
+
+        switch ($passwordChangeResult) {
+            case "PASSWORDS_NOT_THE_SAME":
+                header("Location: AccountInfo.php?messagepass=Je wachtwoorden komen niet overeen!");
+                break;
+            case "PASSWORD_NOT_CORRECT":
+                header("Location: AccountInfo.php?messagepass=Je wachtwoord is onjuist!");
+                break;
+            case "PASSWORD_CHANGED":
+                header("Location: AccountInfo.php?messagepass=Je wachtwoord is succesvol gewijzigd!");
+                break;
+        }
+
+    }
+
+
+    function ChangePassword($customerID) {
+
+        $wachtwoord = $_POST['nieuwwachtwoord'];
+        $wachtwoordCheck = $_POST['herhaalwachtwoord'];
+
+        //Check if the two input passwords are the same.
+        if($wachtwoord != $wachtwoordCheck)
+        {
+            return "PASSWORDS_NOT_THE_SAME";
+        }
+
+        // yes, we have to change password
+        // Now first, get current password from database
+
+        // build query
+        $getPasswordQuery = "SELECT Password
+             FROM Customer 
+             WHERE Customer_ID = {$customerID}";
+
+        $PassData = GetData($getPasswordQuery, true);
+        $oudeWachtwoord = $PassData['Password'];
+
+        // ok, now check if current password from database
+        // is the same as user input password.
+        
+        if(!password_verify($_POST['wachtwoord'], $oudeWachtwoord)) {
+            return "PASSWORD_NOT_CORRECT";
+        }
+        //
+        $nieuweDatabaseWachtwoord = password_hash($wachtwoord, PASSWORD_DEFAULT);
+        $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer SET password =? WHERE Customer_ID = {$customerID}");
+
+        mysqli_stmt_bind_param($statement, 's', $nieuweDatabaseWachtwoord);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
+
+        return "PASSWORD_CHANGED";
+    }
+
 
 
     // ################################################
