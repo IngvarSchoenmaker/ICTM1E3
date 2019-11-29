@@ -1,6 +1,5 @@
 <?php
 include "../../incl/header.php";
-include "ShoppingCart Queries.php";
 ?>
     <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +16,7 @@ include "ShoppingCart Queries.php";
 </head>
 <body>
 
-<div class="container" style="margin-top: 150px">
+<div class="container" style="margin-top: 150px; margin-bottom: 100px">
     <h2>Winkelwagen</h2>
     <p>Verder winkelen knop &emsp; Verder naar bestellen</p>
     <table class="table table-striped">
