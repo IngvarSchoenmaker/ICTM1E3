@@ -23,7 +23,7 @@ if (!empty($_GET['message'])) {
 mogelijkheid tot wijzigen -->
 
 <div class="afleveradres">
-    <form action="Database.php" method="post">
+    <form action="incl/Database.php" method="post">
         <input onclick="ChangeForm()" id="wijzig" type="button" value="Wijzig"> <br>
         <div id="form-inputs">
             Ter attentie van:* <br> <input type="text" id="naam" name="naam" value="<?=($fullname) ?>" readonly required><br>
