@@ -23,7 +23,7 @@ include 'Database.php';
         <th>Verzonden aan</th>
     </tr>
 <?php
-
+//Print een tabel met order gegevens
 foreach ($OrderData as $order){
     print("<tr>");
 
@@ -37,4 +37,5 @@ foreach ($OrderData as $order){
 ?>
 </table>
 <br>
+<!--Terugverwijzing naar accountdashboard-->
 <a href="MijnAccount.php"><--Terug naar dashboard></a>
