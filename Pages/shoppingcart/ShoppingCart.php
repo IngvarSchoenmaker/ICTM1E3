@@ -1,5 +1,6 @@
 <?php
 include "../../incl/header.php";
+include "ShoppingCart Queries.php";
 ?>
     <!DOCTYPE html>
 <html lang="en">

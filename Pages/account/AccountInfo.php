@@ -6,13 +6,10 @@ include '../../incl/Header.html';
 //Laadt Database.php in zodat ik daar queries en variablen van kan gebruiken.
 include '../../incl/Database.php';
 ?>
-<<<<<<< HEAD:Pages/account/AccountInfo.php
 
-<script type="text/javascript" src="../../JS/Functions.js"></script>
-=======
 <!--Laadt javascript bestand met functies in.-->
-<script type="text/javascript" src="Functions.js"></script>
->>>>>>> accountinformatie:AccountInfo.php
+<script type="text/javascript" src="../../JS/Functions.js"></script>
+
 
 <h1 class="AccInfo">Account informatie</h1>
 
