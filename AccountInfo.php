@@ -6,12 +6,13 @@ include 'Header.html';
 //Laadt Database.php in zodat ik daar queries en variablen van kan gebruiken.
 include 'Database.php';
 ?>
-
+<!--Laadt javascript bestand met functies in.-->
 <script type="text/javascript" src="Functions.js"></script>
 
 <h1 class="AccInfo">Account informatie</h1>
 
 <?php
+//Laat succes meldingen zien als wachtwoord en/of gegevens zijn gewijzigd.
 if (!empty($_GET['message'])) {
     $SuccesMelding = $_GET['message'];
     print("<h3>" . $SuccesMelding . "</h3>");
@@ -27,6 +28,8 @@ De gebruiker kan hier zijn gegevens ook wijzigen. -->
 <div class="AccForm">
 
     <form action="Database.php" method="post">
+<!--        De functie in de onklick zorgt ervoor dat er gegevens gewijzigd kunnen worden-->
+<!--        wanneer er op de knop wijzig gedrukt word.-->
         <input onclick="ChangeForm()" id="wijzig" name="wijzig" type="button" value="Wijzig"> <br>
         <div id="form-inputs">
             Voornaam*: <br> <input type="text" id="voor" name="voornaam" value="<?=($voornaam) ?>" readonly required><br>
@@ -49,6 +52,5 @@ De gebruiker kan hier zijn gegevens ook wijzigen. -->
     </form>
 </div>
 
-<!-- ff een update -->
-
+<!--Linkje waarmee je terug naar je accountdashboard wordt gestuurd.-->
 <a href="MijnAccount.php"><--Terug naar dashboard></a>

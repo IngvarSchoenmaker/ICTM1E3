@@ -13,6 +13,7 @@ include 'Database.php';
 <h1>Afleveradres</h1>
 
 <?php
+//Laat succes meldingen zien als gegevens zijn gewijzigd.
 if (!empty($_GET['message'])) {
     $SuccesMelding = $_GET['message'];
     print("<h3>" . $SuccesMelding . "</h3>");
@@ -24,6 +25,8 @@ mogelijkheid tot wijzigen -->
 
 <div class="afleveradres">
     <form action="Database.php" method="post">
+        <!--        De functie in de onklick zorgt ervoor dat er gegevens gewijzigd kunnen worden-->
+        <!--        wanneer er op de knop wijzig gedrukt word.-->
         <input onclick="ChangeForm()" id="wijzig" type="button" value="Wijzig"> <br>
         <div id="form-inputs">
             Ter attentie van:* <br> <input type="text" id="naam" name="naam" value="<?=($fullname) ?>" readonly required><br>
@@ -39,4 +42,5 @@ mogelijkheid tot wijzigen -->
     </form>
 </div>
 
+<!--Linkje waarmee je terug naar je accountdashboard wordt gestuurd.-->
 <a href="MijnAccount.php"><--Terug naar dashboard></a>
