@@ -1,3 +1,3 @@
 <?php
 //Laadt de header in.
-include '../incl/header.php';
+include '../../incl/Header.html';
