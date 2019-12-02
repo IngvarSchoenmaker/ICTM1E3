@@ -1,19 +1,14 @@
 <?php
 
-//$tel = 06-34045890;
-//
-//
-//if(!preg_match("/^[0-9]{2}-[0-9]{8}$/", $tel)) {
-//    print("Nummer is niet goed!");
-//
-//} else {
-//    Print("Nummer is goed!");
-//
-//}
+
+$Opmerking = "123456";//$_POST['Opmerking'];
 
 
-$Wachtwoord = "hammou12";
+if(strlen($Opmerking) > 7){
 
-$Wachtwoord = password_hash($Wachtwoord, CRYPT_SHA256);
+print("Opmerking is te veel!");
 
-print($Wachtwoord);
+} else {
+
+    print("Het is oke");
+}

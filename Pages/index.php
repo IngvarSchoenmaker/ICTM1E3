@@ -13,13 +13,13 @@ include '../incl/header.php'
                     </ol>
                     <div class="carousel-inner" style="height: 370px;">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="../recources/sale_1920x619_94531.jpg" alt="First slide">
+                            <img class="d-block w-100" src="../recources/voorbeeld%20fotos/sale_1920x619_94531.jpg" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="../recources/ww1wapens.jpg" alt="Second slide">
+                            <img class="d-block w-100" src="../recources/voorbeeld%20fotos/ww1wapens.jpg" alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="../recources/sale.jpg" alt="Third slide">
+                            <img class="d-block w-100" src="../recources/voorbeeld%20fotos/sale.jpg" alt="Third slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

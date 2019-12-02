@@ -74,7 +74,7 @@ session_start();
                                 <a class="nav-link" href="all_products.php">Producten</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.php">Contact</a>
+                                <a class="nav-link" href="../contact.php">Contact</a>
                             </li>
                             <!--                <li class="nav-item dropdown">-->
                             <!--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
@@ -151,7 +151,7 @@ session_start();
                             </li>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Contact</a>
+                                <a class="nav-link" href="contact.php">Contact</a>
                             </li>
                             <!--                <li class="nav-item dropdown">-->
                             <!--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
