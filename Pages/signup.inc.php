@@ -1,5 +1,5 @@
 <?php
-require '../../incl/db.php';
+require '../incl/db.php';
 session_start();
 // ingevoerde gegevens van de input velden.
 if (isset($_POST['registreer'])) {
@@ -90,52 +90,44 @@ if (isset($_POST['registreer'])) {
             $selectstmt->execute();
             $result->fetch_all();
 
-            if($result->num_rows > 0) {
+            if ($result->num_rows > 0) {
                 header("Location: signup.php?error=bestaatal");
 
             }
         }
 
 
-
-
-
 // gegevens worden opgeslagen in de database
-            try {
-                $conn->autocommit(FALSE);
-                $stmt1 = $conn->prepare("INSERT INTO customer(First_Name, Middle_Name, Last_Name, Email, Birthdate, Password, Phone) VALUES (?,?,?,?,?,?,?)");
-                $stmt2 = $conn->prepare("INSERT INTO customer_archive(First_Name, Middle_Name, Last_Name, Email, Birthdate, Password, Phone) VALUES (?,?,?,?,?,?,?)");
-                $stmt3 = $conn->prepare("INSERT INTO address(City, Zip_Code, Street_Name, House_Number, Addition) VALUES (?,?,?,?,?)");
-                $stmt4 = $conn->prepare("INSERT INTO address_archive(City, Zip_Code, Street_Name, House_Number, Addition) VALUES (?,?,?,?,?)");
-                $stmt1->bind_param("ssssssi", $voornaam, $Tussenvoegsels, $Achternaam, $Emailadres, $Geboortedatum, $encrpted, $Telnnr);
-                $stmt2->bind_param("ssssssi", $voornaam, $Tussenvoegsels, $Achternaam, $Emailadres, $Geboortedatum, $encrpted, $Telnnr);
-                $stmt3->bind_param("sssis", $Plaats, $Postcode, $Straatnaam, $Huisnummer, $Toevoeging);
-                $stmt4->bind_param("sssis", $Plaats, $Postcode, $Straatnaam, $Huisnummer, $Toevoeging);
-                $stmt1->execute();
-                $stmt1->close();
-                $stmt2->execute();
-                $stmt2->close();
-                $stmt3->execute();
-                $stmt3->close();
-                $stmt4->execute();
-                $stmt4->close();
-                $conn->autocommit(TRUE);
-            } catch (Exception $e) {
+        try {
+            $conn->autocommit(FALSE);
+            $stmt1 = $conn->prepare("INSERT INTO customer(First_Name, Middle_Name, Last_Name, Email, Birthdate, Password, Phone) VALUES (?,?,?,?,?,?,?)");
+            $stmt2 = $conn->prepare("INSERT INTO customer_archive(First_Name, Middle_Name, Last_Name, Email, Birthdate, Password, Phone) VALUES (?,?,?,?,?,?,?)");
+            $stmt3 = $conn->prepare("INSERT INTO address(City, Zip_Code, Street_Name, House_Number, Addition) VALUES (?,?,?,?,?)");
+            $stmt4 = $conn->prepare("INSERT INTO address_archive(City, Zip_Code, Street_Name, House_Number, Addition) VALUES (?,?,?,?,?)");
+            $stmt1->bind_param("ssssssi", $voornaam, $Tussenvoegsels, $Achternaam, $Emailadres, $Geboortedatum, $encrpted, $Telnnr);
+            $stmt2->bind_param("ssssssi", $voornaam, $Tussenvoegsels, $Achternaam, $Emailadres, $Geboortedatum, $encrpted, $Telnnr);
+            $stmt3->bind_param("sssis", $Plaats, $Postcode, $Straatnaam, $Huisnummer, $Toevoeging);
+            $stmt4->bind_param("sssis", $Plaats, $Postcode, $Straatnaam, $Huisnummer, $Toevoeging);
+            $stmt1->execute();
+            $stmt1->close();
+            $stmt2->execute();
+            $stmt2->close();
+            $stmt3->execute();
+            $stmt3->close();
+            $stmt4->execute();
+            $stmt4->close();
+            $conn->autocommit(TRUE);
+        } catch (Exception $e) {
 
-                if ($conn->errno === 1062) {
+            if ($conn->errno === 1062) {
 
-                    print("De ingevoerde gegevens bestaan al!");
-                }
-
+                print("De ingevoerde gegevens bestaan al!");
             }
 
-
-            header("Location: registratiegelukt.php?registratie=succes");
         }
 
-
-
-
+        header("Location: registratiegelukt.php?registratie=succes");
+    }
 }
 
 

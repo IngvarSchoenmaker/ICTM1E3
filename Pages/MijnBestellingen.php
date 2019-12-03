@@ -2,9 +2,9 @@
 //Start sessie.
 session_start();
 //Laadt de header in.
-include 'Header.html';
+include '../incl/Header.html';
 //Laadt Database.php in zodat ik daar queries en variablen van kan gebruiken.
-include '../../incl/Database.php';;
+include '../incl/Database.php';;
 ?>
 
 <!-- Laadt javascript functies in-->
@@ -22,19 +22,19 @@ include '../../incl/Database.php';;
         <th>Orderdatum</th>
         <th>Verzonden aan</th>
     </tr>
-<?php
-//Print een tabel met order gegevens
-foreach ($OrderData as $order){
-    print("<tr>");
+    <?php
+    //Print een tabel met order gegevens
+    foreach ($OrderData as $order) {
+        print("<tr>");
 
-    print("<td>" . $order["Order_ID"]  . "</td>");
-    print("<td>" . $order["Date"]  . "</td>");
-    print("<td>" . $order["First_Name"]  . "</td>");
+        print("<td>" . $order["Order_ID"] . "</td>");
+        print("<td>" . $order["Date"] . "</td>");
+        print("<td>" . $order["First_Name"] . "</td>");
 
-    print("</tr>");
-}
+        print("</tr>");
+    }
 
-?>
+    ?>
 </table>
 <br>
 <!--Terugverwijzing naar accountdashboard-->

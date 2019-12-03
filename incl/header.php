@@ -9,8 +9,8 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../style/header.css">
-    <link rel="stylesheet" href="../../style/footer.css">
+    <link rel="stylesheet" href="../style/header.css">
+    <link rel="stylesheet" href="../style/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -32,7 +32,7 @@ session_start();
                     </button>
                 </div>
                 <div class="col-7">
-                    <form class="form-inline align-self-center" action="../Pages/search/search.php" method="POST">
+                    <form class="form-inline align-self-center" action="../Pages/search.php" method="POST">
                         <div class="search-box input-group p-1 bg-light rounded rounded-pill shadow-sm mb-4">
                             <input type="search" placeholder="What're you searching for?" name="search"
                                    autocomplete="off" class="form-control border-0 bg-light rounded rounded-pill">
@@ -58,41 +58,37 @@ session_start();
                 <div class="container">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.php">Home <span
+                            <a class="nav-link" href="../Pages/index.php">Home <span
                                         class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="all_products.php">Producten</a>
+                            <a class="nav-link" href="../Pages/all_products.php">Producten</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.php">Contact</a>
+                            <a class="nav-link" href="../Pages/contact.php">Contact</a>
                         </li>
                         <?php
                         if (empty($_SESSION['ID'])) {
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="auth/signup.php">Registreer</a>
+                            <a class="nav-link" href="../Pages/signup.php">Registreer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="auth/login.php">Login</a>
+                            <a class="nav-link" href="../Pages/login.php">Login</a>
                         </li>
                             <?php
                         }
                         else {
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="account/AccountInfo.php">Info</a>
+                            <a class="nav-link" href="../Pages/AccountInfo.php">Info</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="auth/logout.php">uitloggen</a>
+                            <a class="nav-link" href="../Pages/logout.php">uitloggen</a>
                         </li>
                             <?php
                         }
                         ?>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="all_products.php">Producten</a>
-                        </li>
                     </ul>
                 </div>
             </div>

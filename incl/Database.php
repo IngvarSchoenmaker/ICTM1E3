@@ -1,6 +1,6 @@
 <?php
 
-    $_SESSION['CustomerID'] = 3;
+    $_SESSION['CustomerID'] = 1;
     $_CustomerID = $_SESSION['CustomerID'];
 
     //functie die connectie legt met de database.

@@ -10,6 +10,7 @@
             align-items: center;
             text-align: center;
         }
+
         .box {
             display: flex;
             flex-basis: border-box;
