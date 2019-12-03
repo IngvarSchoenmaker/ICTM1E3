@@ -1,6 +1,6 @@
 <?php
 require '../incl/db.php';
-session_start();
+
 // ingevoerde gegevens van de input velden.
 if (isset($_POST['registreer'])) {
 
@@ -118,11 +118,6 @@ if (isset($_POST['registreer'])) {
 
 
     }
-
-
-
-
-
 
 //if ($Wachtwoord != $Wachtwoordherhaal) {
 //    header("location: signup.php?error=wachtwoord"."&voornaam=".$voornaam."&Tussenvoegsel=".$Tussenvoegsels."&Achternaam=".$Achternaam);

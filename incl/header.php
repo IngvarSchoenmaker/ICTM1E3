@@ -100,7 +100,7 @@ session_start();
                             <a class="nav-link" href="../Pages/contact.php">Contact</a>
                         </li>
                         <?php
-                        if (empty($_SESSION['ID'])) {
+                        if (empty($_SESSION['loginsucesesvol'])) {
                         ?>
                         <li class="nav-item">
                             <a class="nav-link" href="../Pages/signup.php">Registreer</a>
@@ -113,10 +113,10 @@ session_start();
                         else {
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="../Pages/AccountInfo.php">Info</a>
+                            <a class="nav-link" href="../Pages/AccountInfo.php">Mijn Account</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../Pages/logout.php">uitloggen</a>
+                            <a class="nav-link" href="../Pages/logout.php">Uitloggen</a>
                         </li>
                             <?php
                         }

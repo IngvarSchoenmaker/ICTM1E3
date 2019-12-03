@@ -1,6 +1,6 @@
 <?php
-//Start sessie.
-session_start();
+
+include '../incl/header.php';
 //Laadt de header in.
 include '../incl/Header.html';
 //Laadt Database.php in zodat ik daar queries en variablen van kan gebruiken.
