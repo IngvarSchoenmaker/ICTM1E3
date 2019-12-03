@@ -1,5 +1,5 @@
 <?php
-require '../../incl/db.php';
+require '../incl/db.php';
 session_start();
 // ingevoerde gegevens van de input velden.
 if (isset($_POST['registreer'])) {
@@ -63,7 +63,7 @@ if (isset($_POST['registreer'])) {
 
 
     }         // Hier wordt gecontroleerd of het wachtwoord met elkaar overeenkomen
-    elseif ($Wachtwoord != $Wachtwoordherhaal || strlen($Wachtwoord || !preg_match()) < 8) {
+    elseif ($Wachtwoord != $Wachtwoordherhaal || strlen($Wachtwoord) < 8) {
         header("Location: signup.php?error=Wachtwoord");
 
     } else {

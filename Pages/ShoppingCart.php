@@ -1,5 +1,5 @@
 <?php
-include "../../incl/header.php";
+include "../incl/header.php";
 
 $customer_ID=2;
 $shoppinglist_ID=(implode('|',SqlQuery("SELECT shoppinglist_ID FROM customer WHERE customer_ID =$customer_ID")));
@@ -16,7 +16,7 @@ include "ShoppingCart Queries.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="../../JS/ShoppingCart.js" async></script>
+    <script src="../JS/ShoppingCart.js" async></script>
 
 </head>
 <body>
@@ -130,5 +130,5 @@ include "ShoppingCart Queries.php";
 </body>
 </html>
 <?php
-include "../../incl/footer.php";
+include "../incl/footer.php";
 ?>

@@ -58,42 +58,25 @@ session_start();
                     <div class="container">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.php">Home <span
+                                <a class="nav-link" href="../Pages/index.php">Home <span
                                             class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="auth/signup.php">Registreer</a>
+                                <a class="nav-link" href="../Pages/signup.php">Registreer</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="auth/login.php">Login</a>
+                                <a class="nav-link" href="../Pages/login.php">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="all_products.php">Producten</a>
+                                <a class="nav-link" href="../Pages/all_products.php">Producten</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../contact.php">Contact</a>
+                                <a class="nav-link" href="../Pages/contact.php">Contact</a>
                             </li>
-                            <!--                <li class="nav-item dropdown">-->
-                            <!--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
-                            <!--                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                            <!--                        Dropdown-->
-                            <!--                    </a>-->
-                            <!--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-                            <!--                        <a class="dropdown-item" href="#">Action</a>-->
-                            <!--                        <a class="dropdown-item" href="#">Another action</a>-->
-                            <!--                        <div class="dropdown-divider"></div>-->
-                            <!--                        <a class="dropdown-item" href="#">Something else here</a>-->
-                            <!--                    </div>-->
-                            <!--                </li>-->
-                            <!--                <li class="nav-item">-->
-                            <!--                    <a class="nav-link disabled" href="#">Disabled</a>-->
-                            <!--                </li>-->
                         </ul>
                     </div>
                 </div>
             </nav>
-<!--=======-->
-<!-- c87de48ae9f9c5fd1bd394209031176a45d86f72-->
         </div>
     </nav>
     <div class="row">
@@ -142,58 +125,6 @@ session_start();
                 </div>
             </div>
         </nav>
-<!--<<<<<<< HEAD-->
-        <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-top: 70px;">
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div class="container">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index.php">Home <span
-                                            class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="account/AccountInfo.php">Info</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="all_products.php">Producten</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="auth/logout.php">uitloggen</a>
-                            </li>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.php">Contact</a>
-                            </li>
-                            <!--                <li class="nav-item dropdown">-->
-                            <!--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
-                            <!--                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                            <!--                        Dropdown-->
-                            <!--                    </a>-->
-                            <!--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-                            <!--                        <a class="dropdown-item" href="#">Action</a>-->
-                            <!--                        <a class="dropdown-item" href="#">Another action</a>-->
-                            <!--                        <div class="dropdown-divider"></div>-->
-                            <!--                        <a class="dropdown-item" href="#">Something else here</a>-->
-                            <!--                    </div>-->
-                            <!--                </li>-->
-                            <!--                <li class="nav-item">-->
-                            <!--                    <a class="nav-link disabled" href="#">Disabled</a>-->
-                            <!--                </li>-->
-                        </ul>
-                    </div>
-                </div>
-            </nav>
         </div>
-<?php
-
-?>
-<!--=======-->
     </div>
 </body>
-<!--c87de48ae9f9c5fd1bd394209031176a45d86f72-->
