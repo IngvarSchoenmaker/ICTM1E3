@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include "../../incl/db.php";
 $servername = "localhost";
 $DBusername = "root";
@@ -12,7 +13,7 @@ $connOnzeDB = mysqli_connect($servername, $DBusername, $DBpassword, "onzedbwwi",
 die("Could not connect: " . mysqli_error());
 
 //// vraag van de database de productenlijst voor deze bezoeker op.voor nu als voorbeeld onderstaande productenlijst.
-$productenlijstID=1;
+$productenlijstID=0;
 
 function SqlGetSingleRow($sql, $conn)
 {
@@ -30,7 +31,7 @@ function SqlGetSingleRow($sql, $conn)
     $conn->close();
 }
 
-function SqlGetRows($sql)
+function SqlGetRows($sql,$conn)
 {
 //    ** DEZE FUNCTIE HAALT MEERDERE WAARDE PER KEER UIT DE ONZE DATABASE **
     $servername = "localhost";
@@ -59,7 +60,7 @@ function SqlGetRows($sql)
 
 Function ArrayImplode($array)
 {
-//       ** DEZE FUNCTIE IMPLODE EEN ARRAY VAN SqlonzeDB tot één array en kent de uitkomst toe aan keys 0,1,2,... **
+//       ** DEZE FUNCTIE IMPLODE EEN ARRAY VAN tot één array en kent de uitkomst toe aan keys 0,1,2,... **
     $i=0;
     $o=0;
     foreach ($array as $key => $value) {
@@ -73,27 +74,21 @@ Function ArrayImplode($array)
     }
     return($result);
 }
-//// in $itemList array worden de producten gezet die in de winkelwagen staan.
 
-$totaalPrijs=0;
-
-$itemList[]=SqlGetRows("SELECT ID_Product FROM shoppinglist WHERE Shoppinglist_ID = '$productenlijstID'");
-
+//      *** Items uit winkelwagen worden opgevraagd van de database en in bruikbare array gezet***
+$itemList[]=SqlGetRows("SELECT ID_Product FROM shoppinglist WHERE Shoppinglist_ID = '$productenlijstID'",$connOnzeDB);
 $itemList=(ArrayImplode($itemList));
-
-
-
 foreach($itemList as $key4 => $value4) {
     $productList[$value4] = implode('|',SqlGetSingleRow("SELECT Product_Quantity FROM shoppinglist WHERE Shoppinglist_ID=$productenlijstID AND ID_Product= $value4",$connOnzeDB));
 }
-$_SESSION['cart'] =$productList;
 
 
 
 
 
 
-//// Hieronder Worden voor de items die in de itemList staan gekeken welke informatie ervan nodig is.
+
+//      *** Voor elk product dat in de winkelwagen staat wordt de nodige informatie opgevraagt.***
 foreach($productList as $ID => $aantal) {
     $unitPrice[$ID] = SqlGetSingleRow("SELECT UnitPrice FROM stockitems WHERE StockItemID = '$ID'",$connWWI);
     $itemName[$ID] = SqlGetSingleRow("SELECT StockItemName FROM stockitems WHERE StockItemID = '$ID'",$connWWI);
@@ -103,28 +98,13 @@ foreach($productList as $ID => $aantal) {
     $itemTotal[$ID]= $aantal * implode('|', $unitPrice[$ID]);
 
 
-//    $itemPrijs= implode('|', $unitPrice[$ID]);
-//    $itemTotaal= $aantal * implode('|', $unitPrice[$ID]);
-//    $itemNaam = implode('|', $itemName[$ID]);
-//    $totaalPrijs=($totaalPrijs+$itemTotal[$ID]);
-//    $foto=implode('|',$photo[$ID]);
-//    $review=$review[$ID];
-//    $beoorderling=$rating[$ID];
-//
-//    print("Product " . $itemNaam . "<BR>");
-//    print("Aantal: " . $aantal . "<BR>");
-//    print("Per stuk: " . $itemPrijs . "<BR>");
-//    print("Prijs: " . $itemTotaal . "<BR>");
-//    print("Totaal prijs: " . $totaalPrijs . "<BR>");
-//    print($review . "<BR>");
-//    print($foto);
 
-    print("<BR><BR>");
 }
-//    ***Voor gebruik layout in sessions**8
 
 
 function smallerArrayImplode($array){
+//    ***Haalt resultaten SQL queries uit elkaar en zet ze weer in elkaar zodat de key product_ID wordt***
+//    ***Zelfde functie als bovenstaande ArrayImplode alleen uitvoerbaar op een array met minder onderliggende arrays***
     foreach($array as $key => $value){
         foreach($value as $key2 => $value2){
             if(!$value2 == NULL) {
@@ -144,16 +124,17 @@ function smallerArrayImplode($array){
 $unitPrice=smallerArrayImplode($unitPrice);
 $itemName=smallerArrayImplode($itemName);
 $photo=smallerArrayImplode($photo);
-
 $rating=smallerArrayImplode($rating);
 
 
+//      *** Info in sessions voor gebruik shoppingcart zelf ***
 $_SESSION['itempPrice']=$unitPrice;
 $_SESSION['itemName']=$itemName;
 $_SESSION['itemPhoto']=$photo;
-print_r($_SESSION['itemPhoto']);
 $_SESSION['itemRating']=$rating;
 $_SESSION['itemTotalPrice']=$itemTotal;
+$_SESSION['cart'] =$productList;
+
 
 
 ?>

@@ -17,7 +17,10 @@ if (document.readyState == 'loading') {
         for (i=0; i < quantityInputs.length; i++){
             var input = quantityInputs[i];
             input.addEventListener('change', quantityChanged)
-        } console.log(input.value);
+        }
+
+        var orderButton= document.getElementsByClassName('btn-order');
+        orderButton.addEventListener('click',orderCart)
 }
 
 function removeCartItem(event){
@@ -54,60 +57,6 @@ function updateCartTotal() {
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total;
 }
 
+function orderCart() {
 
-
-
-
-// var totaalProduct = document.getElementById("prijs");
-// var aantal = document.getElementById("aantal");
-// var prijs = document.getElementById("prijs");
-// var totaalPrijs = (aantal * prijs);
-// totaalProduct.insertAdjacentHTML('beforeend', totaalProduct);
-// aantal.addEventListener("change", function(){
-//     var ID = document.getElementById("")
-// })
-
-// var pageCounter =1;
-// var animalContainer = document.getElementById("animal-info")
-// var btn = document.getElementById("btn");
-// btn.addEventListener("click", function(){
-//     var ourRequest = new XMLHttpRequest();
-//     ourRequest.open('GET', 'https://learnwebcode.github.io/json-example/animals-' + pageCounter + '.json');
-//     ourRequest.onload = function(){
-//         var ourData = JSON.parse(ourRequest.responseText);
-//         renderHTML(ourData);
-//     }
-//     ourRequest.send();
-//     pageCounter ++;
-//
-// });
-//
-// function renderHTML(data) {
-//     var htmlString = "";
-//
-//     for (i=0;i<data.length; i++) {
-//         htmlString += "<p>" + data[i].name + " is a " + data[i].species + " that likes to eat ";
-//
-//         for(ii = 0; ii < data[i].foods.likes.length;ii++){
-//             if (ii == 0) {
-//                 htmlString += data[i].foods.likes[ii];
-//             } else {
-//                 htmlString += " and " + data[i].foods.likes[ii];
-//             }
-//
-//         }
-//
-//         htmlString += ' and dislikes ';
-//         for(ii = 0; ii < data[i].foods.dislikes.length;ii++){
-//             if (ii == 0) {
-//                 htmlString += data[i].foods.dislikes[ii];
-//             } else {
-//                 htmlString += " and " + data[i].foods.dislikes[ii];
-//             }
-//
-//         }
-//
-//         htmlString += ".</p>"
-//     }
-//     animalContainer.insertAdjacentHTML('beforeend', htmlString)
-// }
+}

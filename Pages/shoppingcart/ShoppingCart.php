@@ -1,17 +1,21 @@
 <?php
 include "../../incl/header.php";
+
+$customer_ID=2;
+$shoppinglist_ID=(implode('|',SqlQuery("SELECT shoppinglist_ID FROM customer WHERE customer_ID =$customer_ID")));
+
 include "ShoppingCart Queries.php";
 ?>
     <!DOCTYPE html>
 <html lang="en">
+<style>
+  .btn-order {background-color: #008CBA;} /* blue /*
+</style>
 <head>
     <title>Productlijst</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="../../JS/ShoppingCart.js" async></script>
 
 </head>
@@ -31,7 +35,7 @@ include "ShoppingCart Queries.php";
         <tbody class="cart-items">
         <?php
 
-    function SqlQueryDELETE($ID)
+    function SqlQuery($sql)
     {
 //    ** DEZE FUNCTIE wordt gebruikt voor het verwijderen van artikelen uit de winkelwagen **
 
@@ -40,7 +44,7 @@ include "ShoppingCart Queries.php";
         $DBpassword = "";
         $DBname = "onzedbwwi";
         $port = "3306";
-        $sql="DELETE FROM shoppinglist WHERE customer_ID=... AND ID_Product= $ID";   // nog niet werkend, klant id moet opgevraagd kunnen worden.
+//        $sql="DELETE FROM shoppinglist WHERE customer_ID=... AND ID_Product= $ID";   // nog niet werkend, klant id moet opgevraagd kunnen worden.
 
         $conn = mysqli_connect($servername, $DBusername, $DBpassword, $DBname, $port) or
         die("Could not connect: " . mysqli_error());
@@ -48,9 +52,11 @@ include "ShoppingCart Queries.php";
         $statement = mysqli_prepare($conn, $sql);
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
-        if(!$result){
-            print("Crical error: statement is invalid.");
-        }
+                    while ($row = $result->fetch_assoc()) {
+                return ($row);
+            }
+
+
         mysqli_stmt_close($statement);
         $conn->close();
     }
@@ -106,15 +112,21 @@ include "ShoppingCart Queries.php";
         </tr>
         
         ");
+
         $cartTotal+=$unitTotal;
         }
-        print("<tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$cartTotal</td></tr>")
-
+        print("
+        <div class='end-row'>
+        <tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$cartTotal<BR><button class='btn-order' type='button'>Bestellen</button></td></tr>
+        
+        </div>
+        ")
         ?>
+
         </tbody>
     </table>
-</div>
 
+</div>
 </body>
 </html>
 <?php
