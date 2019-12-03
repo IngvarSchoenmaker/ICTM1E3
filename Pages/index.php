@@ -41,6 +41,20 @@ include '../incl/header.php'
                 <img src="https://picsum.photos/1200?random=2" style="width: 540px; height: 200px;">
             </div>
         </div>
+        <?php
+        if (!empty($_SESSION['ID'])) {
+            include_once "../incl/productSugestions.php";
+            include_once "../incl/db.php";
+            echo '<div class="col-lg-3">';
+            $test = getSuggestions($_SESSION['ID'], $conn, $conn2);
+//            print_r($test);
+                foreach ($test AS $value){
+                    echo $value["StockItemName"];
+                }
+            echo '</div>';
+
+        }
+        ?>
     </div>
 <?php
 include '../incl/footer.php';
