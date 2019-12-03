@@ -16,39 +16,52 @@ require '../../incl/header.php';
             <?php
             if(isset($_POST['inloggen'])) {
 
-            $email = $_POST['emailadres'];
-            $password = $_POST['password'];
+                $email = $_POST['emailadres'];
+                $password = $_POST['password'];
 
-            if (empty($email) || empty($password)) { // hier wordt gecontroleerd of de input velden zijn ingevuld
+                if (empty($email) || empty($password)) { // hier wordt gecontroleerd of de input velden zijn ingevuld
 
-                print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">De verplichte velden zijn niet ingevuld!</p>");
-            }
-            ?>
+                    print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">De verplichte velden zijn niet ingevuld!</p>");
+                }
+                ?>
 
-            <!--    hier is een verwijzing naar verschillende pagina-->
+                <!--    hier is een verwijzing naar verschillende pagina-->
 
-            <div>
-                <a href="signup.php">Geen account?</a> <br>
-                <a href="wachtwoordvergeten.php">Wachtwoord vergeten?</a>
-            </div>
-        </form>
-    </div>
-        </div>
-    </div>
-</div>
+                <div>
+                    <a href="signup.php">Geen account?</a> <br>
+                    <a href="wachtwoordvergeten.php">Wachtwoord vergeten?</a>
+                </div>
+                </form>
+                </div>
+                </div>
+                </div>
+                </div>
 <?php
 
+if(isset($_POST['registeren'])) {
 
-if(isset($_POST['inloggen'])) {
-        $query = "SELECT Customer_ID FROM Customer WHERE Email = '$email' AND Password = '$password'";
-        $statement = mysqli_prepare($conn, $query)  or die(mysqli_error($conn));
-        mysqli_stmt_execute($statement);
-        $result = mysqli_stmt_get_result($statement);
-        $row = mysqli_fetch_array($result);
+    $email = $_POST['emailadres'];
+    $password = $_POST['Password'];
 
-        if (!empty($result)) {
-            $_SESSION['ID'] = $row["Customer_ID"];
-        }
+    if (empty($email) || empty($password)) { // hier wordt gecontroleerd of de input velden zijn ingevuld
+        print("De verplichte velden zijn niet ingevuld!");
+    } else {
+        print('hahaah');
+        $stmt = $conn->prepare("SELECT Email, Password FROM customer WHERE Email=?");
+        $stmt->bind_param("ss", $email, $password);
+        $stmt->execute();
+        $match = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $passwordcheck = password_verify($password, $match['Password']);
+    }
+    if ($passwordcheck === false) {
+        $stmt->close();
+        print('incorrecte wachtwoord');
+    } else {
+        $stmt->close();
+        session_start();
+        $_SESSION['loginsucessvol'] = true;
+        print("correct wachtwoord!");
     }
 }
 
