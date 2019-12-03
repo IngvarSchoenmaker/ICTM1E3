@@ -1,3 +1,16 @@
-# ICTM1E3
-Klasseproject
-Geert-jan kan niet zo heel veel! zeker niet UwU
+Wide World Importers
+--------------------
+
+
+Built With
+----------
+
+
+Authors
+-------
+Pascal Boertien,
+Zackaria el Hammoudani,
+Wouter Jans,
+Ingvar Schoenmaker,
+Geert-Jan Verkuil,
+Bart Withaar
