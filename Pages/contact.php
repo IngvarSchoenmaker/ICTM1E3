@@ -1,181 +1,146 @@
 <?php
-include '../incl/header.php'
+include '../incl/db.php';
+include '../incl/header.php';
+
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <title>Contact V17</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--===============================================================================================-->
-        <link rel="icon" type="image/png" href="../recources/ContactFrom_v17/images/icons/favicon.ico"/>
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css"
-              href="../recources/ContactFrom_v17/vendor/bootstrap/css/bootstrap.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css"
-              href="../recources/ContactFrom_v17/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css"
-              href="../recources/ContactFrom_v17/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="../recources/ContactFrom_v17/vendor/animate/animate.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css"
-              href="../recources/ContactFrom_v17/vendor/css-hamburgers/hamburgers.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css"
-              href="../recources/ContactFrom_v17/vendor/animsition/css/animsition.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="../recources/ContactFrom_v17/vendor/select2/select2.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css"
-              href="../recources/ContactFrom_v17/vendor/daterangepicker/daterangepicker.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="../recources/ContactFrom_v17/css/util.css">
-        <link rel="stylesheet" type="text/css" href="../recources/ContactFrom_v17/css/main.css">
-        <!--===============================================================================================-->
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
-    <div class="container-contact100">
-        <div class="wrap-contact100">
-            <form class="contact100-form validate-form">
-				<span class="contact100-form-title">
-					Send Us A Message
-				</span>
 
-                <label class="label-input100" for="first-name">Tell us your name *</label>
-                <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Type first name">
-                    <input id="first-name" class="input100" type="text" name="first-name" placeholder="First name">
-                    <span class="focus-input100"></span>
-                </div>
-                <div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Type last name">
-                    <input class="input100" type="text" name="last-name" placeholder="Last name">
-                    <span class="focus-input100"></span>
-                </div>
+<fieldset>
+<legend>Stuur ons een bericht!</legend>
+<form method="post" action="contact.php">
 
-                <label class="label-input100" for="email">Enter your email *</label>
-                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                    <input id="email" class="input100" type="text" name="email" placeholder="Eg. example@email.com">
-                    <span class="focus-input100"></span>
-                </div>
+Voornaam:<br><input type="text" name="Voornaam"> <br>
+Achternaam:<br><input type="text" name="Achternaam"> <br>
+Emailadres:<br><input type="text" name="Email"> <br>
+Telefoonnummer:<br><input type="text" name="Telefoonnummer"> <br>
+Bericht:<br><textarea name="Opmerking"></textarea> <br>
 
-                <label class="label-input100" for="phone">Enter phone number</label>
-                <div class="wrap-input100">
-                    <input id="phone" class="input100" type="text" name="phone" placeholder="Eg. +1 800 000000">
-                    <span class="focus-input100"></span>
-                </div>
 
-                <label class="label-input100" for="message">Message *</label>
-                <div class="wrap-input100 validate-input" data-validate="Message is required">
-                    <textarea id="message" class="input100" name="message" placeholder="Write us a message"></textarea>
-                    <span class="focus-input100"></span>
-                </div>
 
-                <div class="container-contact100-form-btn">
-                    <button class="contact100-form-btn">
-                        Send Message
-                    </button>
-                </div>
+</fieldset>
+
+<?php
+            $foutchar = "";
+            $foutemail = "";
+            $foutnummer = "";
+
+
+            if(isset($_POST['verzenden'])) { // checkt of er gesubmit is
+                $voornaam = $_POST['Voornaam'];
+                $achternaam = $_POST['Achternaam'];
+                $Email = $_POST['Email'];
+                $Telefoonnummer = $_POST['Telefoonnummer'];
+                $Opmerking = $_POST['Opmerking'];
+
+                // controleert de voornaam en achternaam
+                if (!preg_match("/^[a-zA-Z ]*$/", $voornaam) || !preg_match("/^[a-zA-Z]*$/", $achternaam)) {
+                    $foutchar = "De ingvoerde Voornaam of achternaam is ongeldig!";
+                    $_GET['Achternaam'] = $achternaam;
+
+                // controleert of de email wel geldig is. Maar ook voor gevaarlijke symbolen
+                } elseif (!filter_var(FILTER_VALIDATE_EMAIL) || !preg_match("/^[a-zA-Z0-9@_.]*$/", $Email) || preg_match("/^[#$=;or]*$/", $Email)){
+                    $foutemail = "De ingevoerde Email is ongeldig!";
+
+                // Controleert op telefoonnummer
+                } elseif (!preg_match("/^(06)[0-9]*$/", $Telefoonnummer) || (strlen($Telefoonnummer) !== 10)) {
+
+                    $foutnummer = "ingevoerde nummer is ongeldig!";
+
+                // Zodra er alles is gecontroleert en geen errors bevatten dan wordt de data toevoegd in de database
+                } else {
+                    $stmt = $conn->prepare("INSERT INTO contactform(First_name, Last_Name, Email, Phone, Message) VALUES(?,?,?,?,?)");
+                    $stmt->bind_param("sssss", $voornaam, $achternaam, $Email, $Telefoonnummer, $Opmerking);
+                    $stmt->execute();
+                    $stmt->close();
+
+                   $_GET['Query'] = true;
+
+                }
+
+
+            }
+            ?>
+            <div>
+                <input  type="submit" value="verzenden" name="verzenden">
+
+            </div>
+            <?php echo "<p style='color: red'>".$foutchar; ?>
+            <?php echo "<p style='color: red'>".$foutnummer; ?>
+            <?php echo "<p style='color: red'>".$foutemail; ?>
+
+            <?php if(isset( $_GET['Query'])){
+                if($_GET['Query'] === true) {
+                echo "<p style='color:black;font-size: 20px;'>Bedankt voor uw Medewerking!</p>";
+                }
+            } ?>
             </form>
 
-            <div class="contact100-more flex-col-c-m"
-                 style="background-image: url('../recources/ContactFrom_v17/images/bg-01.jpg');">
-                <div class="flex-w size1 p-b-47">
-                    <div class="txt1 p-r-25">
-                        <span class="lnr lnr-map-marker"></span>
-                    </div>
+            <div>
+                <img src="../recources/voorbeeld%20fotos/ww1.jpg">
+            </div>
 
-                    <div class="flex-col size2">
-						<span class="txt1 p-b-20">
-							Address
-						</span>
-
-                        <span class="txt2">
-							Mada Center 8th floor, 379 Hudson St, New York, NY 10018 US
-						</span>
-                    </div>
+                <div>
+                    <span>
+                        Hoofdlocatie
+                    </span>
                 </div>
 
-                <div class="dis-flex size1 p-b-47">
-                    <div class="txt1 p-r-25">
-                        <span class="lnr lnr-phone-handset"></span>
-                    </div>
-
-                    <div class="flex-col size2">
-						<span class="txt1 p-b-20">
-							Lets Talk
+                <div>
+                    <span>
+							Admiraal de ruiterweg 65 <br>
+                            1078WB Amsterdam
 						</span>
-
-                        <span class="txt3">
-							+1 800 1236879
-						</span>
-                    </div>
                 </div>
 
-                <div class="dis-flex size1 p-b-47">
-                    <div class="txt1 p-r-25">
-                        <span class="lnr lnr-envelope"></span>
-                    </div>
-
-                    <div class="flex-col size2">
+                <div>
 						<span class="txt1 p-b-20">
-							General Support
+							Neem contact met ons op
+						</span>
+                </div>
+                <div>
+                    <span class="txt3">
+							Mobiel: 06-5812914012<br>
+                            Huisnummer: 020-2134123
+
+						</span>
+                </div>
+
+                <div>
+						<span class="txt1 p-b-20">
+                            Supportdienst 24/7
 						</span>
 
-                        <span class="txt3">
-							contact@example.com
-						</span>
-                    </div>
+                    <span class="txt3">
+							WWI@Worldwideimporters.com
+                    </span>
+
+                    <div>
+                    <span>
+
+                        Volg ons op: <a href="https://nl-nl.facebook.com/"><img src="../recources/voorbeeld%20fotos/facebook.jpg" style="width: 3%;"></a> <a href="https://twitter.com/?lang=nl"><img src="../recources/voorbeeld%20fotos/logo.png" style="width: 3%;"></a>
+                    </span>
+
                 </div>
             </div>
         </div>
     </div>
 
 
-    <div id="dropDownSelect1"></div>
 
-    <!--===============================================================================================-->
-    <script src="../recources/ContactFrom_v17/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="../recources/ContactFrom_v17/vendor/animsition/js/animsition.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="../recources/ContactFrom_v17/vendor/bootstrap/js/popper.js"></script>
-    <script src="../recources/ContactFrom_v17/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="../recources/ContactFrom_v17/vendor/select2/select2.min.js"></script>
-    <script>
-        $(".selection-2").select2({
-            minimumResultsForSearch: 20,
-            dropdownParent: $('#dropDownSelect1')
-        });
-    </script>
-    <!--===============================================================================================-->
-    <script src="../recources/ContactFrom_v17/vendor/daterangepicker/moment.min.js"></script>
-    <script src="../recources/ContactFrom_v17/vendor/daterangepicker/daterangepicker.js"></script>
-    <!--===============================================================================================-->
-    <script src="../recources/ContactFrom_v17/vendor/countdowntime/countdowntime.js"></script>
-    <!--===============================================================================================-->
-    <script src="../recources/ContactFrom_v17/js/main.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+<div id="dropDownSelect1"></div>
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'UA-23581568-13');
-    </script>
-    </body>
-    </html>
-
-
-<?php
-
-?>
+</body>
+</html>

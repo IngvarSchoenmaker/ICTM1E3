@@ -1,5 +1,5 @@
 <?php
-require '../incl/db.php';
+require '../../incl/db.php';
 session_start();
 // ingevoerde gegevens van de input velden.
 if (isset($_POST['registreer'])) {
@@ -19,11 +19,10 @@ if (isset($_POST['registreer'])) {
     $Postcode = $_POST['Postcode'];
     $Straatnaam = $_POST['Straatnaam'];
     $Huisnummer = $_POST['Huisnummer'];
-    $Toevoeging = $_POST['Toevoeging'];
     $Plaats = $_POST['Plaats'];
     $Wachtwoord = $_POST['Wachtwoord'];
     $Wachtwoordherhaal = $_POST['Wachtwoord-herhaal'];
-    $encrpted = password_hash($Wachtwoord, CRYPT_SHA512);
+    $encrpted = password_hash($Wachtwoord, PASSWORD_DEFAULT);
 
 
 // hier wordt gecontroleerd of er geen symbolen worden gebruikt tijdens het invullen van de formulier . Als er symbolen worden gebruikt verwijst ie terug naar de singup met een error
@@ -38,12 +37,12 @@ if (isset($_POST['registreer'])) {
 
 // hier wordt gecontroleerd of de mobiele nummer 10 cijfers heeft met een streepje = 11
 
-    } elseif (strlen($Telnnr) !== 10) {
+    } elseif (!preg_match("/^(06)[0-9]*$/", $Telnnr) || (strlen($Telnnr) !== 10)) {
         header("Location: signup.php?error=Tel&Tel=" . $Telnnr);
 
 // Hier moet pascal mee moet helpen.
 
-    } elseif ($Geboortedatum < "01-01-1950" || $Geboortedatum > "31-12-2002") {
+    } elseif ($Geboortedatum < "01-01-1950" || $Geboortedatum > "31-12-2002" || empty($Geboortedatum)) {
         header("signup.php?error=gbdatum&gbdatum=" . $Geboortedatum);
 
 // Hier wordt gecontroleerd of de postcode wel klopt.
@@ -56,81 +55,69 @@ if (isset($_POST['registreer'])) {
     } elseif (preg_match('/^[= or " " as # *]*$/', $Straatnaam) || (!preg_match('/^[a-zA-Z]*$/', $Straatnaam))) {
 
         header("location: Signup.php?error=Straatnaam&Straatnaam=" . $Straatnaam);
-//Hier moet pascal mee helpen.
 
-//        $verdacht++;
-//        $verdacht = 0;
-//        $verdachttotaal;
 
         // hier wordt gecontroleerd op Huisnummer
     } elseif (!preg_match('/^[0-9]*$/', $Huisnummer) || $Huisnummer > 18926) {
         header("Location: signup.php?error=Huisnummer&Huisnummer=" . $Huisnummer);
 
-        // hier wordt gecontroleerd op Toevoegingen om gevaarlijke symbolen te voorkomen.
-        //
-    } elseif (preg_match('/^[= or as # *]*$/', $Toevoeging)) {
-        header("Location: signup.php?error=Toevoeging");
 
-        // Hier wordt gecontroleerd of het wachtwoord met elkaar overeenkomen
-    } elseif ($Wachtwoord != $Wachtwoordherhaal) {
+    }         // Hier wordt gecontroleerd of het wachtwoord met elkaar overeenkomen
+    elseif ($Wachtwoord != $Wachtwoordherhaal || strlen($Wachtwoord || !preg_match()) < 8) {
         header("Location: signup.php?error=Wachtwoord");
 
     } else {
 
-        $sql = "SELECT First_name, Middle_Name, Last_Name FROM customer WHERE First_name =? AND Middle_Name =? AND Last_Name =?";
-        $stmt = mysqli_stmt_prepare($conn);
+        //Hier wordt gecontroleerd of de gegevens al bestaan of niet.
+        $stmtselect = $conn->prepare("SELECT Email FROM customer WHERE Email = ?");
+        $stmtselect->bind_param("s", $Emailadres);
+        $stmtselect->execute();
+        $result = $stmtselect->get_result();
 
-        if (!mysqli_stmt_init($stmt, $sql)) {
-
-            header("Location: signup.php?error=SQL");
+        if ($result->num_rows === 1) {
+            $stmtselect->close();
+            header("Location: signup.php?error=Gebruikerbestaatal");
+            exit();
         } else {
-
-            $selectstmt = $conn->prepare($sql);
-            $selectstmt->bind_param("sss");
-            $selectstmt->execute();
-            $result->fetch_all();
-
-            if ($result->num_rows > 0) {
-                header("Location: signup.php?error=bestaatal");
-
-            }
+            echo "ik doe de else uwu";
         }
 
 
 // gegevens worden opgeslagen in de database
-        try {
-            $conn->autocommit(FALSE);
-            $stmt1 = $conn->prepare("INSERT INTO customer(First_Name, Middle_Name, Last_Name, Email, Birthdate, Password, Phone) VALUES (?,?,?,?,?,?,?)");
-            $stmt2 = $conn->prepare("INSERT INTO customer_archive(First_Name, Middle_Name, Last_Name, Email, Birthdate, Password, Phone) VALUES (?,?,?,?,?,?,?)");
-            $stmt3 = $conn->prepare("INSERT INTO address(City, Zip_Code, Street_Name, House_Number, Addition) VALUES (?,?,?,?,?)");
-            $stmt4 = $conn->prepare("INSERT INTO address_archive(City, Zip_Code, Street_Name, House_Number, Addition) VALUES (?,?,?,?,?)");
-            $stmt1->bind_param("ssssssi", $voornaam, $Tussenvoegsels, $Achternaam, $Emailadres, $Geboortedatum, $encrpted, $Telnnr);
-            $stmt2->bind_param("ssssssi", $voornaam, $Tussenvoegsels, $Achternaam, $Emailadres, $Geboortedatum, $encrpted, $Telnnr);
-            $stmt3->bind_param("sssis", $Plaats, $Postcode, $Straatnaam, $Huisnummer, $Toevoeging);
-            $stmt4->bind_param("sssis", $Plaats, $Postcode, $Straatnaam, $Huisnummer, $Toevoeging);
-            $stmt1->execute();
-            $stmt1->close();
-            $stmt2->execute();
-            $stmt2->close();
-            $stmt3->execute();
-            $stmt3->close();
-            $stmt4->execute();
-            $stmt4->close();
-            $conn->autocommit(TRUE);
-        } catch (Exception $e) {
+            try {
+                $conn->autocommit(FALSE);
+                $stmt1 = $conn->prepare("INSERT INTO customer(First_Name, Middle_Name, Last_Name, Email, Birthdate, Password, Phone) VALUES (?,?,?,?,?,?,?)");
+                $stmt2 = $conn->prepare("INSERT INTO customer_archive(First_Name, Middle_Name, Last_Name, Email, Birthdate, Password, Phone) VALUES (?,?,?,?,?,?,?)");
+                $stmt3 = $conn->prepare("INSERT INTO address(City, Zip_Code, Street_Name, House_Number) VALUES (?,?,?,?)");
+                $stmt4 = $conn->prepare("INSERT INTO address_archive(City, Zip_Code, Street_Name, House_Number) VALUES (?,?,?,?)");
+                $stmt1->bind_param("sssssss", $voornaam, $Tussenvoegsels, $Achternaam, $Emailadres, $Geboortedatum, $encrpted, $Telnnr);
+                $stmt2->bind_param("sssssss", $voornaam, $Tussenvoegsels, $Achternaam, $Emailadres, $Geboortedatum, $encrpted, $Telnnr);
+                $stmt3->bind_param("sssi", $Plaats, $Postcode, $Straatnaam, $Huisnummer);
+                $stmt4->bind_param("sssi", $Plaats, $Postcode, $Straatnaam, $Huisnummer);
+                $stmt1->execute();
+                $stmt1->close();
+                $stmt2->execute();
+                $stmt2->close();
+                $stmt3->execute();
+                $stmt3->close();
+                $stmt4->execute();
+                $stmt4->close();
+                $conn->autocommit(TRUE);
+            } catch (Exception $e) {
 
-            if ($conn->errno === 1062) {
+                if ($conn->errno === 1062) {
 
-                print("De ingevoerde gegevens bestaan al!");
+                    print("De ingevoerde gegevens bestaan al!");
+                }
+
             }
+
+            header("Location: registratiegelukt.php?registratie=succes");
 
         }
 
-        header("Location: registratiegelukt.php?registratie=succes");
+
     }
-}
-
-
 
 
 
