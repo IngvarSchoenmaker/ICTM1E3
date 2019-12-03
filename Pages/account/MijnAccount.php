@@ -26,12 +26,12 @@
 
 <h1 class="AccDash">Account-dasboard</h1>
 
-\*Verschillende accountinformatie
+<!--Verschillende accountinformatie-->
 <div class="box"><a href="AccountInfo.php">Account informatie</a><br><br>
     <a href="Factuuradres.php">Factuuradres</a><br><br>
     <a href="Afleveradres.php">Afleveradres</a><br><br>
     <a href="MijnBestellingen.php">Mijn bestellingen</a><br><br>
-    <a href="">Mijn winkelwagen</a><br><br>
+    <a href="../shoppingcart/ShoppingCart.php">Mijn winkelwagen</a><br><br>
     <a href="MijnAccount.php">Afmelden</a><br>
 </div>
 
