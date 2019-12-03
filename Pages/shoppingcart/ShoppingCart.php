@@ -1,8 +1,10 @@
 <?php
 include "../../incl/header.php";
+
 $customer_ID=2;
 $shoppinglist_ID=(implode('|',SqlQuery("SELECT shoppinglist_ID FROM customer WHERE customer_ID =$customer_ID")));
 
+include "ShoppingCart Queries.php";
 ?>
     <!DOCTYPE html>
 <html lang="en">

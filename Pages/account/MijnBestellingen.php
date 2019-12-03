@@ -2,9 +2,9 @@
 //Start sessie.
 session_start();
 //Laadt de header in.
-include '../../incl/Header.html';
+include 'Header.html';
 //Laadt Database.php in zodat ik daar queries en variablen van kan gebruiken.
-include '../../incl/Database.php';
+include '../../incl/Database.php';;
 ?>
 
 <!-- Laadt javascript functies in-->
@@ -16,76 +16,26 @@ include '../../incl/Database.php';
 <br>
 
 <!--Maakt een tabel waar alle bestellingen staan.-->
-<table style="width:100%">
-    <table>
-        <tr>
-            <td>
-                <table>
-                    <thead>
-                    <tr>
-                        <td>Ordernummer</td>
-                    </tr>
-                    </thead>
-                    <tbody>
+<table style="width:100%" border="1">
+    <tr>
+        <th>Ordernummer</th>
+        <th>Orderdatum</th>
+        <th>Verzonden aan</th>
+    </tr>
+<?php
+//Print een tabel met order gegevens
+foreach ($OrderData as $order){
+    print("<tr>");
 
-                    <?php
-                    //print elke ordernummer onder elkaar.
-                    foreach($orders as $order) {
-                        print("<tr>");
-                        print("<td>" . $order . "<br>" . "</td>");
-                        print("</tr>");
-                    }
+    print("<td>" . $order["Order_ID"]  . "</td>");
+    print("<td>" . $order["Date"]  . "</td>");
+    print("<td>" . $order["First_Name"]  . "</td>");
 
-                    ?>
+    print("</tr>");
+}
 
-                    </tbody>
-                </table>
-            </td>
-            <td>
-                <table>
-                    <thead>
-                    <tr>
-                        <td>Orderdatum</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <?php
-                    //print elke orderdatum onder elkaar.
-                    foreach($datums as $datum) {
-                        print("<tr>");
-                        print("<td>" . $datum . "<br>" . "</td>");
-                        print("</tr>");
-                    }
-
-                    ?>
-
-                    </tbody>
-                </table>
-            </td>
-            <td>
-                <table>
-                    <thead>
-                    <tr>
-                        <td>Verzonden aan</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <?php
-                        //print elke naam van de besteller onder elkaar.
-                        for ($i = 0; $i < $aantalOrders; $i++) {
-                            print("<tr>");
-                            print("<td>" . $naamOrder . "<BR>" . "</td>");
-                            print("</tr>");
-                        }
-                    ?>
-
-                    </tbody>
-                </table>
-            </td>
-
-        </tr>
-    </table>
-
-    <a href="MijnAccount.php"><--Terug naar dashboard></a>
+?>
+</table>
+<br>
+<!--Terugverwijzing naar accountdashboard-->
+<a href="MijnAccount.php"><--Terug naar dashboard></a>
