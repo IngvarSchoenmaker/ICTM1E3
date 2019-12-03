@@ -60,7 +60,6 @@ include "ShoppingCart Queries.php";
         mysqli_stmt_close($statement);
         $conn->close();
     }
-
         function DeSessionImplode($array){
 //    ***haalt array session naam weg***
         foreach($array as $key => $value){
@@ -120,7 +119,8 @@ include "ShoppingCart Queries.php";
         <tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$cartTotal<BR><button class='btn-order' type='button'>Bestellen</button></td></tr>
         
         </div>
-        ")
+        ");
+
         ?>
 
         </tbody>

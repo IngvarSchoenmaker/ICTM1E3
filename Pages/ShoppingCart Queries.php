@@ -1,6 +1,6 @@
 <?php
 
-include "../../incl/db.php";
+include "../incl/db.php";
 $servername = "localhost";
 $DBusername = "root";
 $DBpassword = "";
@@ -133,7 +133,4 @@ $_SESSION['itemPhoto']=$photo;
 $_SESSION['itemRating']=$rating;
 $_SESSION['itemTotalPrice']=$itemTotal;
 $_SESSION['cart'] =$productList;
-
-
-
 ?>

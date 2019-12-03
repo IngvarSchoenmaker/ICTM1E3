@@ -88,7 +88,7 @@ session_start();
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="container">
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav ml-md-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="../Pages/index.php">Home <span
                                         class="sr-only">(current)</span></a>
@@ -102,7 +102,7 @@ session_start();
                         <?php
                         if (empty($_SESSION['loginsucesesvol'])) {
                         ?>
-                        <li class="nav-item">
+                        <li class="nav-item" style="margin-left: 758px">
                             <a class="nav-link" href="../Pages/signup.php">Registreer</a>
                         </li>
                         <li class="nav-item">
@@ -112,7 +112,7 @@ session_start();
                         }
                         else {
                         ?>
-                        <li class="nav-item">
+                        <li class="nav-item" style="margin-left: 600px">
                             <a class="nav-link" href="../Pages/AccountInfo.php">Mijn Account</a>
                         </li>
                         <li class="nav-item">
@@ -121,6 +121,9 @@ session_start();
                             <?php
                         }
                         ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Pages/ShoppingCart Queries.php"><i class="fas fa-shopping-cart"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>

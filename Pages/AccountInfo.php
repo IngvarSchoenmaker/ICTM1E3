@@ -2,7 +2,7 @@
 
 include '../incl/header.php';
 //Laadt de header in.
-include '../incl/Header.html';
+//include '../incl/Header.html';
 //Laadt Database.php in zodat ik daar queries en variablen van kan gebruiken.
 include '../incl/Database.php';
 ?>
@@ -10,7 +10,9 @@ include '../incl/Database.php';
 <!--Laadt javascript bestand met functies in.-->
 <script type="text/javascript" src="../../JS/Functions.js"></script>
 
-
+<div class="container" style="margin-top:200px; margin-bottom: 100px; text-align: center">
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
 <h1 class="AccInfo">Account informatie</h1>
 
 <?php
@@ -46,17 +48,25 @@ De gebruiker kan hier zijn gegevens ook wijzigen. -->
             <input type="submit" id='opslaan' name="opslaanAccountinfo" value='Opslaan'><br>
         </div>
     </form>
-
+</div>
+        </div>
+        <div class="col-md-6 col-sm-6">
     <form action="Database.php" method="post">
         <div id="ww-inputs">
-            <h3>Wachtwoord veranderen</h3>
+            <h1>Wachtwoord veranderen</h1>
             Huidig wachtwoord* <br> <input type="password" id="huidigpass" name="wachtwoord"><br>
             Nieuw wachtwoord* <br> <input type="password" id="newpass" name="nieuwwachtwoord"><br>
             Herhaal wachtwoord* <br> <input type="password" id="herhaalpass" name="herhaalwachtwoord"><br>
-            <input type="submit" name="opslaanWachtwoord" value="Verander wachtwoord"><br>
+            <input type="submit" name="opslaanWachtwoord" value="Verander wachtwoord"><br><br><br>
         </div>
     </form>
-</div>
 
 <!--Linkje waarmee je terug naar je accountdashboard wordt gestuurd.-->
 <a href="MijnAccount.php"><--Terug naar dashboard></a>
+        </div>
+</div>
+</div>
+
+<?php
+include '../incl/footer.php';
+?>

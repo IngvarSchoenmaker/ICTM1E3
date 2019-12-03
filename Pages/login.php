@@ -24,20 +24,6 @@ if (isset($_POST['inloggen'])) {
 
         print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">De verplichte velden zijn niet ingevuld!</p>");
     }
-    ?>
-
-    <!--    hier is een verwijzing naar verschillende pagina-->
-
-    <div>
-        <a href="signup.php">Geen account?</a> <br>
-        <a href="wachtwoordvergeten.php">Wachtwoord vergeten?</a>
-    </div>
-    </form>
-    </div>
-    </div>
-    </div>
-    </div>
-    <?php
 
     $email = $_POST['emailadres'];
     $password = $_POST['password'];
@@ -52,7 +38,6 @@ if (isset($_POST['inloggen'])) {
             $stmt->execute();
             $result = mysqli_stmt_get_result($stmt);
             $row = mysqli_fetch_array($result);
-            var_dump($row[0]);
 
             if (!password_verify($password, $row['Password'])) {
                 $passwordcheck = FALSE;
@@ -63,14 +48,24 @@ if (isset($_POST['inloggen'])) {
         }
         if ($passwordcheck === false) {
             $stmt->close();
-            print('incorrecte wachtwoord');
+            print('incorrecte combinatie');
         } else {
             $stmt->close();
-            session_start();
             $_SESSION['loginsucesesvol'] = true;
-            print("correct wachtwoord!");
+            print("U bent nu ingelogd");
         }
     }
 }
+?>
+        <div>
+            <a href="signup.php">Geen account?</a> <br>
+            <a href="wachtwoordvergeten.php">Wachtwoord vergeten?</a>
+        </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+<?php
 require '../incl/footer.php';
 ?>

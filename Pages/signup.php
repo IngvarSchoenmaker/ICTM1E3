@@ -1,63 +1,40 @@
 <?php
-session_start();
-
 require "../incl/header.php";
 ?>
-
-    <html>
-    <head>
-    <title>WW1 webshop</title>
-
-<!--    <script type="text/javascript">-->
-<!---->
-<!--        function Toon_Alternatiefadres() {-->
-<!--            //-->
-<!--            if (document.getElementById('alternatiefadres').checked) {-->
-<!--                //toont alternatief factuuradres blok-->
-<!--                document.getElementById('factuuradres').style.visibility = 'visible';-->
-<!--            }-->
-<!--            else document.getElementById('factuuradres').style.visibility = 'hidden';-->
-<!---->
-<!--        }-->
-<!---->
-<!--    </script>-->
-
-    </head>
 <body>
-<form method="post" action="logout.php">
-    <br><br><br><br><br> <button>Log out</button>
-
-</form>
-    <!–– toelichting zie line 36. -->
-    <!--hier staan de accountinformatie van de klant-->
+<!-- wat doet dit hier?? -->
+<!--<form method="post" action="logout.php">-->
+<!--    <br><br><br><br><br> <button>Log out</button>-->
+<!---->
+<!--</form>-->
+<!--    toelichting zie line 36. -->
+<!--    hier staan de accountinformatie van de klant-->
+<div class="container" style="margin-top:200px; margin-bottom: 233px; text-align: center">
+    <div class="row">
+        <div class="col-lg-12">
 <form action="signup.inc.php" method="post">
-    <br>
-    <br>
-    <br>
-    <br>
-    <div style="border: 1px solid black">
     <fieldset>
     <legend style="border-radius: 20px; margin-left: 450px">accountinformatie</legend>
         <p class="clearfix">
-        <label for="Voornaam" style="margin-right: 55px; margin-left: 400px">Voornaam:</label>
+        <label for="Voornaam" style="margin-right: 55px">Voornaam:</label>
         <input type="text" name="Voornaam" <?php if(isset($_GET['voornaam'])) {if (!empty($_GET['voornaam'])) {echo 'value="' . $_GET['voornaam'] . '"';}else{echo 'placeholder="voornaam"';}}else{echo 'placeholder="voornaam"';}?> required>*
         </p>
         <p class="clearfix">
-            <label for="Tussenvoegsel" style="margin-right: 19px; margin-left: 400px">Tussenvoegsels:</label>
+            <label for="Tussenvoegsel" style="margin-right: 19px">Tussenvoegsels:</label>
             <input type="text" name="Tussenvoegsel" <?php if(isset($_GET['Tussenvoegsel'])) {if (!empty($_GET['Tussenvoegsel'])) {echo 'value="' . $_GET['Tussenvoegsel'] . '"';}else{echo 'placeholder="Tussenvoegsel"';}}else{echo 'placeholder="Tussenvoegsel"';}?>>*
         </p>
         <p class="clearfix">
-            <label for="Achternaam" style="margin-right: 42px; margin-left: 400px">Achternaam:</label>
+            <label for="Achternaam" style="margin-right: 42px">Achternaam:</label>
             <input type="text" name="Achternaam" <?php if(isset($_GET['Achternaam'])) {if (!empty($_GET['Achternaam'])) {echo 'value="' . $_GET['Achternaam'] . '"';}else{echo 'placeholder="Achternaam"';}}else{echo 'placeholder="Achternaam"';}?> required>*
         </p>
         <p class="clearfix">
-            <label for="Emailadres" style="margin-right: 52px; margin-left: 400px">Emailadres:</label>
+            <label for="Emailadres" style="margin-right: 52px;">Emailadres:</label>
             <input type="text" name="Emailadres" <?php if (isset($_GET['error']) === 'mail') {if (!empty($_GET['Emailadres'])) {echo 'value="' . $_GET['Emailadres'] . '"';}else{echo 'placeholder="emailadres"';}}else{echo 'placeholder="emailadres"';}?> required>* <br>
 
         </p>
 
         <p class="clearfix">
-            <label for="Telefoonnummer" style="margin-right: 5px; margin-left: 400px">Telefoonnummer:</label>
+            <label for="Telefoonnummer" style="margin-right: 5px;">Telefoonnummer:</label>
             <input type="text" name="Telefoonnummer"  PLACEHOLDER="06" required>*
 
 
@@ -66,9 +43,9 @@ require "../incl/header.php";
 
         </p>
         <p>
-            <label for="Geboortedatum" style="margin-right: 12px; margin-left: 400px">Geboortedatum:</label>
+            <label for="Geboortedatum" style="margin-right: 12px;">Geboortedatum:</label>
             <input  id="datum" type="date" name="Geboortedatum" min="1910-01-01" max="2001-01-01">* <br>
-            <input type="checkbox" name="nieuwsbrief" style="margin-right: 5px; margin-left: 400px"> aanmelden voor nieuwsbrief
+            <input type="checkbox" name="nieuwsbrief" style="margin-right: 5px;"> aanmelden voor nieuwsbrief
         </p>
     </fieldset>
 
@@ -109,13 +86,13 @@ if (isset($_GET['char'])) {
 ?>
 
 <!-- hier staan gegevens voor factuuradres-->
-    <div id="factuuradres" style="border: 1px solid black">
+    <div id="factuuradres">
     <fieldset>
     <legend style="margin-left: 450px">Factuuradres</legend>
-        <b style="margin-right: 52px; margin-left: 400px">postcode:</b><input type="text" name="Postcode"  placeholder="voorbeeld:1088AA" required> * <br><br>
-        <b style="margin-right: 33px; margin-left: 400px">straatnaam:</b> <input type="text" name="Straatnaam" required>*  <br><br>
-        <b style="margin-right: 20px; margin-left: 400px">Huisnummer:</b> <input type="text" name="Huisnummer" required>*  <br><br>
-        <b style="margin-right: 77px; margin-left: 400px"">Plaats:</b><select name="Plaats" required>*
+        <b style="margin-right: 52px;">postcode:</b><input type="text" name="Postcode"  placeholder="voorbeeld:1088AA" required> * <br><br>
+        <b style="margin-right: 33px;">straatnaam:</b> <input type="text" name="Straatnaam" required>*  <br><br>
+        <b style="margin-right: 20px;">Huisnummer:</b> <input type="text" name="Huisnummer" required>*  <br><br>
+        <b style="margin-right: 77px;">Plaats:</b><select name="Plaats" required>*
             <option>Amsterdam</option>
             <option>Armani</option>
             <option>Den Haag</option>
@@ -170,11 +147,11 @@ if (isset($_GET['char'])) {
     <br>
 
 <!--    Hier wordt het wachtwoord ingevoerd en gesubmit naar php-->
-    <div style="border: 1px solid black">
+    <div >
         <fieldset>
          <legend style="margin-left: 450px">Wachtwoord</legend>
-        <b style="margin-right: 83px; margin-left: 400px"">Wachtwoord:</b><input type="password" name="Wachtwoord" required >*<br><br>
-        <b style="margin-right: 20px; margin-left: 400px"">Herhaal Wachtwoord:</b><input type="password" name="Wachtwoord-herhaal" required>*<br><br>
+        <b style="margin-right: 83px;">Wachtwoord:</b><input type="password" name="Wachtwoord" required >*<br><br>
+        <b style="margin-right: 20px;">Herhaal Wachtwoord:</b><input type="password" name="Wachtwoord-herhaal" required>*<br><br>
             <?php
             // hier wordt een error gegeven als de gebruiker niet bestaat
             if(isset($_GET['error'])) {
@@ -196,12 +173,14 @@ if (isset($_GET['char'])) {
             }
 
             ?>
-            <input style="margin-left: 400px" type="submit" name="registreer" value="Account aanmaken">
+            <input type="submit" name="registreer" value="Account aanmaken">
         </fieldset>
     </div>
 </form>
+        </div>
+    </div>
+</div>
 </body>
-</html>
 
 
 
@@ -215,11 +194,6 @@ if(isset($_GET['error'])){
     }
 }
 
-?>
-
-
-
-<?php
 include '../incl/footer.php';
 ?>
 

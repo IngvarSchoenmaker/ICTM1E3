@@ -1,7 +1,7 @@
 <?php
 include '../incl/header.php';
 //Laadt de header in.
-include '../incl/Header.html';
+//include '../incl/Header.html';
 //Laadt Database.php in zodat ik daar queries en variablen van kan gebruiken.
 include '../incl/Database.php';;
 ?>
@@ -9,6 +9,7 @@ include '../incl/Database.php';;
 <!-- Laadt javascript functies in-->
 <script type="text/javascript" src="Functions.js"></script>
 
+<div class="container" style="margin-top:200px; margin-bottom: 100px; text-align: center">
 <h1>Mijn bestellingen</h1>
 
 <br>
@@ -38,3 +39,7 @@ include '../incl/Database.php';;
 <br>
 <!--Terugverwijzing naar accountdashboard-->
 <a href="MijnAccount.php"><--Terug naar dashboard></a>
+</div>
+<?php
+include '../incl/footer.php';
+?>
