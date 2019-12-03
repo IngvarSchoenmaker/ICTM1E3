@@ -176,10 +176,21 @@ if (isset($_GET['char'])) {
         <b style="margin-right: 83px; margin-left: 400px"">Wachtwoord:</b><input type="password" name="Wachtwoord" required >*<br><br>
         <b style="margin-right: 20px; margin-left: 400px"">Herhaal Wachtwoord:</b><input type="password" name="Wachtwoord-herhaal" required>*<br><br>
             <?php
+            // hier wordt een error gegeven als de gebruiker niet bestaat
             if(isset($_GET['error'])) {
                 if ($_GET['error'] === "Wachtwoord") {
 
                     Print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">De ingevoerde wachtwoord voldoet niet aan de eisen. <br>Controleer of het wachtwoord minimaal 8 tekens bevatten </p>");
+
+                }
+            }
+
+            // hier wordt een error gegeven als de gebruiker al bestaat!
+            if(isset($_GET['error'])){
+
+                if($_GET['error'] === "Gebruikerbestaatal"){
+
+                    Print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">De ingevoerde emailadres bestaat al!</p>");
 
                 }
             }
@@ -199,7 +210,7 @@ if(isset($_GET['error'])){
 
     if($_GET['error']=== "SQL-initilaze"){
 
-        print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">Er is een fout opgetreden op onze website(SQL)!</p>");
+        print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">Er is een fout opgetreden op onze website</p>");
 
     }
 }

@@ -9,8 +9,8 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../style/header.css">
-    <link rel="stylesheet" href="../style/footer.css">
+    <link rel="stylesheet" href="../../style/header.css">
+    <link rel="stylesheet" href="../../style/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -21,34 +21,31 @@ session_start();
     crossorigin="anonymous"></script>
 </head>
 <body>
-<?php
-    if (empty($_SESSION['ID'])) {
-        ?>
-        <nav class="navbar navbar-expand-sm navbar-custom fixed-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-5">
-                        <a class="navbar-brand" href="#">World Wide Importers</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                data-target="#collapsibleNavbar">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
-                    <div class="col-7">
-                        <form class="form-inline align-self-center" action="../Pages/search/search.php" method="POST">
-                            <div class="search-box input-group p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-                                <input type="search" placeholder="What're you searching for?" name="search"
-                                       autocomplete="off" class="form-control border-0 bg-light rounded rounded-pill">
-                                <div class="input-group-append">
-                                    <button id="button-addon1" type="submit" class="btn btn-link text-primary"
-                                            name="submit-search"><i class="fa fa-search"></i></button>
-                                </div>
-                                <div class="result"></div>
+    <nav class="navbar navbar-expand-sm navbar-custom fixed-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-5">
+                    <a class="navbar-brand" href="#">World Wide Importers</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#collapsibleNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="col-7">
+                    <form class="form-inline align-self-center" action="../Pages/search/search.php" method="POST">
+                        <div class="search-box input-group p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                            <input type="search" placeholder="What're you searching for?" name="search"
+                                   autocomplete="off" class="form-control border-0 bg-light rounded rounded-pill">
+                            <div class="input-group-append">
+                                <button id="button-addon1" type="submit" class="btn btn-link text-primary"
+                                        name="submit-search"><i class="fa fa-search"></i></button>
                             </div>
-                        </form>
-                    </div>
+                            <div class="result"></div>
+                        </div>
+                    </form>
                 </div>
             </div>
+<!-- HEAD-->
         </nav>
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-top: 70px;">
@@ -95,37 +92,61 @@ session_start();
                     </div>
                 </div>
             </nav>
+<!--=======-->
+<!-- c87de48ae9f9c5fd1bd394209031176a45d86f72-->
         </div>
-<?php
-    }
-    else {
-        ?>
-        <nav class="navbar navbar-expand-sm navbar-custom fixed-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-5">
-                        <a class="navbar-brand" href="#">World Wide Importers</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                data-target="#collapsibleNavbar">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
-                    <div class="col-7">
-                        <form class="form-inline align-self-center" action="../Pages/search/search.php" method="POST">
-                            <div class="search-box input-group p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-                                <input type="search" placeholder="What're you searching for?" name="search"
-                                       autocomplete="off" class="form-control border-0 bg-light rounded rounded-pill">
-                                <div class="input-group-append">
-                                    <button id="button-addon1" type="submit" class="btn btn-link text-primary"
-                                            name="submit-search"><i class="fa fa-search"></i></button>
-                                </div>
-                                <div class="result"></div>
-                            </div>
-                        </form>
-                    </div>
+    </nav>
+    <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-top: 70px;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="container">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.php">Home <span
+                                        class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="all_products.php">Producten</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.php">Contact</a>
+                        </li>
+                        <?php
+                        if (empty($_SESSION['ID'])) {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="auth/signup.php">Registreer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="auth/login.php">Login</a>
+                        </li>
+                            <?php
+                        }
+                        else {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="account/AccountInfo.php">Info</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="auth/logout.php">uitloggen</a>
+                        </li>
+                            <?php
+                        }
+                        ?>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="all_products.php">Producten</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
+<!--<<<<<<< HEAD-->
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-top: 70px;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -174,5 +195,9 @@ session_start();
             </nav>
         </div>
 <?php
-    }
+
 ?>
+<!--=======-->
+    </div>
+</body>
+<!--c87de48ae9f9c5fd1bd394209031176a45d86f72-->

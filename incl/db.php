@@ -1,4 +1,5 @@
 <?php
+//<<<<<<< HEAD
 // het weergeven van de errors wordt hierdoor geactiveerd zorg ervoor dat je try en catch gebruikt!!! (i.v.m gevoelige data)
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -20,4 +21,19 @@ try {
     exit("Oops, er is een fout ontstaan met de connectie probeer het later weer.");
 
 }
+//=======
+$server = "localhost";
+$username = "root";
+$password = "";
+$dbname = "onzedbwwi";
+$conn = mysqli_connect($server, $username, $password, $dbname);
+
+$servername = "localhost";
+$DBusername = "root";
+$DBpassword = "";
+$DBname = "wideworldimporters";
+$port = "3306";
+$conn2 = mysqli_connect($servername, $DBusername, $DBpassword, "wideworldimporters", $port) or
+die("Could not connect: " . mysqli_error());
+//>>>>>>> c87de48ae9f9c5fd1bd394209031176a45d86f72
 ?>

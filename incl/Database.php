@@ -1,125 +1,226 @@
 <?php
-//Functie de connect met de database en maximaal 1 row teruggeeft
-//*****GEERT-JAN VERKUIL*******\\
 
-function SqlQuery($sql) {
-    //Verbinding maken met de database
-    $servername = "localhost";
-    $DBusername = "root";
-    $DBpassword = "";
-    $DBname = "wwi";
-    $port = "3306";
+    $_SESSION['CustomerID'] = 1;
+    $_CustomerID = $_SESSION['CustomerID'];
 
-    //Query uitvoeren
-    $conn = mysqli_connect($servername, $DBusername, $DBpassword, $DBname, $port);
-    $statement = mysqli_prepare($conn, $sql);
-    mysqli_stmt_execute($statement);
-    $result = mysqli_stmt_get_result($statement);
-    if(!empty($result)) {
-        $row = mysqli_fetch_array($result);
-        $conn->close();
-        return $row['0'];
+    function get_connection(){
+        $_database["server"] = "localhost";
+        $_database["username"] = "root";
+        $_database["password"] = "";
+        $_database["name"] = "test";
+        $_database["poort"] = "3306";
+
+        return mysqli_connect($_database["server"], $_database["username"], $_database["password"], $_database["name"], $_database["poort"]);
     }
-}
-//Aanroepen functie en resultaat in een variable zetten.
-$email = SqlQuery("SELECT Email FROM Customer WHERE Customer_ID = 1");
-$plaats = SqlQuery("SELECT City FROM Address WHERE Address_ID = 1");
-$postcode = SqlQuery("SELECT Zip_Code FROM Address WHERE Address_ID = 1");
-$straat = SqlQuery("SELECT Street_Name FROM Address WHERE Address_ID = 1");
-$huisnummer = SqlQuery("SELECT House_Number FROM Address WHERE Address_ID = 1");
-$toevoegsel = SqlQuery("SELECT Addition FROM Address WHERE Address_ID = 1");
-//$provincie = SqlQuery("SELECT stateprovincename FROM stateprovinces WHERE StateProvinceID = 2");
-$telefoonnr = SqlQuery("SELECT Phone FROM customer WHERE Customer_ID = 1");
-$voornaam = SqlQuery("SELECT First_Name FROM customer WHERE Customer_ID = 1" );
-$achternaam = SqlQuery("SELECT Last_Name FROM customer WHERE Customer_ID = 1");
-$tussenvoegsels = SqlQuery("SELECT Middle_Name FROM customer WHERE Customer_ID = 1");
-$gbdatum = SqlQuery("SELECT Birthdate FROM customer WHERE Customer_ID = 1");
 
-//Controleren of er wat in de variable tussenvoegsels staat
-if (strlen($tussenvoegsels) > 1) {
-    $fullname = $voornaam . " " . $tussenvoegsels . " " . $achternaam;
-} else {
-    $fullname = $voornaam . " " . $achternaam;
-}
+    //Functie de connect met de database en de rows teruggeeft
+    //*****GEERT-JAN VERKUIL*******\\
+    function GetData($sql, $onlyOneRecord = false)
+    {
+        //Verbinding maken met de database
 
-$servername = "localhost";
-$DBusername = "root";
-$DBpassword = "";
-$DBname = "wwi";
-$port = "3306";
+        //Query uitvoeren
+        $conn = get_connection();
+        $statement = mysqli_prepare($conn, $sql);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
 
-$sql = "SELECT Order_ID, Date FROM Orders WHERE customer_ID = 1";
+        $resultList = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $resultList[] = $row;
+        }
+        $conn->close();
 
-$conn = mysqli_connect($servername, $DBusername, $DBpassword, $DBname, $port);
-$statement = mysqli_prepare($conn, $sql);
-mysqli_stmt_execute($statement);
-$result = mysqli_stmt_get_result($statement);
+        if ($onlyOneRecord) {
+            return $resultList[0];
+        }
+        return $resultList;
+    }
 
-$orders = array();
-$datums = array();
+    function UpdateData($sql) {
 
-$naamOrder = SqlQuery("SELECT First_Name FROM customer WHERE Customer_ID = 1");
+    }
 
-while(($row = mysqli_fetch_assoc($result))) {
-    $orders[] = $row['Order_ID'];
-    $datums[] = $row['Date'];
-}
-$aantalOrders = count($orders);
+    // ################################################
+    // Ophalen klant en adresgegevens
+    // ################################################
+    $hugeQuery = "
+        SELECT A.City, A.Zip_Code, A.Street_Name, A.House_Number, A.Addition, C.Phone, C.First_Name, C.Last_Name, C.Middle_Name, C.Birthdate, C.Email
+        FROM Customer as C 
+        LEFT JOIN Address as A 
+        ON C.customer_ID = A.Address_ID
+        WHERE C.Customer_ID = {$_CustomerID}
+    ";
 
-if (isset($_POST['opslaanAccountinfo'])) {
-    $voornaamDB = $_POST['voornaam'];
-    $tussenvoegselsDB = $_POST['tussenvoegsel'];
-    $achternaamDB = $_POST['achternaam'];
-    $emailDB = $_POST['email'];
-    $wachtwoordDB = $_POST['nieuwwachtwoord'];
+    $CustomerData = GetData($hugeQuery, true);
 
-    $sql = "UPDATE Customer SET First_Name =?, Last_Name =?, Middle_Name =?, Email =?, Password =? WHERE Customer_ID = 1";
-    $statement = mysqli_prepare($conn, "UPDATE Customer SET First_Name =?, Last_Name =?, Middle_Name =?, Email =? WHERE Customer_ID = 1");
+    $email = $CustomerData["Email"];
+    $straat = $CustomerData["Street_Name"];
+    $plaats = $CustomerData["City"];
+    $postcode = $CustomerData["Zip_Code"];
+    $huisnummer = $CustomerData["House_Number"];
+    $toevoegsel = $CustomerData["Addition"];
+    $telefoonnr = $CustomerData["Phone"];
+    $voornaam = $CustomerData["First_Name"];
+    $achternaam = $CustomerData["Last_Name"];
+    $tussenvoegsels = $CustomerData["Middle_Name"];
+    $gbdatum = $CustomerData["Birthdate"];
 
-    mysqli_stmt_bind_param($statement, 'ssss', $voornaamDB, $achternaamDB, $tussenvoegselsDB, $emailDB);
-    mysqli_stmt_execute($statement);
-    $result = mysqli_stmt_get_result($statement);
+    //Controleren of er wat in de variable tussenvoegsels staat
+    if (strlen($tussenvoegsels) > 1) {
+        $fullname = $voornaam . " " . $tussenvoegsels . " " . $achternaam;
+    } else {
+        $fullname = $voornaam . " " . $achternaam;
+    }
 
-    header("Location: AccountInfo.php");
-}
+    // ################################################
+    // Ophalen ordergegevens
+    // ################################################
 
-if (isset($_POST['opslaanAfleveradres'])) {
-    $plaatsDB = $_POST['plaats'];
-    $postcodeDB = $_POST['postcode'];
-    $straatDB = $_POST['straat'];
-    $huisnummerDB = $_POST['huisnnr'];
-    $toevoegselDB = $_POST['toevoegsel'];
-//    if(strtoupper($_POST['land']) != "NEDERLAND") {
-//        print("Het is alleen mogelijk om te verzenden naar Nederland.");
-//    }
-    $telefoonnrDB = $_POST['telefoonnr'];
+    $sql = "SELECT O.Order_ID, O.Date, C.First_Name 
+            FROM Orders as O 
+            LEFT JOIN Customer as C 
+            ON C.Customer_ID = O.Customer_ID
+            WHERE C.Customer_ID = {$_CustomerID}";
 
-    $sql = "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET C.Phone =?, A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = 1";
-    $statement = mysqli_prepare($conn, "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET C.Phone =?, A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = 1");
+    $OrderData = GetData($sql, false);
 
-    mysqli_stmt_bind_param($statement, 'isssis', $telefoonnrDB, $plaatsDB, $postcodeDB, $straatDB, $huisnummerDB, $toevoegselDB);
-    mysqli_stmt_execute($statement);
-    $result = mysqli_stmt_get_result($statement);
+    // ################################################
+    // Opslaan gewijzigde account/afleveradres/factuuradres gegevens.
+    // ################################################
 
-    header("Location: Afleveradres.php");
-}
+    if (isset($_POST['opslaanAccountinfo'])) {
+        $voornaamDB = $_POST['voornaam'];
+        $tussenvoegselsDB = $_POST['tussenvoegsel'];
+        $achternaamDB = $_POST['achternaam'];
+        $emailDB = $_POST['email'];
+        $wachtwoordDB = $_POST['nieuwwachtwoord'];
 
-if (isset($_POST['opslaanFactuuradres'])) {
-    $plaatsDB = $_POST['plaats'];
-    $postcodeDB = $_POST['postcode'];
-    $straatDB = $_POST['straat'];
-    $huisnummerDB = $_POST['huisnnr'];
-    $toevoegselDB = $_POST['toevoegsel'];
-//    if(strtoupper($_POST['land']) != "NEDERLAND") {
-//        print("Het is alleen mogelijk om te verzenden naar Nederland.");
-//    }
+        $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer SET First_Name =?, Last_Name =?, Middle_Name =?, Email =? WHERE Customer_ID = {$_CustomerID}");
 
-    $sql = "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = 1";
-    $statement = mysqli_prepare($conn, "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = 1");
+        mysqli_stmt_bind_param($statement, 'ssss', $voornaamDB, $achternaamDB, $tussenvoegselsDB, $emailDB);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
 
-    mysqli_stmt_bind_param($statement, 'sssis', $plaatsDB, $postcodeDB, $straatDB, $huisnummerDB, $toevoegselDB);
-    mysqli_stmt_execute($statement);
-    $result = mysqli_stmt_get_result($statement);
+        header("Location: AccountInfo.php?message=Je gegevens zijn succesvol verwerkt!");
+    }
 
-    header("Location: Factuuradres.php");
-}
+    if (isset($_POST['opslaanAfleveradres'])) {
+        $plaatsDB = $_POST['plaats'];
+        $postcodeDB = $_POST['postcode'];
+        $straatDB = $_POST['straat'];
+        $huisnummerDB = $_POST['huisnnr'];
+        $toevoegselDB = $_POST['toevoegsel'];
+        $telefoonnrDB = $_POST['telefoonnr'];
+
+        $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET C.Phone =?, A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = {$_CustomerID}");
+
+        mysqli_stmt_bind_param($statement, 'isssis', $telefoonnrDB, $plaatsDB, $postcodeDB, $straatDB, $huisnummerDB, $toevoegselDB);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
+
+        header("Location: Afleveradres.php?message=Je gegevens zijn succesvol verwerkt!");
+    }
+
+
+    if (isset($_POST['opslaanFactuuradres'])) {
+        $plaatsDB = $_POST['plaats'];
+        $postcodeDB = $_POST['postcode'];
+        $straatDB = $_POST['straat'];
+        $huisnummerDB = $_POST['huisnnr'];
+        $toevoegselDB = $_POST['toevoegsel'];
+
+        $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer as C JOIN Address as A ON C.Customer_ID = A.Address_ID  SET A.city =?, A.Zip_Code =?, A.street_name =?, A.House_number =?, A.addition =? WHERE Customer_ID = {$_CustomerID}");
+
+        mysqli_stmt_bind_param($statement, 'sssis', $plaatsDB, $postcodeDB, $straatDB, $huisnummerDB, $toevoegselDB);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
+
+        header("Location: Factuuradres.php?message=Je gegevens zijn succesvol verwerkt!");
+    }
+
+    // ################################################
+    // Wachtwoord veranderen
+    // ################################################
+
+    // Check if we have to save password
+    if (isset($_POST['opslaanWachtwoord'])) {
+
+        // yes, we have to change password
+        $passwordChangeResult = ChangePassword($_CustomerID);
+
+        switch ($passwordChangeResult) {
+            case "PASSWORDS_NOT_THE_SAME":
+                header("Location: AccountInfo.php?messagepass=Je wachtwoorden komen niet overeen!");
+                break;
+            case "PASSWORD_NOT_CORRECT":
+                header("Location: AccountInfo.php?messagepass=Je wachtwoord is onjuist!");
+                break;
+            case "PASSWORD_CHANGED":
+                header("Location: AccountInfo.php?messagepass=Je wachtwoord is succesvol gewijzigd!");
+                break;
+        }
+
+    }
+
+
+    function ChangePassword($customerID) {
+
+        $wachtwoord = $_POST['nieuwwachtwoord'];
+        $wachtwoordCheck = $_POST['herhaalwachtwoord'];
+
+        //Check if the two input passwords are the same.
+        if($wachtwoord != $wachtwoordCheck)
+        {
+            return "PASSWORDS_NOT_THE_SAME";
+        }
+
+        // yes, we have to change password
+        // Now first, get current password from database
+
+        // build query
+        $getPasswordQuery = "SELECT Password
+             FROM Customer 
+             WHERE Customer_ID = {$customerID}";
+
+        $PassData = GetData($getPasswordQuery, true);
+        $oudeWachtwoord = $PassData['Password'];
+
+        // ok, now check if current password from database
+        // is the same as user input password.
+        
+        if(!password_verify($_POST['wachtwoord'], $oudeWachtwoord)) {
+            return "PASSWORD_NOT_CORRECT";
+        }
+        //
+        $nieuweDatabaseWachtwoord = password_hash($wachtwoord, PASSWORD_DEFAULT);
+        $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer SET password =? WHERE Customer_ID = {$customerID}");
+
+        mysqli_stmt_bind_param($statement, 's', $nieuweDatabaseWachtwoord);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
+
+        return "PASSWORD_CHANGED";
+    }
+
+
+
+    // ################################################
+    // Review gegevens opslaan.
+    // ################################################
+    if (isset($_POST['plaatsreview'])) {
+        $productDB = 8;
+        $emailDB = $_POST['mail'];
+        $scoreDB = $_POST['star'];
+        $beoordelingDB = $_POST['beoordeling'];
+
+        $statement = mysqli_prepare($conn = get_connection(), "INSERT INTO product_review VALUES(?,?,?,?)");
+
+        mysqli_stmt_bind_param($statement, 'isis', $productDB, $emailDB, $scoreDB, $beoordelingDB);
+        mysqli_stmt_execute($statement);
+        $result = mysqli_stmt_get_result($statement);
+
+        header("Location: Reviews.php?message=Je review is succesvol geplaatst!");
+    }
+    ?>
+

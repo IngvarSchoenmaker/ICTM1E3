@@ -1,5 +1,7 @@
 <?php
-include '../incl/header.php'
+include '../incl/db.php';
+include '../incl/header.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +26,7 @@ Voornaam:<br><input type="text" name="Voornaam"> <br>
 Achternaam:<br><input type="text" name="Achternaam"> <br>
 Emailadres:<br><input type="text" name="Email"> <br>
 Telefoonnummer:<br><input type="text" name="Telefoonnummer"> <br>
-Bericht:<br><textarea name="Opmerking"> </textarea> <br>
+Bericht:<br><textarea name="Opmerking"></textarea> <br>
 
 
 
@@ -123,7 +125,14 @@ Bericht:<br><textarea name="Opmerking"> </textarea> <br>
 
                     <span class="txt3">
 							WWI@Worldwideimporters.com
-						</span>
+                    </span>
+
+                    <div>
+                    <span>
+
+                        Volg ons op: <a href="https://nl-nl.facebook.com/"><img src="../recources/voorbeeld%20fotos/facebook.jpg" style="width: 3%;"></a> <a href="https://twitter.com/?lang=nl"><img src="../recources/voorbeeld%20fotos/logo.png" style="width: 3%;"></a>
+                    </span>
+
                 </div>
             </div>
         </div>
