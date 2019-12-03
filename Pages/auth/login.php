@@ -40,15 +40,14 @@ require '../../incl/header.php';
 
 
 if(isset($_POST['inloggen'])) {
-
-
         $query = "SELECT Customer_ID FROM Customer WHERE Email = '$email' AND Password = '$password'";
-        $statement = mysqli_prepare($conn, $query);
+        $statement = mysqli_prepare($conn, $query)  or die(mysqli_error($conn));
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
+        $row = mysqli_fetch_array($result);
 
         if (!empty($result)) {
-            $_SESSION['ID'] = $result;
+            $_SESSION['ID'] = $row["Customer_ID"];
         }
     }
 }
