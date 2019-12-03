@@ -1,3 +1,7 @@
+<?php
+include '../incl/header.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +14,7 @@
             align-items: center;
             text-align: center;
         }
+
         .box {
             display: flex;
             flex-basis: border-box;
@@ -31,7 +36,7 @@
     <a href="Factuuradres.php">Factuuradres</a><br><br>
     <a href="Afleveradres.php">Afleveradres</a><br><br>
     <a href="MijnBestellingen.php">Mijn bestellingen</a><br><br>
-    <a href="../shoppingcart/ShoppingCart.php">Mijn winkelwagen</a><br><br>
+    <a href="../ShoppingCart.php">Mijn winkelwagen</a><br><br>
     <a href="MijnAccount.php">Afmelden</a><br>
 </div>
 

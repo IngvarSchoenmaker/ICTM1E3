@@ -4,7 +4,7 @@ $(document).ready(function() {
         let inputVal = $(this).val();
         let resultDropdown = $(this).siblings(".result");
         if (inputVal.length) {
-            $.get("../Pages/search/surgestions.php", {term: inputVal}).done(function (data) {
+            $.get("../Pages/surgestions.php", {term: inputVal}).done(function (data) {
                 // Display the returned data in browser
                 resultDropdown.html(data);
             });

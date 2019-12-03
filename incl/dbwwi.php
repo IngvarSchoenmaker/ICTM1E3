@@ -2,6 +2,6 @@
 $server = "localhost";
 $username = "root";
 $password = "";
-$dbname = "wwi";
+$dbname = "wideworldimporters";
 $conn = mysqli_connect($server, $username, $password, $dbname);
 ?>

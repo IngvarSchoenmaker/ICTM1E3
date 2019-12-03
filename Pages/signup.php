@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require "../../incl/header.php";
+require "../incl/header.php";
 ?>
 
     <html>
@@ -220,7 +220,7 @@ if(isset($_GET['error'])){
 
 
 <?php
-include '../../incl/footer.php';
+include '../incl/footer.php';
 ?>
 
 

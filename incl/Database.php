@@ -1,6 +1,6 @@
 <?php
 
-    $_SESSION['CustomerID'] = 3;
+    $_SESSION['CustomerID'] = 1;
     $_CustomerID = $_SESSION['CustomerID'];
 
     //functie die connectie legt met de database.
@@ -9,7 +9,7 @@
         $_database["server"] = "localhost";
         $_database["username"] = "root";
         $_database["password"] = "";
-        $_database["name"] = "test";
+        $_database["name"] = "onzedbwwi";
         $_database["poort"] = "3306";
 
         return mysqli_connect($_database["server"], $_database["username"], $_database["password"], $_database["name"], $_database["poort"]);
