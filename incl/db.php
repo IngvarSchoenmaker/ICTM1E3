@@ -1,6 +1,4 @@
 <?php
-
-//<<<<<<< HEAD
 // het weergeven van de errors wordt hierdoor geactiveerd zorg ervoor dat je try en catch gebruikt!!! (i.v.m gevoelige data)
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
