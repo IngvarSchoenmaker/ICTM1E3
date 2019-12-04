@@ -10,7 +10,7 @@ if(!empty($shoppinglist_ID)){
 
     }else {
         header("Location: shoppingcart queries.php");
-        exit;
+//        exit;
     }
 };
 ?>
@@ -86,7 +86,7 @@ if(!empty($shoppinglist_ID)){
             $rating = DeSessionImplode($rating);
 
 
-            $unitPrice = $_SESSION['itempPrice'];
+            $unitPrice = $_SESSION['itemPrice'];
             $unitPrice = DeSessionImplode($unitPrice);
 
 
@@ -95,14 +95,7 @@ if(!empty($shoppinglist_ID)){
 
             $cartTotal = 0;
 
-//        function bar($ID){
-//                var x = document.getElementById("aantal").value;
-//                document.getElementById("nieuw").innerHTML = x;
-//                $aantal="nieuw";
-//                return($aantal);
-//            // Deze functie moet de prijs totaal updaten binnen de foreach.
-//
-//        }
+
 
             foreach ($_SESSION['cart'] as $ID => $aantal) {
                 $unitTotal = ($aantal * $unitPrice[$ID]);
