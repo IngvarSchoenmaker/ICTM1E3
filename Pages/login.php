@@ -37,11 +37,21 @@ require '../incl/header.php';
                                         $passwordcheck = TRUE;
                                     }
                                     if ($passwordcheck === false) {
-                                        $stmt->close();
                                         print('Incorrecte combinatie');
                                     } else {
-                                        $stmt->close();
                                         $_SESSION['loginsucesesvol'] = true;
+                                        $stmt = $conn->prepare("SELECT Customer_ID FROM Customer WHERE Email = ?");
+                                        $stmt->bind_param("s", $email);
+                                        $stmt->execute();
+                                        $result = mysqli_stmt_get_result($stmt);
+                                        $row = mysqli_fetch_array($result);
+                                        if (!empty($result)) {
+                                            $_SESSION['ID'] = $row['Customer_ID'];
+                                        }
+                                        else{
+                                            echo "error!";
+                                        }
+                                        $stmt->close();
                                         header('Location: ../Pages/index.php');
                                     }
                                 }
