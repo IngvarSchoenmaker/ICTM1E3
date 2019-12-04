@@ -45,17 +45,14 @@ if (isset($_POST['inloggen'])) {
             } else {
                 $passwordcheck = TRUE;
             }
-
-        }
-        if ($passwordcheck === false) {
-            $stmt->close();
-            print('Incorrecte combinatie');
-        } else {
-            $stmt->close();
-            $_SESSION['loginsucesesvol'] = true;
-
-
-            header('Location: ../Pages/index.php');
+            if ($passwordcheck === false) {
+                $stmt->close();
+                print('Incorrecte combinatie');
+            } else {
+                $stmt->close();
+                $_SESSION['loginsucesesvol'] = true;
+                header('Location: ../Pages/index.php');
+            }
         }
     }
 }
