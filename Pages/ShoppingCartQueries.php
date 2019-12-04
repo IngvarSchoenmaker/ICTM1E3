@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../incl/db.php";
 $servername = "localhost";
 $DBusername = "root";
@@ -12,7 +13,7 @@ die("Could not connect: " . mysqli_error());
 
 //// vraag van de database de productenlijst voor deze bezoeker op.voor nu als voorbeeld onderstaande productenlijst.
 $_SESSION['shoppinglist_ID']=2;
-$productenlijstID=$_SESSION['shoppinglist_ID'];
+$productenlijstID = $_SESSION['shoppinglist_ID'];
 
 function SqlGetSingleRow($sql, $conn)
 {
@@ -98,13 +99,6 @@ foreach($itemList as $key => $value){
     }
 };
 
-
-
-
-
-
-
-
 //      *** Voor elk product dat in de winkelwagen staat wordt de nodige informatie opgevraagt.***
 foreach($productList as $ID => $aantal) {
     $unitPrice[$ID] = SqlGetSingleRow("SELECT UnitPrice FROM stockitems WHERE StockItemID = '$ID'",$connWWI);
@@ -114,11 +108,7 @@ foreach($productList as $ID => $aantal) {
     $rating[$ID]=SqlGetSingleRow("SELECT AVG(Stars) FROM Reviews WHERE ID_Product='$ID'",$connOnzeDB);
 //    $rating[$ID]=SqlGetSingleRow("SELECT review FROM shoppinglist WHERE Shoppinglist_ID=$productenlijstID AND ID_Product='$ID' ",$connOnzeDB);
     $itemTotal[$ID]= $aantal * implode('|', $unitPrice[$ID]);
-
-
-
 }
-
 
 function smallerArrayImplode($array){
 //    ***Haalt resultaten SQL queries uit elkaar en zet ze weer in elkaar zodat de key product_ID wordt***
@@ -136,7 +126,6 @@ function smallerArrayImplode($array){
         }
 
     }
-
     return($result);
 }
 $unitPrice=smallerArrayImplode($unitPrice);

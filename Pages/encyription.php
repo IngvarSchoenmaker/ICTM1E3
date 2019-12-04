@@ -3,7 +3,7 @@ require '../incl/db.php';
 
 $wachtwoord = 'zackaria';
 
-$encrypted = (password_hash($wachtwoord, CRYPT_MD5));
+$encrypted = (password_hash($wachtwoord, PASSWORD_DEFAULT));
 
 if (password_verify($wachtwoord, $encrypted)) {
 

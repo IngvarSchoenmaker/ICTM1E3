@@ -1,6 +1,6 @@
 <?php
 ob_start();
-include "../incl/header.php";
+require "../incl/header.php";
 if(isset($_SESSION['ID'])) {
     $customer_ID = $_SESSION['ID'];
 } else{
