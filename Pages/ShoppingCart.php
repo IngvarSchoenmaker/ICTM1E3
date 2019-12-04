@@ -1,12 +1,14 @@
 <?php
+session_start;
 include "../incl/header.php";
 
 $customer_ID=2;
+print_r($_SESSION['cart']);
 $shoppinglist_ID=(SqlQuery("SELECT shoppinglist_ID FROM shoppinglist WHERE customer_ID =$customer_ID"));
 if(!empty($shoppinglist_ID)){
     $shoppinglist_ID=implode('|',$shoppinglist_ID);
     $_SESSION['shoppinglist_ID']=$shoppinglist_ID;
-    if($_SESSION['Querycheck']){
+    if(isset($_SESSION['Querycheck']) AND $_SESSION['Querycheck']){
 
     }else {
         header("Location: shoppingcart queries.php");

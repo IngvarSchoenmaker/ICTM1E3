@@ -1,5 +1,5 @@
 <?php
-
+session_start;
 include "../incl/db.php";
 $servername = "localhost";
 $DBusername = "root";
@@ -155,7 +155,7 @@ $_SESSION['itemPhoto']=$photo;
 $_SESSION['itemRating']=$rating;
 $_SESSION['itemTotalPrice']=$itemTotal;
 $_SESSION['cart'] =$productList;
-
+print_r($_SESSION['cart']);
     $_SESSION['Querycheck']=true;
     header("Location: shoppingcart.php");
 //    exit;
