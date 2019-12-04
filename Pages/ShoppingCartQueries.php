@@ -87,7 +87,7 @@ foreach($itemList as $key => $value){
         if(empty($value2)) {
             print("array is empty.");
             $_SESSION['Querycheck']=true;
-            header("Location: shoppingcart.php");
+            header("Location: ../Pages/shoppingcart.php");
             exit;
         }else {
             $itemList[$key] = ($value2);
