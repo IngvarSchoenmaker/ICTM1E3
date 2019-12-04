@@ -1,5 +1,5 @@
 <?php
-session_start;
+session_start();
 include "../incl/db.php";
 $servername = "localhost";
 $DBusername = "root";
@@ -13,7 +13,7 @@ die("Could not connect: " . mysqli_error());
 
 //// vraag van de database de productenlijst voor deze bezoeker op.voor nu als voorbeeld onderstaande productenlijst.
 $_SESSION['shoppinglist_ID']=2;
-$productenlijstID=$_SESSION['shoppinglist_ID'];
+$productenlijstID = $_SESSION['shoppinglist_ID'];
 
 function SqlGetSingleRow($sql, $conn)
 {
@@ -84,29 +84,20 @@ Function ArrayImplode($array)
 //      *** Items uit winkelwagen worden opgevraagd van de database en in bruikbare array gezet***
 $itemList[]=SqlGetRows("SELECT ID_Product FROM shoppinglist WHERE Shoppinglist_ID = '$productenlijstID'",$connOnzeDB);
 foreach($itemList as $key => $value){
-    print_r($value);
     foreach($value as $key2 => $value2){
         if(empty($value2)) {
             print("array is empty.");
             $_SESSION['Querycheck']=true;
-            header("Location: shoppingcart.php");
+            header("Location: ../Pages/shoppingcart.php");
             exit;
         }else {
             $itemList[$key] = ($value2);
             foreach($value2 as $key4 => $value4) {
                 $productList[$value4] = implode('|',SqlGetSingleRow("SELECT Product_Quantity FROM shoppinglist WHERE Shoppinglist_ID=$productenlijstID AND ID_Product= $value4",$connOnzeDB));
-                print_r($productList);
             }
         }
     }
 };
-
-
-
-
-
-
-
 
 //      *** Voor elk product dat in de winkelwagen staat wordt de nodige informatie opgevraagt.***
 foreach($productList as $ID => $aantal) {
@@ -117,11 +108,7 @@ foreach($productList as $ID => $aantal) {
     $rating[$ID]=SqlGetSingleRow("SELECT AVG(Stars) FROM Reviews WHERE ID_Product='$ID'",$connOnzeDB);
 //    $rating[$ID]=SqlGetSingleRow("SELECT review FROM shoppinglist WHERE Shoppinglist_ID=$productenlijstID AND ID_Product='$ID' ",$connOnzeDB);
     $itemTotal[$ID]= $aantal * implode('|', $unitPrice[$ID]);
-
-
-
 }
-
 
 function smallerArrayImplode($array){
 //    ***Haalt resultaten SQL queries uit elkaar en zet ze weer in elkaar zodat de key product_ID wordt***
@@ -139,7 +126,6 @@ function smallerArrayImplode($array){
         }
 
     }
-
     return($result);
 }
 $unitPrice=smallerArrayImplode($unitPrice);
@@ -155,7 +141,6 @@ $_SESSION['itemPhoto']=$photo;
 $_SESSION['itemRating']=$rating;
 $_SESSION['itemTotalPrice']=$itemTotal;
 $_SESSION['cart'] =$productList;
-print_r($_SESSION['cart']);
     $_SESSION['Querycheck']=true;
     header("Location: shoppingcart.php");
 //    exit;
