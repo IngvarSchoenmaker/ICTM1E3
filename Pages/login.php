@@ -8,7 +8,6 @@ require '../incl/header.php';
     <div class="inlogscherm" style="display: inline-block">
     <form method="post" action="login.php">
     <fieldset>
-
         <legend>inloggen:</legend>
         Emailadres:<br><input type="email" name="emailadres"><br>
         wachtwoord:<br><input type="password" name="password"><br><br>
@@ -22,7 +21,6 @@ if (isset($_POST['inloggen'])) {
     $password = $_POST['password'];
 
     if (empty($email) || empty($password)) { // hier wordt gecontroleerd of de input velden zijn ingevuld
-
         print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">De verplichte velden zijn niet ingevuld!</p>");
     }
 
@@ -33,7 +31,6 @@ if (isset($_POST['inloggen'])) {
         if (empty($email) || empty($password)) { // hier wordt gecontroleerd of de input velden zijn ingevuld
             print("De verplichte velden zijn niet ingevuld!");
         } else {
-
             $stmt = $conn->prepare("SELECT Password FROM customer WHERE Email=?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
@@ -45,7 +42,6 @@ if (isset($_POST['inloggen'])) {
             } else {
                 $passwordcheck = TRUE;
             }
-
         }
         if ($passwordcheck === false) {
             $stmt->close();
@@ -53,8 +49,6 @@ if (isset($_POST['inloggen'])) {
         } else {
             $stmt->close();
             $_SESSION['loginsucesesvol'] = true;
-
-
             header('Location: ../Pages/index.php');
         }
     }
