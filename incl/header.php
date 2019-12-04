@@ -122,7 +122,7 @@ session_start();
                         }
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="../Pages/ShoppingCart Queries.php"><i class="fas fa-shopping-cart"></i></a>
+                            <a class="nav-link" href="../Pages/ShoppingCartQueries.php"><i class="fas fa-shopping-cart"></i></a>
                         </li>
                     </ul>
                 </div>
