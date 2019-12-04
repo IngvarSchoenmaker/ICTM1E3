@@ -12,7 +12,7 @@ $connOnzeDB = mysqli_connect($servername, $DBusername, $DBpassword, "onzedbwwi",
 die("Could not connect: " . mysqli_error());
 
 //// vraag van de database de productenlijst voor deze bezoeker op.voor nu als voorbeeld onderstaande productenlijst.
-$productenlijstID=0;
+$productenlijstID=$_SESSION['shoppinglist_ID'];
 
 function SqlGetSingleRow($sql, $conn)
 {
@@ -76,10 +76,20 @@ Function ArrayImplode($array)
 
 //      *** Items uit winkelwagen worden opgevraagd van de database en in bruikbare array gezet***
 $itemList[]=SqlGetRows("SELECT ID_Product FROM shoppinglist WHERE Shoppinglist_ID = '$productenlijstID'",$connOnzeDB);
-$itemList=(ArrayImplode($itemList));
-foreach($itemList as $key4 => $value4) {
-    $productList[$value4] = implode('|',SqlGetSingleRow("SELECT Product_Quantity FROM shoppinglist WHERE Shoppinglist_ID=$productenlijstID AND ID_Product= $value4",$connOnzeDB));
+foreach($itemList as $key => $value){
+if(empty(implode('|',$value))) {
+    print("array is empty.");
+   $_SESSION['Querycheck']=true;
+    header("Location: shoppingcart.php");
+    exit;
+}else {
+    $itemList = (ArrayImplode($itemList));
+    foreach($itemList as $key4 => $value4) {
+        $productList[$value4] = implode('|',SqlGetSingleRow("SELECT Product_Quantity FROM shoppinglist WHERE Shoppinglist_ID=$productenlijstID AND ID_Product= $value4",$connOnzeDB));
+    }
 }
+};
+
 
 
 
@@ -92,8 +102,8 @@ foreach($productList as $ID => $aantal) {
     $unitPrice[$ID] = SqlGetSingleRow("SELECT UnitPrice FROM stockitems WHERE StockItemID = '$ID'",$connWWI);
     $itemName[$ID] = SqlGetSingleRow("SELECT StockItemName FROM stockitems WHERE StockItemID = '$ID'",$connWWI);
     $photo[$ID]= SqlGetSingleRow("SELECT Photo FROM product_information WHERE ID_Product='$ID'",$connOnzeDB);
-    $review[$ID]= implode('|',SqlGetSingleRow("SELECT Review FROM Shoppinglist WHERE ID_Product='$ID'",$connOnzeDB));
-    $rating[$ID]=SqlGetSingleRow("SELECT review FROM shoppinglist WHERE Shoppinglist_ID=$productenlijstID AND ID_Product='$ID' ",$connOnzeDB);
+    $rating[$ID]=SqlGetSingleRow("SELECT AVG(Stars) FROM Reviews WHERE ID_Product='$ID'",$connOnzeDB);
+//    $rating[$ID]=SqlGetSingleRow("SELECT review FROM shoppinglist WHERE Shoppinglist_ID=$productenlijstID AND ID_Product='$ID' ",$connOnzeDB);
     $itemTotal[$ID]= $aantal * implode('|', $unitPrice[$ID]);
 
 
@@ -133,4 +143,9 @@ $_SESSION['itemPhoto']=$photo;
 $_SESSION['itemRating']=$rating;
 $_SESSION['itemTotalPrice']=$itemTotal;
 $_SESSION['cart'] =$productList;
+
+    $_SESSION['Querycheck']=true;
+    header("Location: shoppingcart.php");
+    exit;
+
 ?>

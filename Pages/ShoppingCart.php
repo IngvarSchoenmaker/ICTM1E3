@@ -2,9 +2,17 @@
 include "../incl/header.php";
 
 $customer_ID=2;
-$shoppinglist_ID=(implode('|',SqlQuery("SELECT shoppinglist_ID FROM customer WHERE customer_ID =$customer_ID")));
+$shoppinglist_ID=(SqlQuery("SELECT shoppinglist_ID FROM shoppinglist WHERE customer_ID =$customer_ID"));
+if(!empty($shoppinglist_ID)){
+    $shoppinglist_ID=implode('|',$shoppinglist_ID);
+    $_SESSION['shoppinglist_ID']=$shoppinglist_ID;
+    if($_SESSION['Querycheck']){
 
-include "ShoppingCart Queries.php";
+    }else {
+        header("Location: shoppingcart queries.php");
+        exit;
+    }
+};
 ?>
     <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +25,6 @@ include "ShoppingCart Queries.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="../JS/ShoppingCart.js" async></script>
-
 </head>
 <body>
 
@@ -67,18 +74,26 @@ include "ShoppingCart Queries.php";
         }
         return($result);
         }
+        if(!empty($_SESSION['Cart'])) {
+            $photo = $_SESSION['itemPhoto'];
+            $photo = DeSessionImplode($photo);
 
-        $photo=$_SESSION['itemPhoto'];
-        $photo=DeSessionImplode($photo);
-        $unitName=$_SESSION['itemName'];
-        $unitName=DeSessionImplode($unitName);
-        $rating=$_SESSION['itemRating'];
-        $rating=DeSessionImplode($rating);
-        $unitPrice=$_SESSION['itempPrice'];
-        $unitPrice=DeSessionImplode($unitPrice);
-        $unitTotal=$_SESSION['itemTotalPrice'];
-        $unitTotal=DeSessionImplode($unitTotal);
-        $cartTotal=0;
+            $unitName = $_SESSION['itemName'];
+            $unitName = DeSessionImplode($unitName);
+
+
+            $rating = $_SESSION['itemRating'];
+            $rating = DeSessionImplode($rating);
+
+
+            $unitPrice = $_SESSION['itempPrice'];
+            $unitPrice = DeSessionImplode($unitPrice);
+
+
+            $unitTotal = $_SESSION['itemTotalPrice'];
+            $unitTotal = DeSessionImplode($unitTotal);
+
+            $cartTotal = 0;
 
 //        function bar($ID){
 //                var x = document.getElementById("aantal").value;
@@ -89,9 +104,9 @@ include "ShoppingCart Queries.php";
 //
 //        }
 
-        foreach($_SESSION['cart'] as $ID => $aantal){
-        $unitTotal=($aantal*$unitPrice[$ID]);
-        print("
+            foreach ($_SESSION['cart'] as $ID => $aantal) {
+                $unitTotal = ($aantal * $unitPrice[$ID]);
+                print("
         
  <tr class='cart-row'>
  
@@ -112,15 +127,15 @@ include "ShoppingCart Queries.php";
         
         ");
 
-        $cartTotal+=$unitTotal;
-        }
-        print("
+                $cartTotal += $unitTotal;
+            }
+            print("
         <div class='end-row'>
         <tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$cartTotal<BR><button class='btn-order' type='button'>Bestellen</button></td></tr>
         
         </div>
         ");
-
+        }
         ?>
 
         </tbody>
