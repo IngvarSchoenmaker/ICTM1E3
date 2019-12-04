@@ -37,7 +37,7 @@
                 <div class="widget no-box">
                     <h5 class="widget-title">Volg ons op sociale media<span></span></h5>
 
-                    <p><a href="wordwideimporters@gmail.com" title="glorythemes">wordwideimporters@gmail.com</a></p>
+                    <p><a href="wordwideimporters@gmail.com" title="glorythemes">WWI@Worldwideimporters.com</a></p>
                     <ul class="social-footer2">
                         <li class=""><a href="https://www.youtube.com/" target="_blank" title="youtube"><img alt="Youtube" width="30" height="30"></a></li>
                         <li class=""><a href="https://www.facebook.com/" target="_blank" title="Facebook"><img alt="Facebook" width="30" height="30"></a></li>

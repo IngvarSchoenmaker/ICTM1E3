@@ -8,7 +8,7 @@ include '../incl/Database.php';
 ?>
 
 <!--Laadt javascript bestand met functies in.-->
-<script type="text/javascript" src="../../JS/Functions.js"></script>
+<script type="text/javascript" src="../JS/Functions.js"></script>
 
 <div class="container" style="margin-top:200px; margin-bottom: 100px; text-align: center">
     <div class="row">
@@ -31,7 +31,7 @@ if (!empty($_GET['messagepass'])) {
 De gebruiker kan hier zijn gegevens ook wijzigen. -->
 <div class="AccForm">
 
-    <form action="Database.php" method="post">
+    <form action="../incl/Database.php" method="post">
         <!--        De functie in de onklick zorgt ervoor dat er gegevens gewijzigd kunnen worden-->
         <!--        wanneer er op de knop wijzig gedrukt word.-->
         <input onclick="ChangeForm()" id="wijzig" name="wijzig" type="button" value="Wijzig"> <br>

@@ -113,7 +113,7 @@ session_start();
                         else {
                         ?>
                         <li class="nav-item" style="margin-left: 600px">
-                            <a class="nav-link" href="../Pages/AccountInfo.php">Mijn Account</a>
+                            <a class="nav-link" href="../Pages/MijnAccount.php">Mijn Account</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../Pages/logout.php">Uitloggen</a>

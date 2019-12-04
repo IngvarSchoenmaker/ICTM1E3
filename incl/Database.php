@@ -12,7 +12,12 @@
         $_database["name"] = "onzedbwwi";
         $_database["poort"] = "3306";
 
-        return mysqli_connect($_database["server"], $_database["username"], $_database["password"], $_database["name"], $_database["poort"]);
+        $conn = mysqli_connect($_database["server"], $_database["username"], $_database["password"], $_database["name"], $_database["poort"]);
+        if ($conn->connect_error) {
+            return die("Connection failed: " . $conn->connect_error);
+        }else {
+            return $conn;
+        }
     }
 
     function GetData($sql, $onlyOneRecord = false)
@@ -110,7 +115,7 @@
         $result = mysqli_stmt_get_result($statement);
 
         //Teruggestuurd naar de accountinformatie met een succes melding die wordt meegegeven
-        header("Location: AccountInfo.php?message=Je gegevens zijn succesvol verwerkt!");
+        header("Location: ../Pages/AccountInfo.php?message=Je gegevens zijn succesvol verwerkt!");
     }
 
     //Als er op de knop Opslaan is gedrukt worden de gegevens die ingevuld zijn
@@ -131,7 +136,7 @@
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
         //teruggestuurd naar de afleveradres pagina en succes melding.
-        header("Location: Afleveradres.php?message=Je gegevens zijn succesvol verwerkt!");
+        header("Location: ../Pages/Afleveradres.php?message=Je gegevens zijn succesvol verwerkt!");
     }
 
 
@@ -148,7 +153,7 @@
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
 
-        header("Location: Factuuradres.php?message=Je gegevens zijn succesvol verwerkt!");
+        header("Location: ../Pages/Factuuradres.php?message=Je gegevens zijn succesvol verwerkt!");
     }
 
     // ################################################
@@ -163,13 +168,13 @@
 
         switch ($passwordChangeResult) {
             case "PASSWORDS_NOT_THE_SAME":
-                header("Location: AccountInfo.php?messagepass=Je wachtwoorden komen niet overeen!");
+                header("Location: ../Pages/AccountInfo.php?messagepass=Je wachtwoorden komen niet overeen!");
                 break;
             case "PASSWORD_NOT_CORRECT":
-                header("Location: AccountInfo.php?messagepass=Je wachtwoord is onjuist!");
+                header("Location: ../Pages/AccountInfo.php?messagepass=Je wachtwoord is onjuist!");
                 break;
             case "PASSWORD_CHANGED":
-                header("Location: AccountInfo.php?messagepass=Je wachtwoord is succesvol gewijzigd!");
+                header("Location: ../Pages/AccountInfo.php?messagepass=Je wachtwoord is succesvol gewijzigd!");
                 break;
         }
 
@@ -230,7 +235,7 @@
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
 
-        header("Location: Reviews.php?message=Je review is succesvol geplaatst!");
+        header("Location: ../Pages/Reviews.php?message=Je review is succesvol geplaatst!");
     }
     ?>
 

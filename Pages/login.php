@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require '../incl/header.php';
 ?>
     <div class="container" style="margin-top:200px; margin-bottom: 233px; text-align: center">
@@ -48,11 +49,13 @@ if (isset($_POST['inloggen'])) {
         }
         if ($passwordcheck === false) {
             $stmt->close();
-            print('incorrecte combinatie');
+            print('Incorrecte combinatie');
         } else {
             $stmt->close();
             $_SESSION['loginsucesesvol'] = true;
-            print("U bent nu ingelogd");
+
+
+            header('Location: ../Pages/index.php');
         }
     }
 }
@@ -68,4 +71,5 @@ if (isset($_POST['inloggen'])) {
     </div>
 <?php
 require '../incl/footer.php';
+ob_end_flush();
 ?>

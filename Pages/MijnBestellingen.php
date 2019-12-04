@@ -7,7 +7,7 @@ include '../incl/Database.php';;
 ?>
 
 <!-- Laadt javascript functies in-->
-<script type="text/javascript" src="Functions.js"></script>
+<script type="text/javascript" src="../JS/Functions.js"></script>
 
 <div class="container" style="margin-top:200px; margin-bottom: 100px; text-align: center">
 <h1>Mijn bestellingen</h1>
