@@ -1,7 +1,7 @@
 <?php
+    session_start();
+    $_CustomerID = $_SESSION['ID'];
 
-    $_SESSION['CustomerID'] = 1;
-    $_CustomerID = $_SESSION['CustomerID'];
 
     //functie die connectie legt met de database.
     //gemaakt zodat je connectie kan leggen in een andere functie.
