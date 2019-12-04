@@ -12,11 +12,11 @@ if(!empty($shoppinglist_ID)){
     $shoppinglist_ID=implode('|',$shoppinglist_ID);
     $_SESSION['shoppinglist_ID']=$shoppinglist_ID;
     if(isset($_SESSION['Querycheck']) AND $_SESSION['Querycheck']) {
+    
+    }else {
+        header("Location: shoppingcart queries.php");
+//        exit;
     }
-//    }else {
-//        header("Location: shoppingcart queries.php");
-////        exit;
-//    }
 };
 ?>
     <!DOCTYPE html>
