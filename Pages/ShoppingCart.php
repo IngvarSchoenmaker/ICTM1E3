@@ -136,6 +136,7 @@ if(!empty($shoppinglist_ID)){
         </div>
         ");
         }
+        $_SESSION['Querycheck']=false;
         ?>
 
         </tbody>
