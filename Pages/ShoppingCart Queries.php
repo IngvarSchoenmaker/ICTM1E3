@@ -84,7 +84,6 @@ Function ArrayImplode($array)
 //      *** Items uit winkelwagen worden opgevraagd van de database en in bruikbare array gezet***
 $itemList[]=SqlGetRows("SELECT ID_Product FROM shoppinglist WHERE Shoppinglist_ID = '$productenlijstID'",$connOnzeDB);
 foreach($itemList as $key => $value){
-    print_r($value);
     foreach($value as $key2 => $value2){
         if(empty($value2)) {
             print("array is empty.");
@@ -95,7 +94,6 @@ foreach($itemList as $key => $value){
             $itemList[$key] = ($value2);
             foreach($value2 as $key4 => $value4) {
                 $productList[$value4] = implode('|',SqlGetSingleRow("SELECT Product_Quantity FROM shoppinglist WHERE Shoppinglist_ID=$productenlijstID AND ID_Product= $value4",$connOnzeDB));
-                print_r($productList);
             }
         }
     }
@@ -143,7 +141,6 @@ $_SESSION['itemPhoto']=$photo;
 $_SESSION['itemRating']=$rating;
 $_SESSION['itemTotalPrice']=$itemTotal;
 $_SESSION['cart'] =$productList;
-print_r($_SESSION['cart']);
     $_SESSION['Querycheck']=true;
     header("Location: shoppingcart.php");
 //    exit;

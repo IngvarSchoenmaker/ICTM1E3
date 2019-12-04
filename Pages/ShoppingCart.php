@@ -1,15 +1,18 @@
 <?php
-session_start;
-include "../incl/header.php";
-
-$customer_ID=2;
-print_r($_SESSION['cart']);
+ob_start();
+require "../incl/header.php";
+if(isset($_SESSION['ID'])) {
+    $customer_ID = $_SESSION['ID'];
+} else{
+    $customer_ID=2;
+}
+//print($_SESSION['cart']);
 $shoppinglist_ID=(SqlQuery("SELECT shoppinglist_ID FROM shoppinglist WHERE customer_ID =$customer_ID"));
 if(!empty($shoppinglist_ID)){
     $shoppinglist_ID=implode('|',$shoppinglist_ID);
     $_SESSION['shoppinglist_ID']=$shoppinglist_ID;
-    if(isset($_SESSION['Querycheck']) AND $_SESSION['Querycheck']){
-
+    if(isset($_SESSION['Querycheck']) AND $_SESSION['Querycheck']) {
+    
     }else {
         header("Location: shoppingcart queries.php");
 //        exit;
@@ -142,4 +145,5 @@ if(!empty($shoppinglist_ID)){
 </html>
 <?php
 include "../incl/footer.php";
+ob_end_flush();
 ?>
