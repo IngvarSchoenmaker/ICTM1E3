@@ -1,5 +1,5 @@
 <?php
-session_start;
+session_start();
 include "../incl/header.php";
 
 $customer_ID=2;
