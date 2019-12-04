@@ -30,17 +30,10 @@ require "../incl/header.php";
         <p class="clearfix">
             <label for="Emailadres" style="margin-right: 52px;">Emailadres:</label>
             <input type="text" name="Emailadres" <?php if (isset($_GET['error']) === 'mail') {if (!empty($_GET['Emailadres'])) {echo 'value="' . $_GET['Emailadres'] . '"';}else{echo 'placeholder="emailadres"';}}else{echo 'placeholder="emailadres"';}?> required>* <br>
-
         </p>
-
         <p class="clearfix">
             <label for="Telefoonnummer" style="margin-right: 5px;">Telefoonnummer:</label>
             <input type="text" name="Telefoonnummer"  PLACEHOLDER="06" required>*
-
-
-
-
-
         </p>
         <p>
             <label for="Geboortedatum" style="margin-right: 12px;">Geboortedatum:</label>
@@ -48,7 +41,6 @@ require "../incl/header.php";
             <input type="checkbox" name="nieuwsbrief" style="margin-right: 5px;"> aanmelden voor nieuwsbrief
         </p>
     </fieldset>
-
             <!--        Hier wordt er een telefoonnummer error gegeven als de error-tel geset/actief is.-->
             <?php
             if(isset($_GET['error'])) {
@@ -58,7 +50,6 @@ require "../incl/header.php";
                 }
             }
             ?>
-
 <!--            Hier wordt de geboortedatum error gegeven als de error-gbdatum geset/actief is.-->
             <?php
             if(isset($_GET['error'])) {
@@ -67,7 +58,6 @@ require "../incl/header.php";
                 }
             }
             ?>
-
 <!--        Hier wordt er een mail error gegeven als de error-mail geset/actief is.-->
             <?php
         if (isset($_GET['error'])) {
@@ -76,7 +66,6 @@ require "../incl/header.php";
             }
         }
         ?>
-
             <?php
 if (isset($_GET['char'])) {
     if ($_GET['char'] === "error") {
@@ -101,78 +90,57 @@ if (isset($_GET['char'])) {
             <option>Harderwijk</option>
         </select><br><br>
 
-
         <!--Hier wordt een Postcode error gegeven als de error-Postcode geset/actief is.-->
             <?php
         if(isset($_GET['error'])){
-
             if($_GET['error'] === "Postcode"){
-
                 print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">Controleer uw postcode!</p>");
             }
         }
-
         ?>
 
         <!--Hier wordt een straatnaam error gegeven als de error-straatnaam geset/actief is.-->
             <?php if(isset($_GET['error'])){
-
                 if ($_GET['error'] === "Straatnaam"){
                     Print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">De ingevoerde straatnaam klopt niet!</p>");
                 }
-
             }
-
-
             ?>
-
         <!--Hier wordt er een huisnummer error gegeven als de error-Huisnummer geset/actief is.-->
             <?php
-
             if(isset($_GET['error'])) {
-
                 if ($_GET['error'] === "Huisnummer") {
-
                     print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">Controleer uw huisnummer </p>");
                 }
             }
-
-
-
             ?>
 
     </fieldset>
     </div>
     <br>
     <br>
-
 <!--    Hier wordt het wachtwoord ingevoerd en gesubmit naar php-->
     <div >
         <fieldset>
          <legend style="margin-left: 450px">Wachtwoord</legend>
         <b style="margin-right: 83px;">Wachtwoord:</b><input type="password" name="Wachtwoord" required >*<br><br>
         <b style="margin-right: 20px;">Herhaal Wachtwoord:</b><input type="password" name="Wachtwoord-herhaal" required>*<br><br>
+
             <?php
             // hier wordt een error gegeven als de gebruiker niet bestaat
             if(isset($_GET['error'])) {
                 if ($_GET['error'] === "Wachtwoord") {
-
                     Print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">De ingevoerde wachtwoord voldoet niet aan de eisen. <br>Controleer of het wachtwoord minimaal 8 tekens bevatten </p>");
-
                 }
             }
-
             // hier wordt een error gegeven als de gebruiker al bestaat!
             if(isset($_GET['error'])){
-
                 if($_GET['error'] === "Gebruikerbestaatal"){
-
                     Print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">De ingevoerde emailadres bestaat al!</p>");
-
                 }
             }
-
             ?>
+
             <input type="submit" name="registreer" value="Account aanmaken">
         </fieldset>
     </div>
@@ -181,8 +149,6 @@ if (isset($_GET['char'])) {
     </div>
 </div>
 </body>
-
-
 
 <?php
 if(isset($_GET['error'])){

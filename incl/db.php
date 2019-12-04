@@ -20,13 +20,6 @@ try {
     exit("Oops, er is een fout ontstaan met de connectie probeer het later weer.");
 
 }
-//=======
-// $server = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "onzedbwwi";
-// $conn = mysqli_connect($server, $username, $password, $dbname);
-
 $servername = "localhost";
 $DBusername = "root";
 $DBpassword = "";

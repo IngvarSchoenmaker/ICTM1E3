@@ -37,7 +37,7 @@ function getSuggestions($id, $conn, $conn2)
                 // return results
 
             } else {
-                return "No matches found";
+                return NULL;
             }
         } else {
             return "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
