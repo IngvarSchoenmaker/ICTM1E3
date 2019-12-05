@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-
-    <link rel="stylesheet" href="../style/footer.css">
-</head>
+<?php
+include '../incl/header.php';
+?>
 <body>
 
 <!-- beetje style om de text en images op de goeie plek te zetten -->
 <style>
-    body{
-        background-color: antiquewhite;
-    }
-
     .img {
         height: 600px;
         width: auto;
@@ -30,7 +21,9 @@
         padding: 0px 300px;
     }
 </style>
-
+<div class="container" style="margin-top:200px; margin-bottom:50px; text-align: center">
+    <div class="row">
+        <div class="col-lg-12">
 <!-- de image -->
 <div>
     <image src="../recources/usb.png" class="img"></image>
@@ -38,7 +31,7 @@
 
 <?php
 
-$productid = 1;
+$productid = $_GET['item'];
 
 ?>
 
@@ -87,12 +80,6 @@ function addToCart ($productid, $amount) {
     <input type="text" name="Amount" value="1">
 </form>
 
-<br>
-<br>
-<br>
-<br>
-
-
 <?php
 
 if(isset($_POST['Amount'])) {
@@ -108,56 +95,10 @@ if(isset($_POST['addToCart'])) {
 }
 
 ?>
-
-
-<!-- placeholder brakes om de featured items omlag te zetten -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<!-- Hier komt de featured items slider -->
-<div>
-
-
-
 </div>
-
-
+    </div>
+</div>
 </body>
-</html>
+<?php
+include '../incl/footer.php';
+?>
