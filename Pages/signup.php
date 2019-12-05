@@ -21,7 +21,7 @@ require "../incl/header.php";
         </p>
         <p class="clearfix">
             <label for="Tussenvoegsel" style="margin-right: 19px">Tussenvoegsels:</label>
-            <input type="text" name="Tussenvoegsel" <?php if(isset($_GET['Tussenvoegsel'])) {if (!empty($_GET['Tussenvoegsel'])) {echo 'value="' . $_GET['Tussenvoegsel'] . '"';}else{echo 'placeholder="Tussenvoegsel"';}}else{echo 'placeholder="Tussenvoegsel"';}?>>*
+            <input type="text" name="Tussenvoegsel" <?php if(isset($_GET['Tussenvoegsel'])) {if (!empty($_GET['Tussenvoegsel'])) {echo 'value="' . $_GET['Tussenvoegsel'] . '"';}else{echo 'placeholder="Tussenvoegsel"';}}else{echo 'placeholder="Tussenvoegsel"';}?>>
         </p>
         <p class="clearfix">
             <label for="Achternaam" style="margin-right: 42px">Achternaam:</label>
@@ -155,7 +155,7 @@ if(isset($_GET['error'])){
 
     if($_GET['error']=== "SQL-initilaze"){
 
-        print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">Er is een fout opgetreden op onze website</p>");
+        print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">Er is een fout opgetreden op onze website!</p>");
 
     }
 }

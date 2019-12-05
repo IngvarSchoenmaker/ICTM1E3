@@ -60,5 +60,10 @@ include '../incl/header.php'
         ?>
     </div>
 <?php
+if(isset($_SESSION['emailadres']))
+
+?>
+
+<?php
 include '../incl/footer.php';
 ?>

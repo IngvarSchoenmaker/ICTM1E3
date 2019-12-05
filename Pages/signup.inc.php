@@ -112,14 +112,14 @@ if (isset($_POST['registreer'])) {
 
             }
 
-        
+            header("Location: registratiegelukt.php?registratie=succes");
 
         }
 
 
     }
 
-header("Location: registratiegelukt.php?registratie=succes");
+
 exit;
 //if ($Wachtwoord != $Wachtwoordherhaal) {
 //    header("location: signup.php?error=wachtwoord"."&voornaam=".$voornaam."&Tussenvoegsel=".$Tussenvoegsels."&Achternaam=".$Achternaam);

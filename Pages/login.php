@@ -40,6 +40,7 @@ require '../incl/header.php';
                                         print('Incorrecte combinatie');
                                     } else {
                                         $_SESSION['loginsucesesvol'] = true;
+                                        $_SESSION['emailadres'] = $email;
                                         $stmt = $conn->prepare("SELECT Customer_ID FROM Customer WHERE Email = ?");
                                         $stmt->bind_param("s", $email);
                                         $stmt->execute();
