@@ -20,6 +20,11 @@ include '../incl/header.php';
         font-size: 100px;
         padding: 0px 300px;
     }
+
+    .starimage {
+        height: 20px;
+        width: auto;
+    }
 </style>
 <div class="container" style="margin-top:200px; margin-bottom:50px; text-align: center">
     <div class="row">
@@ -43,8 +48,8 @@ $username = "root";
 $password = "";
 $dbname = "wideworldimporters";
 $conn1 = mysqli_connect($server, $username, $password, $dbname);
-$sql = "SELECT * FROM stockitems WHERE StockItemID = $productid";
-$result = mysqli_query($conn1, $sql);
+$sql1 = "SELECT * FROM stockitems WHERE StockItemID = $productid";
+$result = mysqli_query($conn1, $sql1);
 ?>
 
 <!-- Data printen op site -->
@@ -94,10 +99,54 @@ if(isset($_POST['addToCart'])) {
     echo "<p> The item " . $itemname . " has been added to your shopping cart! </p>";
 }
 
+
+
 ?>
+
+            <br>
+            <br>
+
+
+            <?php
+            $productid = $_GET['item'];
+
+            $server = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "onzedbwwi";
+            $conn2 = mysqli_connect($server, $username, $password, $dbname);
+            $sql1 = "SELECT * FROM reviews WHERE ID_Product = $productid";
+            $result1 = mysqli_query($conn2, $sql1);
+
+            while ($row = mysqli_fetch_assoc($result1)) {
+
+                $stars = $row['Stars'];
+
+            }
+
+            $i = 0;
+            while($i < $stars ) {
+                echo '<img src="../incl/star3.png" class="starimage" alt="icon" />';
+                $i++;
+            }
+
+            ?>
+
+            <div>
+                Dit product heeft een rating van <?php echo $stars . "/5" ?> ontvangen!
+            </div>
+
+            <div>
+                <a href="../Pages/Reviews.php" color="blue">(Ook een review achterlaten?)</a>
+            </div>
+
 </div>
     </div>
 </div>
+
+
+
+
 </body>
 <?php
 include '../incl/footer.php';
