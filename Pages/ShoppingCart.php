@@ -1,6 +1,6 @@
 <?php
-ob_start();
 require "../incl/header.php";
+ob_start();
 if(isset($_SESSION['ID'])) {
     $customer_ID = $_SESSION['ID'];
 } else{
@@ -13,8 +13,8 @@ if(!empty($shoppinglist_ID)){
     $_SESSION['shoppinglist_ID']=$shoppinglist_ID;
     if(isset($_SESSION['Querycheck']) AND $_SESSION['Querycheck']) {
     }else {
-        header("Location: ../Pages/shoppingcartqueries.php");
-//        exit;
+        header("Location: ../Pages/ShoppingCartQueries.php");
+        //exit;
     }
 };
 ?>
