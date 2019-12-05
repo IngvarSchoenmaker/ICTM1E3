@@ -1,11 +1,11 @@
 <?php
-require 'db.php';
+include 'db.php';
 session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap 4 Website Example</title>
+    <title>WorldWideImporters</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -122,7 +122,7 @@ session_start();
                         }
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="../Pages/ShoppingCart Queries.php"><i class="fas fa-shopping-cart"></i></a>
+                            <a class="nav-link" href="../Pages/ShoppingCartQueries.php"><i class="fas fa-shopping-cart"></i></a>
                         </li>
                     </ul>
                 </div>

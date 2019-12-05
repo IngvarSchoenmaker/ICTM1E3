@@ -28,7 +28,7 @@ if (isset($_POST['send'])) {
             $to = $email;
             $subject = "wachtwoord veranderen";
             $txt = "http://localhost/HBO/ICTM1E3/Pages/veranderww";
-            $headers = "p.boertien@outlook.com";
+            $headers = "From: pboertien@outllok.com";
 
             mail($to,$subject,$txt,$headers);
         }

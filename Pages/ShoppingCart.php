@@ -1,112 +1,109 @@
 <?php
-include "../incl/header.php";
-
-$customer_ID=2;
+ob_start();
+require "../incl/header.php";
+if(isset($_SESSION['ID'])) {
+    $customer_ID = $_SESSION['ID'];
+} else{
+    $customer_ID=2;
+}
+//print($_SESSION['cart']);
 $shoppinglist_ID=(SqlQuery("SELECT shoppinglist_ID FROM shoppinglist WHERE customer_ID =$customer_ID"));
 if(!empty($shoppinglist_ID)){
     $shoppinglist_ID=implode('|',$shoppinglist_ID);
     $_SESSION['shoppinglist_ID']=$shoppinglist_ID;
-    if($_SESSION['Querycheck']){
-
+    if(isset($_SESSION['Querycheck']) AND $_SESSION['Querycheck']) {
     }else {
-        header("Location: shoppingcart queries.php");
-        exit;
+        header("Location: ../Pages/shoppingcartqueries.php");
+//        exit;
     }
 };
 ?>
     <!DOCTYPE html>
-<html lang="en">
-<style>
-  .btn-order {background-color: #008CBA;} /* blue /*
+    <html lang="en">
+    <style>
+        .btn-order {background-color: #008CBA;} /* blue /*
 </style>
-<head>
-    <title>Productlijst</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="../JS/ShoppingCart.js" async></script>
-</head>
-<body>
+    <head>
+        <title>Productlijst</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="../JS/ShoppingCart.js" async></script>
+    </head>
+    <body>
 
-<div class="container" style="margin-top: 150px; margin-bottom: 100px">
-    <h2>Winkelwagen</h2>
-    <p>Verder winkelen knop &emsp; Verder naar bestellen</p>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Product</th>
-            <th>Aantal</th>
-            <th>Prijs</th>
-        </tr>
-        </thead>
-        <tbody class="cart-items">
-        <?php
+    <div class="container" style="margin-top: 150px; margin-bottom: 100px">
+        <h2>Winkelwagen</h2>
+        <p>Verder winkelen knop &emsp; Verder naar bestellen</p>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Product</th>
+                <th>Aantal</th>
+                <th>Prijs</th>
+            </tr>
+            </thead>
+            <tbody class="cart-items">
+            <?php
 
-    function SqlQuery($sql)
-    {
+            function SqlQuery($sql)
+            {
 //    ** DEZE FUNCTIE wordt gebruikt voor het verwijderen van artikelen uit de winkelwagen **
 
-        $servername = "localhost";
-        $DBusername = "root";
-        $DBpassword = "";
-        $DBname = "onzedbwwi";
-        $port = "3306";
+                $servername = "localhost";
+                $DBusername = "root";
+                $DBpassword = "";
+                $DBname = "onzedbwwi";
+                $port = "3306";
 //        $sql="DELETE FROM shoppinglist WHERE customer_ID=... AND ID_Product= $ID";   // nog niet werkend, klant id moet opgevraagd kunnen worden.
 
-        $conn = mysqli_connect($servername, $DBusername, $DBpassword, $DBname, $port) or
-        die("Could not connect: " . mysqli_error());
+                $conn = mysqli_connect($servername, $DBusername, $DBpassword, $DBname, $port) or
+                die("Could not connect: " . mysqli_error());
 
-        $statement = mysqli_prepare($conn, $sql);
-        mysqli_stmt_execute($statement);
-        $result = mysqli_stmt_get_result($statement);
-                    while ($row = $result->fetch_assoc()) {
-                return ($row);
+                $statement = mysqli_prepare($conn, $sql);
+                mysqli_stmt_execute($statement);
+                $result = mysqli_stmt_get_result($statement);
+                while ($row = $result->fetch_assoc()) {
+                    return ($row);
+                }
+
+
+                mysqli_stmt_close($statement);
+                $conn->close();
             }
-
-
-        mysqli_stmt_close($statement);
-        $conn->close();
-    }
-        function DeSessionImplode($array){
+            function DeSessionImplode($array){
 //    ***haalt array session naam weg***
-        foreach($array as $key => $value){
-            $result[$key]=$value;
-        }
-        return($result);
-        }
-        if(!empty($_SESSION['Cart'])) {
-            $photo = $_SESSION['itemPhoto'];
-            $photo = DeSessionImplode($photo);
+                foreach($array as $key => $value){
+                    $result[$key]=$value;
+                }
+                return($result);
+            }
+            if(!empty($_SESSION['Cart'])) {
+                $photo = $_SESSION['itemPhoto'];
+                $photo = DeSessionImplode($photo);
 
-            $unitName = $_SESSION['itemName'];
-            $unitName = DeSessionImplode($unitName);
-
-
-            $rating = $_SESSION['itemRating'];
-            $rating = DeSessionImplode($rating);
+                $unitName = $_SESSION['itemName'];
+                $unitName = DeSessionImplode($unitName);
 
 
-            $unitPrice = $_SESSION['itempPrice'];
-            $unitPrice = DeSessionImplode($unitPrice);
+                $rating = $_SESSION['itemRating'];
+                $rating = DeSessionImplode($rating);
 
 
-            $unitTotal = $_SESSION['itemTotalPrice'];
-            $unitTotal = DeSessionImplode($unitTotal);
+                $unitPrice = $_SESSION['itemPrice'];
+                $unitPrice = DeSessionImplode($unitPrice);
 
-            $cartTotal = 0;
 
-//        function bar($ID){
-//                var x = document.getElementById("aantal").value;
-//                document.getElementById("nieuw").innerHTML = x;
-//                $aantal="nieuw";
-//                return($aantal);
-//            // Deze functie moet de prijs totaal updaten binnen de foreach.
-//
-//        }
+                $unitTotal = $_SESSION['itemTotalPrice'];
+                $unitTotal = DeSessionImplode($unitTotal);
 
-            foreach ($_SESSION['cart'] as $ID => $aantal) {
-                $unitTotal = ($aantal * $unitPrice[$ID]);
-                print("
+                $cartTotal = 0;
+
+
+
+                foreach ($_SESSION['cart'] as $ID => $aantal) {
+                    $unitTotal = ($aantal * $unitPrice[$ID]);
+                    print("
         
  <tr class='cart-row'>
  
@@ -127,24 +124,25 @@ if(!empty($shoppinglist_ID)){
         
         ");
 
-                $cartTotal += $unitTotal;
-            }
-            print("
+                    $cartTotal += $unitTotal;
+                }
+                print("
         <div class='end-row'>
         <tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$cartTotal<BR><button class='btn-order' type='button'>Bestellen</button></td></tr>
         
         </div>
         ");
-        }
-        $_SESSION['Querycheck']=false;
-        ?>
+            }
+            $_SESSION['Querycheck']=false;
+            ?>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-</div>
-</body>
-</html>
+    </div>
+    </body>
+    </html>
 <?php
 include "../incl/footer.php";
+ob_end_flush();
 ?>
