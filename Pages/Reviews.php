@@ -1,6 +1,7 @@
 <?php
 //Laadt database in
 include '../incl/Database.php';
+
 ?>
 
 <?php
@@ -25,5 +26,3 @@ if (!empty($_GET['message'])) {
         <input name="plaatsreview" type="submit" value="Plaats review"><br>
     </form>
 </div>
-
-

@@ -1,8 +1,10 @@
 <?php
-    include '../incl/ConnectieFunctie.php';
+    if (session_status() == PHP_SESSION_NONE) {
     session_start();
+    }
+    include '../incl/ConnectieFunctie.php';
     $_CustomerID = $_SESSION['ID'];
-    print($_CustomerID);
+    //print($_CustomerID);
 
     // ################################################
     // Ophalen klant en adresgegevens
@@ -194,8 +196,8 @@
         mysqli_stmt_bind_param($statement, 'isis', $productDB, $emailDB, $scoreDB, $beoordelingDB);
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
-
-        header("Location: ../Pages/Reviews.php?message=Je review is succesvol geplaatst!");
+echo "ik doe het wel XD";
+//        header("Location: ../Pages/Reviews.php?message=Je review is succesvol geplaatst!");
     }
     ?>
 

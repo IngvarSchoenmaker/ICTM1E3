@@ -132,7 +132,7 @@ if(isset($_POST['addToCart'])) {
             </div>
 
             <div>
-                <a href="../Pages/Reviews.php" color="blue">(Ook een review achterlaten?)</a>
+                <?php include 'Reviews.php' ?>
             </div>
 
 </div>
