@@ -1,5 +1,6 @@
 <?php
 include '../incl/header.php';
+//include '../incl/ConnectieFunctie.php';
 ?>
 <body>
 
@@ -101,9 +102,10 @@ if(isset($_POST['addToCart'])) {
 ?>
             <br>
             <br>
-
             <?php
             $productid = $_GET['item'];
+
+            $_SESSION['ProductID'] = $productid;
 
             $server = "localhost";
             $username = "root";
@@ -112,6 +114,7 @@ if(isset($_POST['addToCart'])) {
             $conn2 = mysqli_connect($server, $username, $password, $dbname);
             $sql1 = "SELECT * FROM reviews WHERE ID_Product = $productid";
             $result1 = mysqli_query($conn2, $sql1);
+
 
             while ($row = mysqli_fetch_assoc($result1)) {
 

@@ -9,6 +9,7 @@ include '../incl/Database.php';
 if (!empty($_GET['message'])) {
     $SuccesMelding = $_GET['message'];
     print("<h3>" . $SuccesMelding . "</h3>");
+    header("refresh:4;url=../Pages/index.php");
 }
 ?>
 <!--Hier maak ik de review input-->
