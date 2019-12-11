@@ -27,7 +27,7 @@ if (isset($_POST['registreer'])) {
 
 // hier wordt gecontroleerd of er geen symbolen worden gebruikt tijdens het invullen van de formulier . Als er symbolen worden gebruikt verwijst ie terug naar de singup met een error
 
-    if (!preg_match("/^[a-zA-Z]*$/", $voornaam) || !preg_match("/^[a-zA-Z]*$/", $Tussenvoegsels) || !preg_match("/^[a-zA-Z]*$/", $Achternaam)) {
+    if (preg_match('/^[= or " " as # *]*$/', $voornaam) || preg_match("(or|as)", $Tussenvoegsels) || preg_match('/^[= or "" as # *]*$/', $Achternaam)) {
 
         header("Location:signup.php?char=error&Voornaam=" . $voornaam . "&Tussenvoegsel=" . $Tussenvoegsels . "&Achternaam=" . $Achternaam);
 
@@ -52,7 +52,7 @@ if (isset($_POST['registreer'])) {
 
 //        Hier wordt gecontroleerd op straatnaam Met SQL injectie preventie
 
-    } elseif (preg_match('/^[= or " " as # *]*$/', $Straatnaam) || (!preg_match('/^[a-zA-Z]*$/', $Straatnaam))) {
+    } elseif (preg_match('/^[= or " " as # *]*$/', $Straatnaam) || (!preg_match('/^[a-zA-Z ]*$/', $Straatnaam))) {
 
         header("location: Signup.php?error=Straatnaam&Straatnaam=" . $Straatnaam);
 
@@ -119,7 +119,7 @@ if (isset($_POST['registreer'])) {
 
     }
 
-header("Location: index.php");
+
 exit;
 //if ($Wachtwoord != $Wachtwoordherhaal) {
 //    header("location: signup.php?error=wachtwoord"."&voornaam=".$voornaam."&Tussenvoegsel=".$Tussenvoegsels."&Achternaam=".$Achternaam);

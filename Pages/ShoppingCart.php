@@ -13,8 +13,10 @@ if(!empty($shoppinglist_ID)){
     $_SESSION['shoppinglist_ID']=$shoppinglist_ID;
     if(isset($_SESSION['Querycheck']) AND $_SESSION['Querycheck']) {
     }else {
+
         header("Location:../Pages/shoppingcartqueries.php");
 //        exit;
+
     }
 };
 ?>

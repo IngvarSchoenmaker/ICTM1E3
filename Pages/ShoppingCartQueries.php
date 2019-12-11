@@ -143,9 +143,12 @@ $_SESSION['itemPhoto']=$photo;
 $_SESSION['itemRating']=$rating;
 $_SESSION['itemTotalPrice']=$itemTotal;
 $_SESSION['cart'] =$productList;
+
     $_SESSION['Querycheck']=true;
+
 ob_end_flush();
     header("Location: shoppingcart.php");
+
 //    exit;
 
 ?>
