@@ -1,6 +1,8 @@
 <?php
+
 session_start();
 include "../incl/db.php";
+ob_start();
 $servername = "localhost";
 $DBusername = "root";
 $DBpassword = "";
@@ -143,7 +145,10 @@ $_SESSION['itemTotalPrice']=$itemTotal;
 $_SESSION['cart'] =$productList;
 
     $_SESSION['Querycheck']=true;
-    header("Location: ../Pages/shoppingcart.php");
+
+ob_end_flush();
+    header("Location: shoppingcart.php");
+
 //    exit;
 
 ?>
