@@ -98,14 +98,9 @@ if(isset($_POST['addToCart'])) {
 
     echo "<p> The item " . $itemname . " has been added to your shopping cart! </p>";
 }
-
-
-
 ?>
-
             <br>
             <br>
-
 
             <?php
             $productid = $_GET['item'];
@@ -143,10 +138,6 @@ if(isset($_POST['addToCart'])) {
 </div>
     </div>
 </div>
-
-
-
-
 </body>
 <?php
 include '../incl/footer.php';

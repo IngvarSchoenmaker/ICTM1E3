@@ -184,12 +184,12 @@
     //Als er op de knop plaatsreview is gedrukt
     //Worden de input velden opgeslagen in variablen.
     if (isset($_POST['plaatsreview'])) {
-        $productDB = 8;
+        $productDB = 221;
         $emailDB = $_POST['mail'];
         $scoreDB = $_POST['star'];
         $beoordelingDB = $_POST['beoordeling'];
         //Prepared statement
-        $statement = mysqli_prepare($conn = get_connection(), "INSERT INTO product_review VALUES(?,?,?,?)");
+        $statement = mysqli_prepare($conn = get_connection(), "INSERT INTO reviews VALUES(?,?,?,?)");
 
         mysqli_stmt_bind_param($statement, 'isis', $productDB, $emailDB, $scoreDB, $beoordelingDB);
         mysqli_stmt_execute($statement);

@@ -1,15 +1,15 @@
 <?php
+ob_start();
 //include '../Pages/ShoppingCartQueries.php';
 include '../incl/ConnectieFunctie.php';
-include '../incl/header.php';
+include_once '../incl/header.php';
 //session_start();
-print("\n");
-print("\n");
-print("\n");
-print("\n");
 print("<BR>");
 print("<BR>");
-print("Hallo");
+print("<BR>");
+print("<BR>");
+print("<BR>");
+print("<BR>");
 
 
 $_SESSION['cart'] = array(220 => 3, 221 => 4);
@@ -33,6 +33,9 @@ if(isset($_SESSION['ID'])) {
     mysqli_stmt_bind_param($statement, 'i', $Customer_ID);
     mysqli_stmt_execute($statement);
 
+    print("<p style=''>Je bestelling is succesvol geplaatst!</p><br>Je wordt doorgestuurd naar de homepage.<br><br><img src='../recources/voorbeeld%20fotos/check.png' width='150px'; <br>");
 }
-
-
+header("refresh:4;url=../Pages/index.php");
+include '../incl/footer.php';
+ob_end_flush();
+?>
