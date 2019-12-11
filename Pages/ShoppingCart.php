@@ -1,6 +1,6 @@
 <?php
-ob_start();
 require "../incl/header.php";
+ob_start();
 if(isset($_SESSION['ID'])) {
     $customer_ID = $_SESSION['ID'];
 } else{
@@ -13,7 +13,7 @@ if(!empty($shoppinglist_ID)){
     $_SESSION['shoppinglist_ID']=$shoppinglist_ID;
     if(isset($_SESSION['Querycheck']) AND $_SESSION['Querycheck']) {
     }else {
-        header("Location: ../Pages/shoppingcartqueries.php");
+        header("Location:../Pages/shoppingcartqueries.php");
 //        exit;
     }
 };
@@ -104,9 +104,9 @@ if(!empty($shoppinglist_ID)){
                 foreach ($_SESSION['cart'] as $ID => $aantal) {
                     $unitTotal = ($aantal * $unitPrice[$ID]);
                     print("
-        
+
  <tr class='cart-row'>
- 
+
             <td>
                 Product nummer $ID<BR>
                 Foto $photo[$ID]<BR>
@@ -121,7 +121,7 @@ if(!empty($shoppinglist_ID)){
             <button class='btn btn-danger' type=\"button\">VERWIJDEREN</button>
             </td>
         </tr>
-        
+
         ");
 
                     $cartTotal += $unitTotal;
@@ -129,7 +129,7 @@ if(!empty($shoppinglist_ID)){
                 print("
         <div class='end-row'>
         <tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$cartTotal<BR><button class='btn-order' type='button'>Bestellen</button></td></tr>
-        
+
         </div>
         ");
             }
