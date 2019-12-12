@@ -38,23 +38,60 @@ while ($row = mysqli_fetch_assoc($result)) {
         height: 20px;
         width: auto;
     }
+    .carousel-control-prev-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+    }
+    .carousel-control-next-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+    }
+    .carousel-indicators li {
+        background-color: grey;
+    }
 </style>
 <div class="container" style="margin-top:200px; margin-bottom:50px; text-align: center">
     <div class="row">
-        <div class="col-lg-12">
 
 <!-- de image -->
 <div>
-    <img src="../recources/voorbeeld fotos/<?php echo "$itemname" ?>1.jpg" class="img">
 </div>
+    <div id="carouselExampleIndicators" class="carousel slide col-md-6 col-sm-6" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../recources/voorbeeld fotos/<?php echo "$itemname" ?>1.jpg" class="img">
+            </div>
+            <div class="carousel-item">
+                <img src="../recources/voorbeeld fotos/<?php echo "$itemname" ?>2.jpg" class="img">
+            </div>
+            <div class="carousel-item">
+                <img src="../recources/voorbeeld fotos/<?php echo "$itemname" ?>3.jpg" class="img">
+            </div>
+            <div class="carousel-item">
+                <?php include 'video.php'?>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 
 <!-- Data printen op site -->
-<div class="text">
+<div class="text col-md-6 col-sm-6">
     <?php
         echo "<p>". $row['StockItemName'] ."<br> €" . $row['RecommendedRetailPrice'] . "<br>" .  $row['MarketingComments'] . "<br>" . $row['TypicalWeightPerUnit']. " KG <br>" . $row['Size']."</p>";
     }
     ?>
-</div>
+
 
 <?php
 
@@ -124,8 +161,8 @@ if(isset($_POST['addToCart'])) {
             <div>
                 <?php include 'Reviews.php' ?>
             </div>
-</div>
     </div>
+</div>
 </div>
 </body>
 <?php
