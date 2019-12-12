@@ -93,37 +93,20 @@ if(isset($_POST['addToCart'])) {
             <br>
             <br>
             <?php
-            $productid = $_GET['item'];
 
-            $_SESSION['ProductID'] = $productid;
+                include 'check_rating.php';
 
-            $server = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "onzedbwwi";
-            $conn2 = mysqli_connect($server, $username, $password, $dbname);
-            $sql1 = "SELECT * FROM reviews WHERE ID_Product = $productid";
-            $result1 = mysqli_query($conn2, $sql1);
+                echo "<br>";
+                echo "Dit product heeft een rating van " . round($stars,1) . "/5 ontvangen!";
 
 
-            while ($row = mysqli_fetch_assoc($result1)) {
-                $stars = $row['Stars'];
-            }
+                echo "<br>";
+                echo "<br>";
+                include 'Reviews.php'
 
-            $i = 0;
-            while($i < $stars ) {
-                echo '<img src="../incl/star3.png" class="starimage" alt="icon" />';
-                $i++;
-            }
+                ?>
 
-            ?>
 
-            <div>
-                Dit product heeft een rating van <?php echo $stars . "/5" ?> ontvangen!
-            </div>
-            <div>
-                <?php include 'Reviews.php' ?>
-            </div>
 </div>
     </div>
 </div>
