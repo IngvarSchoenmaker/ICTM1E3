@@ -143,40 +143,44 @@
     }
 
 
-    function ChangePassword($customerID) {
 
-        $wachtwoord = $_POST['nieuwwachtwoord'];
-        $wachtwoordCheck = $_POST['herhaalwachtwoord'];
 
-        //Controleert of de input van de wachtwoorden hetzelfde zijn.
-        if($wachtwoord != $wachtwoordCheck)
+    if (!function_exists('ChangePassword')) {
+        function ChangePassword($customerID)
         {
-            return "PASSWORDS_NOT_THE_SAME";
-        }
 
-        //Nu halen we het huidige wachtwoord uit de database
-        //Query uitvoeren
-        $getPasswordQuery = "SELECT Password
+            $wachtwoord = $_POST['nieuwwachtwoord'];
+            $wachtwoordCheck = $_POST['herhaalwachtwoord'];
+
+            //Controleert of de input van de wachtwoorden hetzelfde zijn.
+            if ($wachtwoord != $wachtwoordCheck) {
+                return "PASSWORDS_NOT_THE_SAME";
+            }
+
+            //Nu halen we het huidige wachtwoord uit de database
+            //Query uitvoeren
+            $getPasswordQuery = "SELECT Password
              FROM Customer 
              WHERE Customer_ID = {$customerID}";
 
-        $PassData = GetData($getPasswordQuery, true);
-        $oudeWachtwoord = $PassData['Password'];
+            $PassData = GetData($getPasswordQuery, true);
+            $oudeWachtwoord = $PassData['Password'];
 
-        //Nu controleren we of het huidige wachtwoord
-        //hetzelfde is als de input van de gebruiker.
-        if(!password_verify($_POST['wachtwoord'], $oudeWachtwoord)) {
-            return "PASSWORD_NOT_CORRECT";
+            //Nu controleren we of het huidige wachtwoord
+            //hetzelfde is als de input van de gebruiker.
+            if (!password_verify($_POST['wachtwoord'], $oudeWachtwoord)) {
+                return "PASSWORD_NOT_CORRECT";
+            }
+            //Als die hetzelfde is kunnen we het nieuwe wachtwoord hashen.
+            //De hash wordt opgeslagen in de database.
+            $nieuweDatabaseWachtwoord = password_hash($wachtwoord, PASSWORD_DEFAULT);
+            $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer SET password =? WHERE Customer_ID = {$customerID}");
+
+            mysqli_stmt_bind_param($statement, 's', $nieuweDatabaseWachtwoord);
+            mysqli_stmt_execute($statement);
+            //Wachtwoord is verandert!
+            return "PASSWORD_CHANGED";
         }
-        //Als die hetzelfde is kunnen we het nieuwe wachtwoord hashen.
-        //De hash wordt opgeslagen in de database.
-        $nieuweDatabaseWachtwoord = password_hash($wachtwoord, PASSWORD_DEFAULT);
-        $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer SET password =? WHERE Customer_ID = {$customerID}");
-
-        mysqli_stmt_bind_param($statement, 's', $nieuweDatabaseWachtwoord);
-        mysqli_stmt_execute($statement);
-        //Wachtwoord is verandert!
-        return "PASSWORD_CHANGED";
     }
 
     // ################################################

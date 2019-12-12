@@ -14,6 +14,7 @@ print("<BR>");
 
 $_SESSION['cart'] = array(220 => 3, 221 => 4);
 $productList = $_SESSION['cart'];
+var_dump($productList);
 $_SESSION['ID'] = 2;
 $Customer_ID = $_SESSION['ID'];
 
@@ -24,6 +25,7 @@ if(isset($_SESSION['ID'])) {
     $Customer_ID = $_SESSION['ID'];
     $Datum = date("Y/m/d");
     $PaymentID = 2;
+    $ProductID = 0;
 
     $statement = mysqli_prepare($conn = get_connection(), 'INSERT INTO Orders VALUES(?,?,?,?)');
     mysqli_stmt_bind_param($statement, 'iisi', $OrderID, $Customer_ID, $Datum, $PaymentID);

@@ -148,7 +148,7 @@ if(isset($_POST['addToCart'])) {
                 Dit product heeft een rating van <?php echo $stars . "/5" ?> ontvangen!
             </div>
             <div>
-                <?php include 'Reviews.php' ?>
+                <?php include_once 'Reviews.php' ?>
             </div>
     </div>
 </div>
