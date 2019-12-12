@@ -17,9 +17,6 @@ $productList = $_SESSION['cart'];
 $_SESSION['ID'] = 2;
 $Customer_ID = $_SESSION['ID'];
 
-$sql = 'SELECT Photo FROM Product_Information WHERE ID_Product = 223';
-$photo = GetData($sql, FALSE);
-print_r($photo);
 
 if(isset($_SESSION['ID'])) {
     //Zet de bestelling in de database.
