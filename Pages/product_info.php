@@ -131,11 +131,15 @@ if(isset($_POST['addToCart'])) {
             <br>
             <?php
 
+                $stars = 0;
+
                 include 'check_rating.php';
 
                 echo "<br>";
-                echo "Dit product heeft een rating van " . round($stars,1) . "/5 ontvangen!";
 
+                if($stars > 0) {
+                    echo "Dit product heeft een rating van " . round($stars,1) . "/5 ontvangen!";
+                }
 
                 echo "<br>";
                 echo "<br>";
@@ -143,10 +147,6 @@ if(isset($_POST['addToCart'])) {
 
                 ?>
 
-
-            <div>
-                Dit product heeft een rating van <?php echo $stars . "/5" ?> ontvangen!
-            </div>
             <div>
                 <?php include 'Reviews.php' ?>
             </div>
