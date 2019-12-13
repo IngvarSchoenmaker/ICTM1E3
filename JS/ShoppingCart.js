@@ -32,8 +32,11 @@ function removeCartItem(event){
 function quantityChanged(event) {
     var input = event.target;
     input.value = Math.round(input.value);
-    if (isNaN(input.value) || input.value <= 0 || input.value >= 100) {
+    if (isNaN(input.value) || input.value <= 0) {
         input.value = 1;
+    }
+    if (input.value > 100) {
+        input.value = 100;
     }
     updateCartTotal()
 }
