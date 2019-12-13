@@ -2,6 +2,9 @@
 ob_start();
 require "../incl/header.php";
 
+if(!isset($_SESSION['ID'])){
+    $_SESSION['ID']=0;
+}
 $connOnzeDB = mysqli_connect($servername, $DBusername, $DBpassword, "onzedbwwi", $port) or
 die("Could not connect: " . mysqli_error());
 
