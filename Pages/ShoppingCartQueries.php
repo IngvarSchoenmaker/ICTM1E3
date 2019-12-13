@@ -11,7 +11,7 @@ die("Could not connect: " . mysqli_error());
 $connOnzeDB = mysqli_connect($servername, $DBusername, $DBpassword, "onzedbwwi", $port) or
 die("Could not connect: " . mysqli_error());
 
-$shoppinglist_ID = (SqlGetSingleRow("SELECT shoppinglist_ID FROM shoppinglist WHERE customer_ID =$customer_ID", $connOnzeDB));
+$shoppinglist_ID = (SqlGetSingleRow("SELECT shoppinglist_ID FROM shoppinglist WHERE customer_ID ='$customer_ID'", $connOnzeDB));
 $shoppinglist_ID = implode('|',$shoppinglist_ID);
 $_SESSION['cart_ID']=$shoppinglist_ID;
 $cartproduct = GetData("SELECT ID_Product FROM shoppinglist WHERE Shoppinglist_ID='$shoppinglist_ID'", false);
