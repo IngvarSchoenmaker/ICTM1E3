@@ -48,9 +48,10 @@ $photo=($_SESSION['photo']);
         <tbody class="cart-items">
         <?php
         $cartTotal=0;
-        foreach ($_SESSION['cart'] as $ID => $aantal) {
-            $itemTotal = ($aantal * $itemPrice[$ID]);
-            print("
+        if(isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $ID => $aantal) {
+                $itemTotal = ($aantal * $itemPrice[$ID]);
+                print("
 
         <tr class='cart-row'>
 
@@ -71,8 +72,10 @@ $photo=($_SESSION['photo']);
 
         ");
 
-            $cartTotal += $itemTotal;
-        }if(!empty($_SESSION['cart'])){
+                $cartTotal += $itemTotal;
+            }
+        }
+        if(!empty($_SESSION['cart'])){
         print("
         <div class='end-row'>
             <tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$cartTotal<BR></td></tr>
