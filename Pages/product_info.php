@@ -101,10 +101,14 @@ function addToCart ($productid, $amount) {
       $productid => $amount
     );
     if(isset ($_SESSION['cart'][$productid])) {
-        print("Dit product staat al in uw winkelman!");
+        print("Dit product staat al in uw winkelmand!");
         }
         elseif ($addItem[$productid] != null) {
-            $_SESSION['cart']=$addItem;
+            if (isset ($_SESSION['cart'])) {
+                $_SESSION['cart'] += $addItem;
+            } else {
+                $_SESSION['cart'] = $addItem;
+            }
         }
 }
 
