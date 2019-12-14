@@ -1,8 +1,5 @@
 <?php
 include '../incl/header.php';
-//include '../incl/ConnectieFunctie.php';
-?>
-<?php
 $productid = $_GET['item'];
 ?>
 
