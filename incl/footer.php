@@ -59,9 +59,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <p>Copyright Wide World Importers © 2019. All rights reserved.</p>
+                    <p>
+                        Copyright Wide World Importers © 2019. All rights reserved.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </footer>
+

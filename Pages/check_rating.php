@@ -10,6 +10,7 @@ $username = "root";
 $password = "";
 $dbname = "onzedbwwi";
 $conn2 = mysqli_connect($server, $username, $password, $dbname);
+
 $sql1 = "SELECT ID_Product, Email, AVG(Stars), Message FROM reviews WHERE ID_Product = $productid GROUP BY ID_Product";
 $result1 = mysqli_query($conn2, $sql1);
 
