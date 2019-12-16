@@ -41,7 +41,8 @@
             $conn->close();
             //Als de parameter van onlyonerecord op true staat
             //wordt er slechts 1 item terug gegeven.
-            if ($onlyOneRecord) {
+
+            if ($onlyOneRecord && isset($resultList[0])) {
                 return $resultList[0];
             }
             //anders

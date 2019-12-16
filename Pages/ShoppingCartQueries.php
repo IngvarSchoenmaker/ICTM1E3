@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../incl/ConnectieFunctie.php';
 //  *** Verbindingsvariabelen voor SQL functies***
 $servername = "localhost";
 $DBusername = "root";
@@ -178,45 +179,5 @@ function SqlGetSingleRow($sql, $conn)
     }
     mysqli_stmt_close($statement);
     $conn->close();
-}
-
-function GetData($sql, $onlyOneRecord = false)
-{
-//    *** Functie geleend van Geert-Jan, deze functie haalt de informatie iets anders op dan bovenstaande functie ***
-    //Verbinding maken met de database
-    //Query uitvoeren
-    $conn = get_connection();
-    $statement = mysqli_prepare($conn, $sql);
-    mysqli_stmt_execute($statement);
-    $result = mysqli_stmt_get_result($statement);
-    //Zet de results in een array
-    $resultList = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $resultList[] = $row;
-    }
-    $conn->close();
-    //Als de parameter van onlyonerecord op true staat
-    //wordt er slechts 1 item terug gegeven.
-    if ($onlyOneRecord) {
-        return $resultList[0];
-    }
-    //anders
-    return $resultList;
-}
-
-function get_connection(){
-//    *** Ondersteunende functie voor de GetData sql geleend van Geert-Jan, deze functie maakt de database verbinding met onze aangemaakte DB***
-    $_database["server"] = "localhost";
-    $_database["username"] = "root";
-    $_database["password"] = "";
-    $_database["name"] = "onzedbwwi";
-    $_database["poort"] = "3306";
-
-    $conn = mysqli_connect($_database["server"], $_database["username"], $_database["password"], $_database["name"], $_database["poort"]);
-    if ($conn->connect_error) {
-        return die("Connection failed: " . $conn->connect_error);
-    }else {
-        return $conn;
-    }
 }
 ?>

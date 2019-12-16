@@ -3,6 +3,7 @@
     session_start();
     }
     include '../incl/ConnectieFunctie.php';
+
     $_CustomerID = $_SESSION['ID'];
     //print($_CustomerID);
 
@@ -190,7 +191,6 @@
     //Als er op de knop plaatsreview is gedrukt
     //Worden de input velden opgeslagen in variablen.
     if (isset($_POST['plaatsreview'])) {
-
         $productDB = $_SESSION['ProductID'];
 
         $statement = mysqli_prepare($conn = get_connection(), "INSERT INTO product_information VALUES($productDB, NULL)");

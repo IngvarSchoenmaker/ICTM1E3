@@ -78,8 +78,8 @@ if (isset($_GET['char'])) {
     <div id="factuuradres">
     <fieldset>
     <legend style="margin-left: 450px">Factuuradres</legend>
-        <b style="margin-right: 52px;">postcode:</b><input type="text" name="Postcode"  placeholder="voorbeeld:1088AA" required> * <br><br>
-        <b style="margin-right: 33px;">straatnaam:</b> <input type="text" name="Straatnaam" required>*  <br><br>
+        <b style="margin-right: 52px;">Postcode:</b><input type="text" name="Postcode"  placeholder="voorbeeld:1088AA" required> * <br><br>
+        <b style="margin-right: 33px;">Straatnaam:</b> <input type="text" name="Straatnaam" required>*  <br><br>
         <b style="margin-right: 20px;">Huisnummer:</b> <input type="text" name="Huisnummer" required>*  <br><br>
         <b style="margin-right: 77px;">Plaats:</b><select name="Plaats" required>*
             <option>Amsterdam</option>

@@ -1,7 +1,8 @@
 <?php
 //Laadt database in
 include '../incl/Database.php';
-
+ echo "joe";
+ die();
 ?>
 
 <?php
