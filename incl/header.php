@@ -89,4 +89,5 @@ session_start();
             </div>
         </div>
     </div>
+</nav>
 </body>
