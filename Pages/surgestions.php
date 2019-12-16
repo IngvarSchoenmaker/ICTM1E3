@@ -2,6 +2,7 @@
 if (isset($_REQUEST["term"])) {
     // Prepare a select statement
     $sql = "SELECT * FROM stockitems WHERE SearchDetails LIKE ?";
+//    $sql = "SELECT * FROM stockitems WHERE MATCH(tags, searchdetails, MarketingComments)AGAINST(? IN NATURAL LANGUAGE MODE)";
     require '../incl/dbwwi.php';
 
     if ($stmt = mysqli_prepare($conn, $sql)) {
@@ -10,6 +11,8 @@ if (isset($_REQUEST["term"])) {
 
         // Set parameters
         $param_term = '%' . str_replace(" ", "%%", $_REQUEST["term"]) . '%';
+//        $param_term =  str_replace(" ", ",", $_REQUEST["term"]);
+
 
         // Attempt to execute the prepared statement
         if (mysqli_stmt_execute($stmt)) {
