@@ -3,6 +3,7 @@
     session_start();
     }
     include '../incl/ConnectieFunctie.php';
+
     $_CustomerID = $_SESSION['ID'];
     //print($_CustomerID);
 
@@ -143,40 +144,44 @@
     }
 
 
-    function ChangePassword($customerID) {
 
-        $wachtwoord = $_POST['nieuwwachtwoord'];
-        $wachtwoordCheck = $_POST['herhaalwachtwoord'];
 
-        //Controleert of de input van de wachtwoorden hetzelfde zijn.
-        if($wachtwoord != $wachtwoordCheck)
+    if (!function_exists('ChangePassword')) {
+        function ChangePassword($customerID)
         {
-            return "PASSWORDS_NOT_THE_SAME";
-        }
 
-        //Nu halen we het huidige wachtwoord uit de database
-        //Query uitvoeren
-        $getPasswordQuery = "SELECT Password
+            $wachtwoord = $_POST['nieuwwachtwoord'];
+            $wachtwoordCheck = $_POST['herhaalwachtwoord'];
+
+            //Controleert of de input van de wachtwoorden hetzelfde zijn.
+            if ($wachtwoord != $wachtwoordCheck) {
+                return "PASSWORDS_NOT_THE_SAME";
+            }
+
+            //Nu halen we het huidige wachtwoord uit de database
+            //Query uitvoeren
+            $getPasswordQuery = "SELECT Password
              FROM Customer 
              WHERE Customer_ID = {$customerID}";
 
-        $PassData = GetData($getPasswordQuery, true);
-        $oudeWachtwoord = $PassData['Password'];
+            $PassData = GetData($getPasswordQuery, true);
+            $oudeWachtwoord = $PassData['Password'];
 
-        //Nu controleren we of het huidige wachtwoord
-        //hetzelfde is als de input van de gebruiker.
-        if(!password_verify($_POST['wachtwoord'], $oudeWachtwoord)) {
-            return "PASSWORD_NOT_CORRECT";
+            //Nu controleren we of het huidige wachtwoord
+            //hetzelfde is als de input van de gebruiker.
+            if (!password_verify($_POST['wachtwoord'], $oudeWachtwoord)) {
+                return "PASSWORD_NOT_CORRECT";
+            }
+            //Als die hetzelfde is kunnen we het nieuwe wachtwoord hashen.
+            //De hash wordt opgeslagen in de database.
+            $nieuweDatabaseWachtwoord = password_hash($wachtwoord, PASSWORD_DEFAULT);
+            $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer SET password =? WHERE Customer_ID = {$customerID}");
+
+            mysqli_stmt_bind_param($statement, 's', $nieuweDatabaseWachtwoord);
+            mysqli_stmt_execute($statement);
+            //Wachtwoord is verandert!
+            return "PASSWORD_CHANGED";
         }
-        //Als die hetzelfde is kunnen we het nieuwe wachtwoord hashen.
-        //De hash wordt opgeslagen in de database.
-        $nieuweDatabaseWachtwoord = password_hash($wachtwoord, PASSWORD_DEFAULT);
-        $statement = mysqli_prepare($conn = get_connection(), "UPDATE Customer SET password =? WHERE Customer_ID = {$customerID}");
-
-        mysqli_stmt_bind_param($statement, 's', $nieuweDatabaseWachtwoord);
-        mysqli_stmt_execute($statement);
-        //Wachtwoord is verandert!
-        return "PASSWORD_CHANGED";
     }
 
     // ################################################
@@ -186,7 +191,11 @@
     //Als er op de knop plaatsreview is gedrukt
     //Worden de input velden opgeslagen in variablen.
     if (isset($_POST['plaatsreview'])) {
-        $productDB = 221;
+        $productDB = $_SESSION['ProductID'];
+
+        $statement = mysqli_prepare($conn = get_connection(), "INSERT INTO product_information VALUES($productDB, NULL)");
+        mysqli_stmt_execute($statement);
+
         $emailDB = $_POST['mail'];
         $scoreDB = $_POST['star'];
         $beoordelingDB = $_POST['beoordeling'];
@@ -196,8 +205,8 @@
         mysqli_stmt_bind_param($statement, 'isis', $productDB, $emailDB, $scoreDB, $beoordelingDB);
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
-echo "ik doe het wel XD";
-//        header("Location: ../Pages/Reviews.php?message=Je review is succesvol geplaatst!");
+
+        header("Location: ../Pages/Reviews.php?message=Je review is succesvol geplaatst!");
     }
     ?>
 

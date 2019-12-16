@@ -20,115 +20,76 @@ session_start();
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
+
+
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-custom fixed-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-5">
-                    <a class="navbar-brand" href="#">World Wide Importers</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#collapsibleNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <div class="col-7">
-                    <form class="form-inline align-self-center" action="../Pages/search.php" method="POST">
-                        <div class="search-box input-group p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-                            <input type="search" placeholder="What're you searching for?" name="search"
-                                   autocomplete="off" class="form-control border-0 bg-light rounded rounded-pill">
-                            <div class="input-group-append">
-                                <button id="button-addon1" type="submit" class="btn btn-link text-primary"
-                                        name="submit-search"><i class="fa fa-search"></i></button>
-                            </div>
-                            <div class="result"></div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-<!-- HEAD-->
-        </nav>
-        <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-top: 70px;">
+<nav class="navbar navbar-expand-lg bg-color fixed-top">
+    <div class="container">
+        <div class="row col-12">
+            <div class="col-3">
+                <a class="navbar-brand" href="../Pages/index.php"><img src="../recources/voorbeeld%20fotos/wwi.png" alt="Wide world importers logo" style="height: 50px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div class="container">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="../Pages/index.php">Home <span
-                                            class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Pages/signup.php">Registreer</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Pages/login.php">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Pages/all_products.php">Producten</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Pages/contact.php">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </nav>
-    <div class="row">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-top: 70px;">
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="container">
-                    <ul class="navbar-nav ml-md-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="../Pages/index.php">Home <span
-                                        class="sr-only">(current)</span></a>
+                <form class="form-inlines col-8" name="myform" action="../Pages/all_products.php" method="GET">
+                    <div class="search-box input-group p-1 bg-light rounded rounded-pill shadow-sm mb-4 my-sm-0 form-group">
+                        <input type="search" placeholder="Waar ben je naar opzoek?" name="search"
+                               autocomplete="off" class="form-control border-0 bg-light rounded rounded-pill form-control">
+                        <div class="input-group-append">
+                            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                        </div>
+                        <div class="result"></div>
+                    </div>
+                </form>
+
+
+                <ul class="navbar-nav ml-auto">
+                    <?php
+                    if (empty($_SESSION['loginsucesesvol'])) {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark text-dark" href="../Pages/signup.php">Registreer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../Pages/all_products.php">Producten</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../Pages/contact.php">Contact</a>
+                            <a class="nav-link text-dark text-dark" href="../Pages/login.php">Login</a>
                         </li>
                         <?php
-                        if (empty($_SESSION['loginsucesesvol'])) {
-                        ?>
-                        <li class="nav-item" style="margin-left: 758px">
-                            <a class="nav-link" href="../Pages/signup.php">Registreer</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../Pages/login.php">Login</a>
-                        </li>
-                            <?php
-                        }
-                        else {
-                        ?>
-                        <li class="nav-item" style="margin-left: 600px">
-                            <a class="nav-link" href="../Pages/MijnAccount.php">Mijn Account</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../Pages/logout.php">Uitloggen</a>
-                        </li>
-                            <?php
-                        }
+                    } else {
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="../Pages/ShoppingCartQueries.php"><i class="fas fa-shopping-cart"></i></a>
+                            <a class="nav-link text-dark" href="../Pages/MijnAccount.php">Mijn Account</a>
                         </li>
-                    </ul>
-                </div>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="../Pages/logout.php">Uitloggen</a>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="../Pages/ShoppingCartQueries.php"><i class="fas fa-shopping-cart"></i></a>
+                    </li>
+                </ul>
             </div>
-        </nav>
+            <div class="row col-12">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link text-dark" href="../Pages/index.php">Home <span
+                                    class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="../Pages/all_products.php">Producten</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="../Pages/contact.php">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
+</nav>
 </body>

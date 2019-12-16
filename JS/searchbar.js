@@ -17,6 +17,8 @@ $(document).ready(function() {
     $(document).on("click", ".result p", function () {
         $(this).parents(".search-box").find('input[type="search"]').val($(this).text());
         $(this).parent(".result").empty();
+        document.myform.submit();
+        // window.location.replace("product_info.php?item=");
     });
 });
 

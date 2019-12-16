@@ -35,6 +35,9 @@ function quantityChanged(event) {
     if (isNaN(input.value) || input.value <= 0) {
         input.value = 1;
     }
+    if (input.value > 100) {
+        input.value = 100;
+    }
     updateCartTotal()
 }
 
