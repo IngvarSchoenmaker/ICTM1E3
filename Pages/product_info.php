@@ -112,7 +112,7 @@ function addToCart ($productid, $amount) {
 ?>
 
 <form method="post">
-    <input type="submit" name="addToCart" value="Add to cart" />
+    <input type="submit" name="addToCart" value="Add to cart" class="btn btn-primary" />
     <input type="text" name="Amount" value="1">
 </form>
 
