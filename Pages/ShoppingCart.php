@@ -2,6 +2,7 @@
 ob_start();
 require "../incl/header.php";
 
+//  ***Bezoekers zijn niet ingelogd en krijgen customer ID 0 mee voor opslaan orders***
 if(!isset($_SESSION['ID'])){
     $_SESSION['ID']=0;
 }
@@ -12,7 +13,7 @@ foreach($_SESSION['cart'] as $cart => $array){
     $_SESSION['cart'][$cart]=$array;
 }
 
-if(!$_SESSION['check']){
+if(!$_SESSION['check'] AND !$_SESSION['ID']=0){
     header ("Location: ShoppingCartQueries.php");
 }
 
