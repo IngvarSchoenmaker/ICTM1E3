@@ -81,15 +81,7 @@ if (isset($_GET['char'])) {
         <b style="margin-right: 52px;">postcode:</b><input type="text" name="Postcode"  placeholder="voorbeeld:1088AA" required> * <br><br>
         <b style="margin-right: 33px;">straatnaam:</b> <input type="text" name="Straatnaam" required>*  <br><br>
         <b style="margin-right: 20px;">Huisnummer:</b> <input type="text" name="Huisnummer" required>*  <br><br>
-        <b style="margin-right: 77px;">Plaats:</b><select name="Plaats" required>*
-            <option>Amsterdam</option>
-            <option>Armani</option>
-            <option>Den Haag</option>
-            <option>Rotterdam</option>
-            <option>Utrecht</option>
-            <option>Harderwijk</option>
-        </select><br><br>
-
+        <b style="margin-right: 77px;">Plaats:</b><input type="text" name="Plaats" required>*
         <!--Hier wordt een Postcode error gegeven als de error-Postcode geset/actief is.-->
             <?php
         if(isset($_GET['error'])){

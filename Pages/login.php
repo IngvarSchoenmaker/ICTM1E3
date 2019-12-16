@@ -39,8 +39,8 @@ require '../incl/header.php';
                                     if ($passwordcheck === false) {
                                         print('Incorrecte combinatie');
                                     } else {
-                                        $_SESSION['loginsucesesvol'] = true;
-                                        $_SESSION['emailadres'] = $email;
+                                        $_SESSION['loginsucesesvol'] = $email;
+                                        $_SESSION['check'] = "true";
                                         $stmt = $conn->prepare("SELECT Customer_ID FROM Customer WHERE Email = ?");
                                         $stmt->bind_param("s", $email);
                                         $stmt->execute();
