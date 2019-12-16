@@ -28,7 +28,7 @@ session_start();
         <div class="container">
             <div class="row">
                 <div class="col-5">
-                    <a class="navbar-brand" href="#">World Wide Importers</a>
+                    <a class="navbar-brand" href="../Pages/index.php">Wide World Importers</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#collapsibleNavbar">
                         <span class="navbar-toggler-icon"></span>
@@ -37,7 +37,7 @@ session_start();
                 <div class="col-7">
                     <form class="form-inline align-self-center" action="../Pages/search.php" method="POST">
                         <div class="search-box input-group p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-                            <input type="search" placeholder="What're you searching for?" name="search"
+                            <input type="search" placeholder="Zoek in onze winkel" name="search"
                                    autocomplete="off" class="form-control border-0 bg-light rounded rounded-pill">
                             <div class="input-group-append">
                                 <button id="button-addon1" type="submit" class="btn btn-link text-primary"

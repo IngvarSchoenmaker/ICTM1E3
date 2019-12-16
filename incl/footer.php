@@ -6,13 +6,14 @@
                 <div class="col-xs-12 col-sm-6 col-md-3">
                     <div class="widget subscribe no-box">
                         <h5 class="widget-title">Wide World Importers<span></span></h5>
-                        <p>About the company, little discription will goes here.. </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut tellus interdum nisl suscipit dapibus et sit amet neque. Nulla aliquet dolor nibh, id aliquam augue tempus eu. Morbi in euismod odio.   </p>
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3">
                     <div class="widget geen no-box">
-                        <h5 class="widget-title">Quick Links<span></span></h5>
+                        <h5 class="widget-title">Snelle Navigatie<span></span></h5>
                         <ul class="thumbnail-widget">
                             <li>
                                 <div class="thumb-content"><a href="../Pages/index.php">Home</a></div>
@@ -27,7 +28,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-3">
                     <div class="widget no-box">
                         <h5 class="widget-title">Klantenservice<span></span></h5>
-                        <p>Get access to your full Training and Marketing Suite.</p>
+                        <a class="btn" href="../Pages/contact.php"><p>Contact</p></a>
                         <a class="btn" href="../Pages/signup.php" target="_blank">Register Now</a>
                     </div>
                 </div>
