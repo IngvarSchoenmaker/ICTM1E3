@@ -1,6 +1,6 @@
 <?php
 //Laadt database in
-include '../incl/Database.php';
+include '../incl/reviewopslaan.php';
 
 ?>
 
