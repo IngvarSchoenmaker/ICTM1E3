@@ -144,7 +144,7 @@ if(isset($_POST['addToCart'])) {
 
                 echo "<br>";
                 echo "<br>";
-
+                include_once 'Reviews.php'
                 ?>
 
             <div>
