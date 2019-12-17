@@ -5,17 +5,16 @@ include '../incl/reviewopslaan.php';
 ?>
 
 <style>
-    .form-resize{
+    .form-resize {
         width: 100%;
     }
 
-    div.form
-    {
+    div.form {
         display: block;
         text-align: center;
     }
-    form
-    {
+
+    form {
         display: inline-block;
         margin-left: auto;
         margin-right: auto;
@@ -34,24 +33,34 @@ if (!empty($_GET['message'])) {
 ?>
 <!--Hier maak ik de review input-->
 <div class="review">
-     <form action="../incl/Database.php" method="post">
+    <form action="../incl/Database.php" method="post">
         <div class="form-resize">
-         E-mail*: <br><input type="email" name="mail" placeholder="example@mail.com" required class="form-control"><br>
-        <small>Je email wordt niet openbaar gemaakt!</small><br>
-        Naam*: <br><input type="text" name="naam" placeholder="Jan Voet" required class="form-control"><br>
+            <div class="form-group">
+                <label>E-mail*: </label>
+                <input type="email" name="mail" placeholder="voorbeeld@mail.com" required class="form-control">
+                <small class="form-text text-muted">Je email wordt niet openbaar gemaakt!</small>
+            </div>
+            <div class="form-group">
+                <label>Naam*:</label>
+                <input type="text" name="naam" placeholder="Jan Voet" required class="form-control">
+            </div>
         </div>
 
-         <div class="form-check form-check-inline">
-         Score: <br><input type="radio" name="star" value="1" class>1
-         <input type="radio" name="star" value="2">2
-        <input type="radio" name="star" value="3">3
-        <input type="radio" name="star" value="4">4
-        <input type="radio" name="star" value="5" checked>5<br>
-         </div>
+        <div class="form-check form-check-inline">
+            <div class="form-group">
+            Score:
+            <label class="radio-inline"><input type="radio" name="star" value="1" class>1</label>
+            <label class="radio-inline"><input type="radio" name="star" value="2">2</label>
+            <label class="radio-inline"><input type="radio" name="star" value="3">3</label>
+            <label class="radio-inline"><input type="radio" name="star" value="4">4</label>
+            <label class="radio-inline"><input type="radio" name="star" value="5" checked>5</label>
+            </div>
+        </div>
 
-         <div class="form-resize">
-         Beoordeling*: <br><textarea rows="2" cols="25" name="beoordeling" required class="form-control"></textarea><br>
-         </div>
+        <div class="form-resize">
+            Beoordeling*: <br><textarea rows="2" cols="25" name="beoordeling" required
+                                        class="form-control"></textarea><br>
+        </div>
         <input name="plaatsreview" type="submit" value="Plaats review" class="btn btn-primary"><br>
     </form>
 </div>
