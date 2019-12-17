@@ -29,9 +29,7 @@ session_start();
         <div class="row col-12">
             <div class="col-3">
                 <a class="navbar-brand" href="../Pages/index.php"><img src="../recources/voorbeeld%20fotos/wwi.png" alt="Wide world importers logo" style="height: 50px;"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
