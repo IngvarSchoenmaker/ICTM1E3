@@ -1,7 +1,9 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 //Laadt database in
-include '../incl/reviewopslaan.php';
-
+include '../incl/ConnectieFunctie.php';
 ?>
 
 <style>
@@ -22,18 +24,9 @@ include '../incl/reviewopslaan.php';
     }
 </style>
 
-
-<?php
-//Laat een melding zien wanneer de review succesvol is toegevoegd.
-if (!empty($_GET['message'])) {
-    $SuccesMelding = $_GET['message'];
-    print("<h3>" . $SuccesMelding . "</h3>");
-    header("refresh:4;url=../Pages/index.php");
-}
-?>
 <!--Hier maak ik de review input-->
 <div class="review">
-    <form action="../incl/Database.php" method="post">
+    <form action="" method="post">
         <div class="form-resize">
             <div class="form-group">
                 <label>E-mail*: </label>
@@ -64,3 +57,37 @@ if (!empty($_GET['message'])) {
         <input name="plaatsreview" type="submit" value="Plaats review" class="btn btn-primary"><br>
     </form>
 </div>
+
+<?php
+ob_start();
+// ################################################
+// Review gegevens opslaan.
+// ################################################
+
+//Als er op de knop plaatsreview is gedrukt
+//Worden de input velden opgeslagen in variablen.
+if (isset($_POST['plaatsreview'])) {
+    $productDB = $_SESSION['ProductID'];
+//
+//    $statement = mysqli_prepare($conn = get_connection(), "INSERT INTO product_information VALUES($productDB, NULL)");
+//    mysqli_stmt_execute($statement);
+
+    $emailDB = $_POST['mail'];
+    $scoreDB = $_POST['star'];
+    $beoordelingDB = $_POST['beoordeling'];
+    //Prepared statement
+    $statement = mysqli_prepare($conn = get_connection(), "INSERT INTO reviews VALUES(?,?,?,?)");
+
+    mysqli_stmt_bind_param($statement, 'isis', $productDB, $emailDB, $scoreDB, $beoordelingDB);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+
+
+    if (isset($_SESSION['ID'])) {
+        print "<script>alert('Je review is succesvol geplaatst!'); </script>";
+    }
+    header("Refresh:0");
+}
+
+ob_end_flush();
+?>

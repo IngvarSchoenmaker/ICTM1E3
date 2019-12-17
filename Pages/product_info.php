@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include '../incl/header.php';
 $productid = $_GET['item'];
 ?>
@@ -161,11 +162,11 @@ if ($stars > 0) {
 
 echo "<br>";
 echo "<br>";
-include_once 'Reviews.php'
+
 ?>
 
     <div>
-        <?php include_once 'Reviews.php' ?>
+        <?php include 'Reviews.php' ?>
     </div>
     </div>
     </div>
@@ -173,4 +174,5 @@ include_once 'Reviews.php'
     </body>
 <?php
 include '../incl/footer.php';
+ob_end_flush();
 ?>
