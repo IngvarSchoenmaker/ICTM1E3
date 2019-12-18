@@ -14,11 +14,11 @@ include '../incl/header.php';
                     </ol>
                     <div class="carousel-inner" style="height: 370px;">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="../recources/voorbeeld%20fotos/sale_1920x619_94531.jpg"
+                            <img class="d-block w-100" src="../recources/voorbeeld%20fotos/Sale_Christmas3.jpg"
                                  alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="../recources/voorbeeld%20fotos/ww1wapens.jpg"
+                            <img class="d-block w-100" src="../recources/voorbeeld%20fotos/Sale_BlackFirday3.png"
                                  alt="Second slide">
                         </div>
                         <div class="carousel-item">
@@ -38,10 +38,10 @@ include '../incl/header.php';
         </div>
         <div class="row" style="margin-top: 15px; margin-bottom: 15px">
             <div class="col-lg-6">
-                <img src="https://picsum.photos/1200?random=1" style="width: 540px; height: 200px;">
+                <img src="https://image.coolblue.be/max/422x390/products/117928" style="width: 540px; height: 200px;">
             </div>
             <div class="col-lg-6">
-                <img src="https://picsum.photos/1200?random=2" style="width: 540px; height: 200px;">
+                <img src="https://assets.pcmag.com/media/images/237124-usb-missile-launcher.jpg?width=740" style="width: 540px; height: 200px;">
             </div>
         </div>
         <?php
