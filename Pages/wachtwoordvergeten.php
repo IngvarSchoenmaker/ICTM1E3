@@ -24,11 +24,9 @@ if (isset($_POST['send'])) {
         if ($row > 0){
             $to = $email;
             $subject = "wachtwoord veranderen";
-            $txt = "http://localhost/HBO/ICTM1E3/Pages/veranderww <br>
-                    ik verstuur een mail uwu";
-            $headers = "From: pboertien@outlook.com";
-
-            mail($to,$subject,$txt,$headers);
+            $txt = "klik op deze link om uw wachtwoord te veranderen
+                    http://localhost/HBO/ICTM1E3/Pages/veranderww";
+            mail($to,$subject,$txt);
         }
     }
 }
