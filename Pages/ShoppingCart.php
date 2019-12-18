@@ -2,6 +2,7 @@
 ob_start();
 require "../incl/header.php";
 
+//  ***Bezoekers zijn niet ingelogd en krijgen customer ID 0 mee voor opslaan orders***
 if(!isset($_SESSION['ID'])){
     $_SESSION['ID']=0;
 }
@@ -12,7 +13,7 @@ foreach($_SESSION['cart'] as $cart => $array){
     $_SESSION['cart'][$cart]=$array;
 }
 
-if(!$_SESSION['check']){
+if(!$_SESSION['check'] AND !$_SESSION['ID']=0){
     header ("Location: ShoppingCartQueries.php");
 }
 
@@ -27,7 +28,22 @@ $photo=($_SESSION['photo']);
 <!DOCTYPE html>
 <html lang="en">
 <style>
+    #wrapper {
+        width: 900px; /*can be in percentage also.*/
+        height: auto;
+        margin: 0 auto;
+        padding: 10px;
+        position: relative;
+        border: 1px solid black;
+        overflow: auto;
+    }
+    #first {
+        float: left;
+        width: 405px;
+        border: 1px black;
+    }
 </style>
+
 <head>
     <title>Productlijst</title>
     <meta charset="utf-8">
@@ -96,8 +112,27 @@ $photo=($_SESSION['photo']);
 
         </tbody>
     </table>
-
 </div>
+
+<div id="wrapper">
+    <div id="first">
+        <h3><b>Waarom zou je bij ons bestellen?</b></h3>
+        <img src="../recources/voorbeeld%20fotos/Milieu.png" alt="Milieuvriendelijkheid" height="169" width="313">
+    </div>
+    <div id="second">
+        <h3><b>Feiten over kartonnen dozen</b></h3>
+        <ul>
+            <li>
+                Karton wordt gemaakt uit hout. Bomen nemen CO2 op, waarmee zij de CO2-uitstoot van de productie van papier en karton grotendeels neutraliseren
+            </li>
+            <li>
+                Hout is een hernieuwbare bron. Voor elke geoogste boom wordt een nieuwe geplant. Sinds 1950 is het bosoppervlak in Europa gegroeid met liefst 30%. De productiebossen van de hout-, papier- en kartonindustrie dragen daaraan bij.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<br>
 </body>
 </html>
 

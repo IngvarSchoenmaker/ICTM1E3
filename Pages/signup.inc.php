@@ -27,7 +27,7 @@ if (isset($_POST['registreer'])) {
 
 // hier wordt gecontroleerd of er geen symbolen worden gebruikt tijdens het invullen van de formulier . Als er symbolen worden gebruikt verwijst ie terug naar de singup met een error
 
-    if (preg_match('/^[= or " " as # *]*$/', $voornaam) || preg_match("(or|as)", $Tussenvoegsels) || preg_match('/^[= or "" as # *]*$/', $Achternaam)) {
+    if (preg_match('/^[= or " " as # *]*$/', $voornaam) || preg_match("(or|as|=|,)", $Tussenvoegsels) || preg_match('/^[= or "" as # *]*$/', $Achternaam)) {
 
         header("Location:signup.php?char=error&Voornaam=" . $voornaam . "&Tussenvoegsel=" . $Tussenvoegsels . "&Achternaam=" . $Achternaam);
 

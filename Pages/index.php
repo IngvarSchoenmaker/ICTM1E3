@@ -1,5 +1,6 @@
 <?php
-include '../incl/header.php'
+include '../incl/header.php';
+
 ?>
 
     <div class="container" style="margin-top:150px">
@@ -60,10 +61,13 @@ include '../incl/header.php'
         ?>
     </div>
 <?php
-if(isset($_SESSION['emailadres']))
-
-?>
-
-<?php
 include '../incl/footer.php';
+?>
+<?php
+if ($_SESSION['check'] === "true") {
+    if (isset($_SESSION['loginsucesesvol'])) {
+        print "<script>alert('Welkom terug, " . $_SESSION['loginsucesesvol'] . "!'); </script>";
+        $_SESSION['check'] = "false";
+    }
+}
 ?>
