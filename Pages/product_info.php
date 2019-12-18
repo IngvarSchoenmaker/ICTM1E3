@@ -70,7 +70,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../recources/voorbeeld fotos/<?php echo "$itemname" ?>1.jpg" class="img">
+                <img src="../recources/voorbeeld fotos/<?php echo "$itemname" ?>1.jpg" class="img">ff
             </div>
             <div class="carousel-item">
                 <img src="../recources/voorbeeld fotos/<?php echo "$itemname" ?>2.jpg" class="img">
@@ -113,7 +113,7 @@ function addToCart($productid, $amount, $itemname)
         $productid => $amount
     );
     if (isset ($_SESSION['cart'][$productid])) {
-        print("Dit product staat al in uw winkelmand!");
+        print("<p class='bg-fail'> Dit product staat al in uw winkelmand! </p>");
 
     } elseif ($addItem[$productid] != null) {
         if (isset ($_SESSION['cart'])) {
