@@ -106,7 +106,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 <?php
 
-function addToCart($productid, $amount)
+function addToCart($productid, $amount, $itemname)
 {
 
     $addItem = array(
@@ -114,11 +114,14 @@ function addToCart($productid, $amount)
     );
     if (isset ($_SESSION['cart'][$productid])) {
         print("Dit product staat al in uw winkelmand!");
+
     } elseif ($addItem[$productid] != null) {
         if (isset ($_SESSION['cart'])) {
             $_SESSION['cart'] += $addItem;
+            echo "<p class='bg-success'> Het product" . $itemname . " is toegevoegd aan je winkelwagen </p>";
         } else {
             $_SESSION['cart'] = $addItem;
+            echo "<p class='bg-success'> Het product" . $itemname . " is toegevoegd aan je winkelwagen </p>";
         }
     }
 }
@@ -141,9 +144,9 @@ if (isset($_POST['Amount'])) {
 
 if (isset($_POST['addToCart'])) {
 
-    addToCart($productid, $amount);
+    addToCart($productid, $amount, $itemname);
 
-    echo "<p class='bg-success'> Het product" . $itemname . " is toegevoegd aan je winkelwagen </p>";
+
 }
 ?>
     <br>
