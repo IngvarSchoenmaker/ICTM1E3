@@ -16,7 +16,7 @@ if (isset($_POST['send'])) {
         print("<p style=\" color:red; margin-right: 5px; margin-left: 400px\">Het verplichte veld is niet ingevuld</p>");
     }
     else {
-        $stmt = $conn->prepare("SELECT * FROM customer WHERE Email=?");
+        $stmt = $conn->prepare("SELECT * FROM customer WHERE Email= ? ");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = mysqli_stmt_get_result($stmt);
@@ -36,13 +36,14 @@ if (isset($_POST['send'])) {
             $code = generateRandomString();
             $txt = 'Klik op deze link om u wachwoord te veranderen: http://localhost/HBO/ICTM1E3/Pages/veranderwachtwoord.php?code=' .$code . '';
             mail($to,$subject,$txt);
-            $sql = $conn->prepare("INSERT INTO customer (Generated_Key) VALUES (?)WHERE Email=?");
+            echo "Er is een mail verzonden naar u!";
+            $sql = $conn->prepare("UPDATE customer SET Generated_Key = ? WHERE Email = ?");
             $sql->bind_param("ss", $code, $email);
             $sql->execute();
-
-            echo "Er is een mail verzonden naar u!";
+            $sql->close();
+        } else {
+            echo "Dit is geen geldig E-mailadres";
         }
-        echo "Dit is geen geldig E-mailadres";
     }
 }
 ?>
