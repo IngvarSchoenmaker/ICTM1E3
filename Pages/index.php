@@ -65,10 +65,12 @@ include '../incl/header.php';
 include '../incl/footer.php';
 ?>
 <?php
-if ($_SESSION['check'] === "true") {
-    if (isset($_SESSION['loginsucesesvol'])) {
-        print "<script>alert('Welkom terug, " . $_SESSION['loginsucesesvol'] . "!'); </script>";
-        $_SESSION['check'] = "false";
+if (isset($_SESSION['check'])) {
+    if ($_SESSION['check'] === "true") {
+        if (isset($_SESSION['loginsucesesvol'])) {
+            print "<script>alert('Welkom terug, " . $_SESSION['loginsucesesvol'] . "!'); </script>";
+            $_SESSION['check'] = "false";
+        }
     }
 }
 ?>
