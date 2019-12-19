@@ -1,6 +1,6 @@
 <?php
 
-include "database_connection.php"
+include "../incl/dbwwi.php";
 
 ?>
 
@@ -12,11 +12,11 @@ include "database_connection.php"
 </head>
 <body>
 
-<form action="index.php" method="post">
-    <input  type="checkbox" name="huismerk" value="ans1"> Huismerk <br>
-    <input type="checkbox" name="sale" value="ans2"> Sale <br>
-    <input type="checkbox" name="highlow" value="ans3"> Prijs Hoog-Laag <br>
-    <input type="checkbox" name="lowhigh" value="ans4"> Prijs Laag-Hoog <br> <br>
+<form action="all_products.php" method="post">
+    <input  type="checkbox" name="huismerk" value="ans1"> Huismerk
+    <input type="checkbox" name="sale" value="ans2"> Sale
+    <input type="checkbox" name="highlow" value="ans3"> Prijs Hoog-Laag
+    <input type="checkbox" name="lowhigh" value="ans4"> Prijs Laag-Hoog <br>
 
     <input type="submit" value="submit" />
 </form> <br>
