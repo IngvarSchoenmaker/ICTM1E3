@@ -1,6 +1,5 @@
 <?php
 ob_start();
-//include '../Pages/ShoppingCartQueries.php';
 include '../incl/ConnectieFunctie.php';
 include_once '../incl/header.php';
 
@@ -19,7 +18,6 @@ $ProductList = $_SESSION['cart'];
 $Customer_ID = $_SESSION['ID'];
 $_SESSION['cart_ID'] = 2;
 $ShoppinglistID = $_SESSION['cart_ID'];
-
 
 if(isset($_SESSION['ID'])) {
     if (isset($_POST['bestellen'])) {
