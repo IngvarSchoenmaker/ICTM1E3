@@ -16,10 +16,15 @@ print("<BR>");
 //$_SESSION['cartt'] = array(220 => 3, 221 => 4);
 $ProductList = $_SESSION['cart'];
 //$_SESSION['ID'] = 2;
-$Customer_ID = $_SESSION['ID'];
-$_SESSION['cart_ID'] = 2;
-$ShoppinglistID = $_SESSION['cart_ID'];
+if(!isset($_SESSION['cart_ID'])){
+    $sql = 'SELECT COUNT(*) FROM shoppinglist GROUP BY Shoppinglist_ID';
+    $cart_ID=GetData($sql, TRUE);
+    $_SESSION['cart_ID']=$cart_ID;
+};
 
+$Customer_ID = $_SESSION['ID'];
+//$_SESSION['cart_ID'] = 3;
+$ShoppinglistID = $_SESSION['cart_ID'];
 
 if(isset($_SESSION['ID'])) {
     if (isset($_POST['bestellen'])) {

@@ -80,13 +80,13 @@ $photo = ($_SESSION['photo']);
             </td>
             <td>
                 Rating $rating[$ID]<BR>
-                <form action='ShoppingCart.php' method='post' id='myform'>
+                
                 Aantal <input type='number' onchange='Refresh()' class='cart-quantity-input form-control' name=\"aantal$ID\" id='' value= '$aantal'
                 </form>
             </td>
             <td>Prijs per stuk <p class='cart-price'>$itemPrice[$ID]</p>
                 Prijs totaal <div class='item-total'>$itemTotal</div>
-                <button class='btn btn-danger' type=\"button\">VERWIJDEREN</button>
+                <button class='verwijder btn btn-danger' type=\"button\">VERWIJDEREN</button>
             </td>
         </tr>
 
@@ -100,9 +100,9 @@ $photo = ($_SESSION['photo']);
             <tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$cartTotal<BR></td></tr>
 
         </div>
-        <form method='post' action=\"../Pages/AfrondenBestelling.php\">
+        <form method='post' action='../Pages/AfrondenBestelling.php'>
         <button class='order btn btn-success' type='submit' name='bestellen' onclick='javascript:ajax_post();'>Bestellen</button><div id=\"status\"></div>
-
+</form>
         ");
         }
 
@@ -168,4 +168,5 @@ function SqlGetSingleRow($sql, $conn)
     mysqli_stmt_close($statement);
     $conn->close();
 }
+
 ?>
