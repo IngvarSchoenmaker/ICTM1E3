@@ -14,7 +14,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-3">
                     <div class="widget geen no-box">
                         <h5 class="widget-title">Snelle Navigatie<span></span></h5>
-                        <ul class="thumbnail-widget">
+                        <ul class="thumbnail-widget list-unstyled">
                             <li>
                                 <div class="thumb-content"><a href="../Pages/index.php">Home</a></div>
                             </li>
@@ -28,8 +28,11 @@
                 <div class="col-xs-12 col-sm-6 col-md-3">
                     <div class="widget no-box">
                         <h5 class="widget-title">Klantenservice<span></span></h5>
-                        <a class="btn" href="../Pages/contact.php"><p>Contact</p></a>
-                        <a class="btn" href="../Pages/signup.php" target="_blank">Register Now</a>
+                        <a class="btn" href="../Pages/contact.php">Contact</a><br>
+                        <?php if(empty($_SESSION['loginsucesesvol'])){
+                            echo "<a class=\"btn\" href=\"../Pages/signup.php\" target=\"_blank\">Register Now</a>";
+                        }?>
+
                     </div>
                 </div>
 
@@ -39,7 +42,7 @@
                         <h5 class="widget-title">Volg ons op sociale media<span></span></h5>
 
                         <p><a href="wordwideimporters@gmail.com" title="glorythemes">WWI@Worldwideimporters.com</a></p>
-                        <ul class="social-footer2">
+                        <ul class="social-footer2 list-unstyled">
                             <li class=""><a href="https://www.youtube.com/" target="_blank" title="youtube"><img
                                             alt="Youtube" width="30" height="30"></a></li>
                             <li class=""><a href="https://www.facebook.com/" target="_blank" title="Facebook"><img

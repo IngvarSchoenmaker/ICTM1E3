@@ -3,25 +3,25 @@ ob_start();
 require "../incl/header.php";
 
 //  ***Bezoekers zijn niet ingelogd en krijgen customer ID 0 mee voor opslaan orders***
-if(!isset($_SESSION['ID'])){
-    $_SESSION['ID']=0;
+if (!isset($_SESSION['ID'])) {
+    $_SESSION['ID'] = 0;
 }
 $connOnzeDB = mysqli_connect($servername, $DBusername, $DBpassword, "onzedbwwi", $port) or
 die("Could not connect: " . mysqli_error());
 
-foreach($_SESSION['cart'] as $cart => $array){
-    $_SESSION['cart'][$cart]=$array;
+foreach ($_SESSION['cart'] as $cart => $array) {
+    $_SESSION['cart'][$cart] = $array;
 }
 
-if(!$_SESSION['check'] AND !$_SESSION['ID']=0){
-    header ("Location: ShoppingCartQueries.php");
+if (!$_SESSION['check'] AND !$_SESSION['ID'] = 0) {
+    header("Location: ShoppingCartQueries.php");
 }
 
 
-$itemPrice=($_SESSION['itemPrice']);
-$itemName=($_SESSION['itemName']);
-$rating=($_SESSION['rating']);
-$photo=($_SESSION['photo']);
+$itemPrice = ($_SESSION['itemPrice']);
+$itemName = ($_SESSION['itemName']);
+$rating = ($_SESSION['rating']);
+$photo = ($_SESSION['photo']);
 //
 //
 //?>
@@ -40,7 +40,7 @@ $photo=($_SESSION['photo']);
 
 <div class="container" style="margin-top: 150px; margin-bottom: 100px">
     <h2>Winkelwagen</h2>
-    <p>Verder winkelen knop &emsp; Verder naar bestellen</p>
+    <p>Verder winkelen knop &emsp; Verder met bestellen</p>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -51,14 +51,13 @@ $photo=($_SESSION['photo']);
         </thead>
         <tbody class="cart-items">
         <?php
-        $cartTotal=0;
-        if(isset($_SESSION['cart'])) {
+        $cartTotal = 0;
+        if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $ID => $aantal) {
                 $itemTotal = ($aantal * $itemPrice[$ID]);
                 print("
 
         <tr class='cart-row'>
-
             <td>
                 Product nummer<p class='cart-item'>$ID</p><BR>
                  $photo[$ID]<BR>
@@ -66,7 +65,7 @@ $photo=($_SESSION['photo']);
             </td>
             <td>
                 Rating $rating[$ID]<BR>
-                Aantal <input type='number' class='cart-quantity-input' name=\"aantal\"  value= $aantal <?php echo $aantal;?>
+                Aantal <input type='number' class='cart-quantity-input form-control' name=\"aantal\"  value= $aantal <?php echo $aantal;?>
             </td>
             <td>Prijs per stuk <p class='cart-price'>$itemPrice[$ID]</p>
                 Prijs totaal <div class='item-total'>$itemTotal</div>
@@ -79,20 +78,20 @@ $photo=($_SESSION['photo']);
                 $cartTotal += $itemTotal;
             }
         }
-        if(!empty($_SESSION['cart'])){
-        print("
+        if (!empty($_SESSION['cart'])) {
+            print("
         <div class='end-row'>
             <tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$cartTotal<BR></td></tr>
 
         </div>
         <form method='post' action=\"../Pages/AfrondenBestelling.php\">
-        <div><button class='order' type='submit' name='bestellen' onclick='javascript:ajax_post();'>Bestellen</button><div id=\"status\"></div></div>
+        <button class='order btn btn-success' type='submit' name='bestellen' onclick='javascript:ajax_post();'>Bestellen</button><div id=\"status\"></div>
 
         ");
         }
 
 
-        $_SESSION['Querycheck']=false;
+        $_SESSION['Querycheck'] = false;
         ?>
 
         </tbody>
@@ -131,4 +130,5 @@ function SqlGetSingleRow($sql, $conn)
     mysqli_stmt_close($statement);
     $conn->close();
 }
+
 ?>
