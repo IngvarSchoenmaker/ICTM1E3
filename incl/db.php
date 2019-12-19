@@ -5,8 +5,8 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 try {
     $server = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "WWIadmin";
+    $password = "QzWxEc123Rv";
     $dbname = "onzedbwwi";
     $conn = mysqli_connect($server, $username, $password, $dbname);
 
@@ -20,11 +20,4 @@ try {
     exit("Oops, er is een fout ontstaan met de connectie probeer het later weer.");
 
 }
-$servername = "localhost";
-$DBusername = "root";
-$DBpassword = "";
-$DBname = "wideworldimporters";
-$port = "3306";
-$conn2 = mysqli_connect($servername, $DBusername, $DBpassword, "wideworldimporters", $port) or
-die("Could not connect: " . mysqli_error());
-?>
+
