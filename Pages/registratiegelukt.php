@@ -18,9 +18,8 @@ require '../incl/header.php';
                     }
                 }
                 ?> <br><br><br>
-                <a href="login.php">
-                    <button style="color: #00bfbf"
-                    </button>inloggen</a>
+                <a href="login.php"><button class="btn btn-primary">Login</button></a>
+
 
 
                 </form>

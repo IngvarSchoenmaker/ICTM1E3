@@ -10,61 +10,84 @@ include '../incl/Database.php';
 <!--Laadt javascript bestand met functies in.-->
 <script type="text/javascript" src="../JS/Functions.js"></script>
 
-<div class="container" style="margin-top:200px; margin-bottom: 100px; text-align: center">
+<div class="container" style="margin-top:200px; margin-bottom: 100px;">
+    <?php
+    //Laat succes meldingen zien als wachtwoord en/of gegevens zijn gewijzigd.
+    if (!empty($_GET['message'])) {
+        $SuccesMelding = $_GET['message'];
+        print("<div class='alert alert-danger' role='alert'>" . $SuccesMelding . "</div>>");
+    }
+    if (!empty($_GET['messagepass'])) {
+        $SuccesMelding = $_GET['messagepass'];
+        print("<div class='alert alert-success' role='alert'>" . $SuccesMelding . "</div>");
+    }
+    ?>
     <div class="row">
         <div class="col-md-6 col-sm-6">
-<h1 class="AccInfo">Account informatie</h1>
-
-<?php
-//Laat succes meldingen zien als wachtwoord en/of gegevens zijn gewijzigd.
-if (!empty($_GET['message'])) {
-    $SuccesMelding = $_GET['message'];
-    print("<h3>" . $SuccesMelding . "</h3>");
-}
-if (!empty($_GET['messagepass'])) {
-    $SuccesMelding = $_GET['messagepass'];
-    print("<h3>" . $SuccesMelding . "</h3>");
-}
-?>
-
-<!--Laat de account gegevens van de gebruiker zien in een form
-De gebruiker kan hier zijn gegevens ook wijzigen. -->
-<div class="AccForm">
-
-    <form action="../incl/Database.php" method="post">
-        <!--        De functie in de onklick zorgt ervoor dat er gegevens gewijzigd kunnen worden-->
-        <!--        wanneer er op de knop wijzig gedrukt word.-->
-        <input onclick="ChangeForm()" id="wijzig" name="wijzig" type="button" value="Wijzig"> <br>
-        <div id="form-inputs">
-            Voornaam*: <br> <input type="text" id="voor" name="voornaam" value="<?= ($voornaam) ?>" readonly
-                                   required><br>
-            Tussenvoegsels: <br> <input type="text" id="tussenv" name="tussenvoegsel" value="<?= ($tussenvoegsels) ?>"
-                                        readonly><br>
-            Achternaam*: <br> <input type="text" id="achter" name="achternaam" value="<?= ($achternaam) ?>" readonly
-                                     required><br>
-            E-mail*: <br> <input type="email" id="mail" name="email" value="<?= $email ?>" readonly required><br>
-            Geboortedatum*: <br> <input type="text" id="datum" name="gbdatum" value="<?= ($gbdatum) ?>" readonly
-                                        required><br>
-            <input type="submit" id='opslaan' name="opslaanAccountinfo" value='Opslaan'><br>
-        </div>
-    </form>
-</div>
+            <h1 class="AccInfo">Account informatie</h1>
+            <!--Laat de account gegevens van de gebruiker zien in een form
+            De gebruiker kan hier zijn gegevens ook wijzigen. -->
+            <div class="AccForm">
+                <form action="../incl/Database.php" method="post">
+                    <!--        De functie in de onklick zorgt ervoor dat er gegevens gewijzigd kunnen worden-->
+                    <!--        wanneer er op de knop wijzig gedrukt word.-->
+                    <div class="form-group">
+                        <label for="voornaam">Voornaam:*</label>
+                        <input type="text" class="form-control" id="voor" name="voornaam" value="<?= ($voornaam) ?>"
+                               readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tussenvoegsel">Tussenvoegsels: </label>
+                        <input type="text" class="form-control" id="tussenv" name="tussenvoegsel"
+                               value="<?= ($tussenvoegsels) ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="achternaam">Achternaam:* </label>
+                        <input type="text" class="form-control" id="achter" name="achternaam"
+                               value="<?= ($achternaam) ?>" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:* </label>
+                        <input type="email" class="form-control" id="mail" name="email" value="<?= $email ?>" readonly
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="geboortedatum">Geboortedatum:*</label>
+                        <input type="text" class="form-control" id="datum" name="gbdatum" value="<?= ($gbdatum) ?>"
+                               readonly required>
+                    </div>
+                    <div class="form-group">
+                            <input onclick="ChangeForm()" id="wijzig" name="wijzig" type="button" class="btn btn-info"
+                                   value="Wijzig">
+                        <input type="submit" id='opslaan' class="btn btn-success" name="opslaanAccountinfo"
+                               value='Opslaan'><br>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="col-md-6 col-sm-6">
-    <form action="Database.php" method="post">
-        <div id="ww-inputs">
-            <h1>Wachtwoord veranderen</h1>
-            Huidig wachtwoord* <br> <input type="password" id="huidigpass" name="wachtwoord"><br>
-            Nieuw wachtwoord* <br> <input type="password" id="newpass" name="nieuwwachtwoord"><br>
-            Herhaal wachtwoord* <br> <input type="password" id="herhaalpass" name="herhaalwachtwoord"><br>
-            <input type="submit" name="opslaanWachtwoord" value="Verander wachtwoord"><br><br><br>
+            <form action="../incl/Database.php" method="post">
+                    <h1>Wachtwoord veranderen</h1>
+                    <div class="form-group">
+                        <label for="huidigwachtwoord">Huidig wachtwoord:*</label>
+                        <input type="password" class="form-control" id="huidigpass" name="wachtwoord">
+                    </div>
+                    <div class="form-group">
+                        <label for="nieuwwachtwoord">Nieuw wachtwoord:*</label>
+                        <input type="password" class="form-control" id="newpass" name="nieuwwachtwoord">
+                    </div>
+                    <div class="form-group">
+                        <label for="herhaalwachtwoord">Herhaal wachtwoord:*</label>
+                        <input type="password" class="form-control" id="herhaalpass" name="herhaalwachtwoord">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="opslaanWachtwoord" class="btn btn-success" value="Verander wachtwoord">
+                    </div>
+            </form>
         </div>
-    </form>
-
-<!--Linkje waarmee je terug naar je accountdashboard wordt gestuurd.-->
-<a href="MijnAccount.php"><--Terug naar dashboard></a>
-        </div>
-</div>
+        <!--Linkje waarmee je terug naar je accountdashboard wordt gestuurd.-->
+        <a href="MijnAccount.php"><button class="btn btn-primary">Terug naar dashboard</button></a>
+    </div>
 </div>
 
 <?php

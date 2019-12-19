@@ -7,14 +7,18 @@ require '../incl/header.php';
             <div class="col-lg-12">
                 <div class="inlogscherm" style="display: inline-block">
                     <form method="post" action="login.php">
-                        <fieldset>
-
-                            <legend>inloggen:</legend>
-                            Emailadres:<br><input type="email" name="emailadres"><br>
-                            wachtwoord:<br><input type="password" name="password"><br><br>
-                            <button type="submit" name="inloggen"> login</button>
-                            <br>
-                        </fieldset>
+                        <legend>Inloggen:</legend>
+                        <div class="form-group">
+                            <label for="emailadres">Emailadres:</label>
+                            <input type="email" class="form-control" name="emailadres">
+                        </div>
+                        <div class="form-group">
+                            <label for="wachtwoord">wachtwoord:</label>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success" name="inloggen">login</button>
+                        </div>
                         <?php
                         if (isset($_POST['inloggen'])) {
                             $email = $_POST['emailadres'];
@@ -22,7 +26,7 @@ require '../incl/header.php';
 
                             if (isset($_POST['inloggen'])) {
                                 if (empty($email) || empty($password)) { // hier wordt gecontroleerd of de input velden zijn ingevuld
-                                    print("De verplichte velden zijn niet ingevuld!");
+                                    print("<div class=\"alert alert-danger\" role=\"alert\">Alle velden zijn verplicht!</div>");
                                 } else {
 
                                     $stmt = $conn->prepare("SELECT Password FROM customer WHERE Email=?");
@@ -48,8 +52,7 @@ require '../incl/header.php';
                                         $row = mysqli_fetch_array($result);
                                         if (!empty($result)) {
                                             $_SESSION['ID'] = $row['Customer_ID'];
-                                        }
-                                        else{
+                                        } else {
                                             echo "error!";
                                         }
                                         $stmt->close();
