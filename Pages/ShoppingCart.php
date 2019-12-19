@@ -102,8 +102,8 @@ $photo = ($_SESSION['photo']);
             <tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$cartTotal<BR></td></tr>
 
         </div>
-        <form method='post' action=\"../Pages/AfrondenBestelling.php\">
-        <button class='order btn btn-success' type='submit' name='bestellen' onclick='javascript:ajax_post();'>Bestellen</button><div id=\"status\"></div>
+//        <form method='post' action=\"../Pages/AfrondenBestelling.php\">
+        <button class='order btn btn-success' type='submit' name='bestellen' onclick=\"../Pages/AfrondenBestelling.php\";'>Bestellen</button><div id=\"status\"></div>
 
         ");
         }
