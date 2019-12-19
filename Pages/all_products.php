@@ -7,10 +7,9 @@ if (isset($_GET['search'])) {
     $sql = "SELECT * FROM stockitems WHERE SearchDetails LIKE '%$searchartical%'";
     $result = mysqli_query($conn2, $sql);
 } else {
-    $sql = "SELECT * FROM stockitems ";
-    $result = mysqli_query($conn2, $sql);
-
+    include 'filter.php';
 }
+
 $queryResult = mysqli_num_rows($result);
 if ($queryResult == 1) {
     $row = mysqli_fetch_assoc($result);
@@ -24,6 +23,16 @@ if ($queryResult > 0) {
     ?>
     <div class="container" style="margin-top:200px; margin-bottom: 50px;">
     <div class="col-lg-12">
+    <div class="col-8">
+    <form action="all_products.php" method="post">
+        <input type="checkbox" name="huismerk" value="ans1"> Huismerk
+        <input type="checkbox" name="sale" value="ans2" style="margin-left: 20px"> Korting
+        <input type="checkbox" name="highlow" value="ans3" style="margin-left: 20px"> Prijs Hoog-Laag
+        <input type="checkbox" name="lowhigh" value="ans4" style="margin-left: 20px"> Prijs Laag-Hoog
+
+        <input type="submit" value="Zoek" class="btn btn-primary col-1" style="margin-left: 20px"/>
+    </form><br>
+    </div>
     <?php
     foreach (array_chunk($json, 4) as $products) {
         echo "<div class='card-deck mb-4'>";
