@@ -146,7 +146,7 @@
 
 
 
-    if (!function_exists('ChangePassword')) {
+//    if (!function_exists('ChangePassword')) {
         function ChangePassword($customerID)
         {
 
@@ -182,7 +182,7 @@
             //Wachtwoord is verandert!
             return "PASSWORD_CHANGED";
         }
-    }
+//    }
 
     // ################################################
     // Review gegevens opslaan.

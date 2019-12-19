@@ -3,25 +3,25 @@ ob_start();
 require "../incl/header.php";
 
 //  ***Bezoekers zijn niet ingelogd en krijgen customer ID 0 mee voor opslaan orders***
-if(!isset($_SESSION['ID'])){
-    $_SESSION['ID']=0;
+if (!isset($_SESSION['ID'])) {
+    $_SESSION['ID'] = 0;
 }
 $connOnzeDB = mysqli_connect($servername, $DBusername, $DBpassword, "onzedbwwi", $port) or
 die("Could not connect: " . mysqli_error());
 
-foreach($_SESSION['cart'] as $cart => $array){
-    $_SESSION['cart'][$cart]=$array;
+foreach ($_SESSION['cart'] as $cart => $array) {
+    $_SESSION['cart'][$cart] = $array;
 }
 
-if(!$_SESSION['check'] AND !$_SESSION['ID']=0){
-    header ("Location: ShoppingCartQueries.php");
+if (!$_SESSION['check'] AND !$_SESSION['ID'] = 0) {
+    header("Location: ShoppingCartQueries.php");
 }
 
 
-$itemPrice=($_SESSION['itemPrice']);
-$itemName=($_SESSION['itemName']);
-$rating=($_SESSION['rating']);
-$photo=($_SESSION['photo']);
+$itemPrice = ($_SESSION['itemPrice']);
+$itemName = ($_SESSION['itemName']);
+$rating = ($_SESSION['rating']);
+$photo = ($_SESSION['photo']);
 //
 //
 //?>
@@ -37,13 +37,13 @@ $photo=($_SESSION['photo']);
         border: 1px solid black;
         overflow: auto;
     }
+
     #first {
         float: left;
         width: 405px;
         border: 1px black;
     }
 </style>
-
 <head>
     <title>Productlijst</title>
     <meta charset="utf-8">
@@ -55,7 +55,7 @@ $photo=($_SESSION['photo']);
 
 <div class="container" style="margin-top: 150px; margin-bottom: 100px">
     <h2>Winkelwagen</h2>
-    <p>Verder winkelen knop &emsp; Verder naar bestellen</p>
+    <p>Verder winkelen knop &emsp; Verder met bestellen</p>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -66,22 +66,24 @@ $photo=($_SESSION['photo']);
         </thead>
         <tbody class="cart-items">
         <?php
-        $cartTotal=0;
-        if(isset($_SESSION['cart'])) {
+        $cartTotal = 0;
+        if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $ID => $aantal) {
+                $sterren = require "check_rating.php";
                 $itemTotal = ($aantal * $itemPrice[$ID]);
                 print("
-        <tr class='cart-row'>
 
+        <tr class='cart-row'>
             <td>
-                Product nummer<p class='cart-item'>$ID</p><BR>
-                 $photo[$ID]<BR>
-                Naam $itemName[$ID]
+                <p class='cart-item'>$ID</p><BR>
+                 <img src=\"../recources/voorbeeld fotos/$itemName[$ID]1.jpg\" class=\"img\">
+                 <BR>
+                $itemName[$ID]
             </td>
             <td>
-                Rating $rating[$ID]<BR>
+                Rating  $sterren<BR>
                 <form action='ShoppingCart.php' method='post' id='myform'>
-                Aantal <input type='number' onchange='Refresh()' class='cart-quantity-input' name=\"aantal$ID\" id='' value= '$aantal'
+                Aantal <input type='number' onchange='Refresh()' class='cart-quantity-input form-control' name=\"aantal$ID\" id='' value= '$aantal'
                 </form>
             </td>
             <td>Prijs per stuk <p class='cart-price'>$itemPrice[$ID]</p>
@@ -89,24 +91,25 @@ $photo=($_SESSION['photo']);
                 <button class='btn btn-danger' type=\"button\">VERWIJDEREN</button>
             </td>
         </tr>
+
         ");
                 $cartTotal += $itemTotal;
             }
         }
-        if(!empty($_SESSION['cart'])){
-        print("
+        if (!empty($_SESSION['cart'])) {
+            print("
         <div class='end-row'>
             <tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$cartTotal<BR></td></tr>
 
         </div>
         <form method='post' action=\"../Pages/AfrondenBestelling.php\">
-        <div><button class='order' type='submit' name='bestellen' onclick='javascript:ajax_post();'>Bestellen</button><div id=\"status\"></div></div>
+        <button class='order btn btn-success' type='submit' name='bestellen' onclick='javascript:ajax_post();'>Bestellen</button><div id=\"status\"></div>
 
         ");
         }
 
 
-        $_SESSION['Querycheck']=false;
+        $_SESSION['Querycheck'] = false;
         ?>
 
         </tbody>
@@ -122,10 +125,13 @@ $photo=($_SESSION['photo']);
         <h3><b>Feiten over kartonnen dozen</b></h3>
         <ul>
             <li>
-                Karton wordt gemaakt uit hout. Bomen nemen CO2 op, waarmee zij de CO2-uitstoot van de productie van papier en karton grotendeels neutraliseren
+                Karton wordt gemaakt uit hout. Bomen nemen CO2 op, waarmee zij de CO2-uitstoot van de productie van
+                papier en karton grotendeels neutraliseren
             </li>
             <li>
-                Hout is een hernieuwbare bron. Voor elke geoogste boom wordt een nieuwe geplant. Sinds 1950 is het bosoppervlak in Europa gegroeid met liefst 30%. De productiebossen van de hout-, papier- en kartonindustrie dragen daaraan bij.
+                Hout is een hernieuwbare bron. Voor elke geoogste boom wordt een nieuwe geplant. Sinds 1950 is het
+                bosoppervlak in Europa gegroeid met liefst 30%. De productiebossen van de hout-, papier- en
+                kartonindustrie dragen daaraan bij.
             </li>
         </ul>
     </div>

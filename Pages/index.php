@@ -49,6 +49,7 @@ include '../incl/header.php';
             include_once "../incl/productSugestions.php";
             include_once "../incl/db.php";
             $products = getSuggestions($_SESSION['ID'], $conn, $conn2);
+            echo $products;
             if ($products != NULL) {
                 echo '<div class="col-lg-3">';
                 foreach ($products AS $value) {

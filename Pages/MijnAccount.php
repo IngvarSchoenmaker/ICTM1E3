@@ -2,15 +2,16 @@
 include '../incl/header.php';
 ?>
 <body>
-<div class="container" style="margin-top:200px; margin-bottom: 100px; text-align: center">
-<h1 class="AccDash">Account-dasboard</h1>
+<div class="container" style="margin-top:200px; margin-bottom: 250px; text-align: center">
+    <h1 class="AccDash">Account-dasboard</h1>
 
-<!--Verschillende accountinformatie-->
-<div><a href="AccountInfo.php">Account informatie</a><br><br>
-    <a href="Factuuradres.php">Factuuradres</a><br><br>
-    <a href="Afleveradres.php">Afleveradres</a><br><br>
-    <a href="MijnBestellingen.php">Mijn bestellingen</a><br><br>
-</div>
+    <!--Verschillende accountinformatie-->
+    <div class="list-group">
+        <a href="AccountInfo.php" class="list-group-item list-group-item-action">Account informatie</a>
+        <a href="Factuuradres.php" class="list-group-item list-group-item-action">Factuuradres</a>
+        <a href="Afleveradres.php" class="list-group-item list-group-item-action">Afleveradres</a>
+        <a href="MijnBestellingen.php" class="list-group-item list-group-item-action">Mijn bestellingen</a>
+    </div>
 </div>
 </body>
 <?php

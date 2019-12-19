@@ -1,6 +1,6 @@
 function ChangeForm() {
     //var elements = document.getElementsByClassName('forminput');
-    let elements = document.querySelectorAll('#form-inputs input');
+    let elements = document.querySelectorAll('.form-group input');
 
     for (let i = 0; i < elements.length; i++) {
         elements[i].removeAttribute('readonly');
