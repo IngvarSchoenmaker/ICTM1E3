@@ -71,7 +71,6 @@ $photo=($_SESSION['photo']);
             foreach ($_SESSION['cart'] as $ID => $aantal) {
                 $itemTotal = ($aantal * $itemPrice[$ID]);
                 print("
-
         <tr class='cart-row'>
 
             <td>
@@ -81,16 +80,16 @@ $photo=($_SESSION['photo']);
             </td>
             <td>
                 Rating $rating[$ID]<BR>
-                Aantal <input type='number' class='cart-quantity-input' name=\"aantal\"  value= $aantal <?php echo $aantal;?>
+                <form action='ShoppingCart.php' method='post' id='myform'>
+                Aantal <input type='number' onchange='Refresh()' class='cart-quantity-input' name=\"aantal$ID\" id='' value= '$aantal'
+                </form>
             </td>
             <td>Prijs per stuk <p class='cart-price'>$itemPrice[$ID]</p>
                 Prijs totaal <div class='item-total'>$itemTotal</div>
                 <button class='btn btn-danger' type=\"button\">VERWIJDEREN</button>
             </td>
         </tr>
-
         ");
-
                 $cartTotal += $itemTotal;
             }
         }

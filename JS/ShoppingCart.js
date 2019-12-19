@@ -23,6 +23,8 @@ if (document.readyState == 'loading') {
         orderButton.addEventListener('click',orderCart)
 }
 
+// javascript ajax naar post
+
 function removeCartItem(event){
         var buttonClicked= event.target;
         buttonClicked.parentElement.parentElement.remove();
@@ -62,4 +64,9 @@ function updateCartTotal() {
 
 function orderCart() {
 
+}
+
+function Refresh() {
+    document.getElementById("myForm").submit();
+    document.location.reload(true)
 }
