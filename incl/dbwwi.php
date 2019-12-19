@@ -1,7 +1,7 @@
 <?php
 $server = "localhost";
 $username = "WWIadmin";
-$password = "";
+$password = "QzWxEc123Rv";
 $dbname = "wideworldimporters";
 $conn = mysqli_connect($server, $username, $password, $dbname);
 ?>
