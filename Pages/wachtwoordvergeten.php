@@ -22,10 +22,19 @@ if (isset($_POST['send'])) {
         $result = mysqli_stmt_get_result($stmt);
         $row = mysqli_fetch_array($result);
         if ($row > 0){
+            function generateRandomString($length = 10) {
+                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $charactersLength = strlen($characters);
+                $randomString = '';
+                for ($i = 0; $i < $length; $i++) {
+                    $randomString .= $characters[rand(0, $charactersLength - 1)];
+                }
+                return $randomString;
+            }
             $to = $email;
             $subject = "wachtwoord veranderen";
-            $txt = "klik op deze link om uw wachtwoord te veranderen
-                    http://localhost/HBO/ICTM1E3/Pages/veranderww";
+            $code = generateRandomString();
+            $txt = 'Klik op deze link om u wachwoord te veranderen: http://localhost/HBO/ICTM1E3/Pages/veranderwachtwoord.php?code=' .$code . '';
             mail($to,$subject,$txt);
         }
     }
@@ -33,7 +42,7 @@ if (isset($_POST['send'])) {
 ?>
         </div>
     </div>
-</div>
+    </div>
 <?php
-    include '../incl/footer.php';
+include '../incl/footer.php';
 ?>

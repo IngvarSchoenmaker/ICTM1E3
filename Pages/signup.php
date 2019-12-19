@@ -33,7 +33,7 @@ require "../incl/header.php";
         </p>
         <p class="clearfix">
             <label for="Telefoonnummer" style="margin-right: 5px;">Telefoonnummer:</label>
-            <input type="text" name="Telefoonnummer"  PLACEHOLDER="06" required>*
+            <input type="text" name="Telefoonnummer"  PLACEHOLDER="06" required <?php isset($GET['telefoonnummer'])    ?> >*
         </p>
         <p>
             <label for="Geboortedatum" style="margin-right: 12px;">Geboortedatum:</label>
@@ -156,3 +156,7 @@ include '../incl/footer.php';
 ?>
 
 
+<?php if(isset($_GET['telefoonnummer'])){
+    print("value= ". $_GET['telefoonnummer']);
+
+}
