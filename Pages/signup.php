@@ -208,3 +208,7 @@ include '../incl/footer.php';
 ?>
 
 
+<?php if(isset($_GET['telefoonnummer'])){
+    print("value= ". $_GET['telefoonnummer']);
+
+}
