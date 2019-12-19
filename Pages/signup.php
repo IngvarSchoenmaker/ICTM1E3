@@ -29,11 +29,17 @@ require "../incl/header.php";
         </p>
         <p class="clearfix">
             <label for="Emailadres" style="margin-right: 52px;">Emailadres:</label>
-            <input type="text" name="Emailadres" <?php if (isset($_GET['error']) === 'mail') {if (!empty($_GET['Emailadres'])) {echo 'value="' . $_GET['Emailadres'] . '"';}else{echo 'placeholder="emailadres"';}}else{echo 'placeholder="emailadres"';}?> required>* <br>
+            <input type="text" name="Emailadres" <?php if(isset($_GET['mail'])) {
+                if (!empty($_GET['mail'])) {
+                    print("value =".$_GET['mail']);
+                }} ?> required>* <br>
         </p>
         <p class="clearfix">
             <label for="Telefoonnummer" style="margin-right: 5px;">Telefoonnummer:</label>
-            <input type="text" name="Telefoonnummer"  PLACEHOLDER="06" required <?php isset($GET['telefoonnummer'])    ?> >*
+            <input type="text" name="Telefoonnummer"  PLACEHOLDER="06" required <?php if(isset($_GET['Tel'])) {
+    if (!empty($_GET['Tel'])) {
+    print("value =".$_GET['Tel']);
+    }} ?>>*
         </p>
         <p>
             <label for="Geboortedatum" style="margin-right: 12px;">Geboortedatum:</label>
@@ -156,7 +162,9 @@ include '../incl/footer.php';
 ?>
 
 
-<?php if(isset($_GET['telefoonnummer'])){
-    print("value= ". $_GET['telefoonnummer']);
+<?php if(isset($_GET['Tel'])) {
+    if (!empty($_GET['Tel'])) {
+    print("value =".$_GET['Tel']);
+    }
 
 }
