@@ -1,6 +1,5 @@
 <?php
 ob_start();
-//include '../Pages/ShoppingCartQueries.php';
 include '../incl/ConnectieFunctie.php';
 include_once '../incl/header.php';
 
@@ -16,8 +15,17 @@ print("<BR>");
 //$_SESSION['cartt'] = array(220 => 3, 221 => 4);
 $ProductList = $_SESSION['cart'];
 //$_SESSION['ID'] = 2;
+if($_SESSION['cart_ID'] === NULL){
+    $sql = 'SELECT count(distinct shoppinglist_ID) FROM shoppinglist_archive';
+    $cart_ID= GetData($sql, TRUE);
+    foreach ($cart_ID as $k => $v) {
+        $v = $v + 1;
+    }
+    $_SESSION['cart_ID'] = $v;
+};
+
 $Customer_ID = $_SESSION['ID'];
-$_SESSION['cart_ID'] = 2;
+//$_SESSION['cart_ID'] = 3;
 $ShoppinglistID = $_SESSION['cart_ID'];
 
 
