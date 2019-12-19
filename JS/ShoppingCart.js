@@ -5,7 +5,7 @@ if (document.readyState == 'loading') {
 }
 
     function ready() {
-        var removeCartItemButtons = document.getElementsByClassName('btn-danger');
+        var removeCartItemButtons = document.getElementsByClassName('verwijder');
         console.log(removeCartItemButtons);
         for(i=0; i<removeCartItemButtons.length; i++){
             var button = removeCartItemButtons[i];
@@ -19,7 +19,7 @@ if (document.readyState == 'loading') {
             input.addEventListener('change', quantityChanged)
         }
 
-        var orderButton= document.getElementsByClassName('btn-order');
+        var orderButton= document.getElementsByClassName('order');
         orderButton.addEventListener('click',orderCart)
 }
 
