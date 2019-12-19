@@ -15,15 +15,19 @@ print("<BR>");
 //$_SESSION['cartt'] = array(220 => 3, 221 => 4);
 $ProductList = $_SESSION['cart'];
 //$_SESSION['ID'] = 2;
-if(!isset($_SESSION['cart_ID'])){
-    $sql = 'SELECT COUNT(*) FROM shoppinglist GROUP BY Shoppinglist_ID';
-    $cart_ID=GetData($sql, TRUE);
-    $_SESSION['cart_ID']=$cart_ID;
+if($_SESSION['cart_ID'] === NULL){
+    $sql = 'SELECT count(distinct shoppinglist_ID) FROM shoppinglist_archive';
+    $cart_ID= GetData($sql, TRUE);
+    foreach ($cart_ID as $k => $v) {
+        $v = $v + 1;
+    }
+    $_SESSION['cart_ID'] = $v;
 };
 
 $Customer_ID = $_SESSION['ID'];
 //$_SESSION['cart_ID'] = 3;
 $ShoppinglistID = $_SESSION['cart_ID'];
+
 
 if(isset($_SESSION['ID'])) {
     if (isset($_POST['bestellen'])) {
