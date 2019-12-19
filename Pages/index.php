@@ -49,6 +49,7 @@ include '../incl/header.php';
             include_once "../incl/productSugestions.php";
             include_once "../incl/db.php";
             $products = getSuggestions($_SESSION['ID'], $conn, $conn2);
+            echo $products;
             if ($products != NULL) {
                 echo '<div class="col-lg-3">';
                 foreach ($products AS $value) {
@@ -64,10 +65,12 @@ include '../incl/header.php';
 include '../incl/footer.php';
 ?>
 <?php
-if ($_SESSION['check'] === "true") {
-    if (isset($_SESSION['loginsucesesvol'])) {
-        print "<script>alert('Welkom terug, " . $_SESSION['loginsucesesvol'] . "!'); </script>";
-        $_SESSION['check'] = "false";
+if (isset($_SESSION['check'])) {
+    if ($_SESSION['check'] === "true") {
+        if (isset($_SESSION['loginsucesesvol'])) {
+            print "<script>alert('Welkom terug, " . $_SESSION['loginsucesesvol'] . "!'); </script>";
+            $_SESSION['check'] = "false";
+        }
     }
 }
 ?>

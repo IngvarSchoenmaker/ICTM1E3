@@ -1,11 +1,11 @@
 <?php
 function getSuggestions($id, $conn, $conn2)
 {
-    $sql = "SELECT ID_Product FROM shoppinglist WHERE Shoppinglist_ID = (SELECT Shoppinglist_ID FROM customer WHERE Customer_ID = ?) HAVING MAX(Date)";
+    $sql = "SELECT ID_Product FROM shoppinglist WHERE Shoppinglist_ID = (SELECT Shoppinglist_ID FROM customer WHERE Customer_ID = ?) AND date = (SELECT MAX(Date) FROM customer WHERE Customer_ID = ?)";
 
     if ($stmt = mysqli_prepare($conn, $sql)) {
         // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "s", $id);
+        mysqli_stmt_bind_param($stmt, "ss", $id, $id);
 
         // Attempt to execute the prepared statement
         if (mysqli_stmt_execute($stmt)) {
@@ -37,7 +37,7 @@ function getSuggestions($id, $conn, $conn2)
                 // return results
 
             } else {
-                return NULL;
+                return "found null";
             }
         } else {
             return "ERROR: Could not able to execute $sql. " . mysqli_error($conn);

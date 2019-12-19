@@ -69,18 +69,22 @@ $photo = ($_SESSION['photo']);
         $cartTotal = 0;
         if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $ID => $aantal) {
+//                $sterren = require "check_rating.php";
                 $itemTotal = ($aantal * $itemPrice[$ID]);
                 print("
 
         <tr class='cart-row'>
             <td>
-                Product nummer<p class='cart-item'>$ID</p><BR>
-                 $photo[$ID]<BR>
-                Naam $itemName[$ID]
+                <p class='cart-item'>$ID</p><BR>
+                 <img src=\"../recources/voorbeeld fotos/$itemName[$ID]1.jpg\" class=\"img\">
+                 <BR>
+                $itemName[$ID]
             </td>
             <td>
+
                 Rating $rating[$ID]<BR>
                 
+
                 Aantal <input type='number' onchange='Refresh()' class='cart-quantity-input form-control' name=\"aantal$ID\" id='' value= '$aantal'
                 </form>
             </td>

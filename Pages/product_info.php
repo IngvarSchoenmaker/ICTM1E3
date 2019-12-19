@@ -70,7 +70,7 @@ $itemname = $row['StockItemName'];
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="../recources/voorbeeld fotos/<?php echo "$itemname" ?>1.jpg" class="img">ff
+                        <img src="../recources/voorbeeld fotos/<?php echo "$itemname" ?>1.jpg" class="img">
                     </div>
                     <div class="carousel-item">
                         <img src="../recources/voorbeeld fotos/<?php echo "$itemname" ?>2.jpg" class="img">
@@ -112,15 +112,15 @@ $itemname = $row['StockItemName'];
                         $productid => $amount
                     );
                     if (isset ($_SESSION['cart'][$productid])) {
-                        print("<p class='bg-fail'> Dit product staat al in uw winkelmand! </p>");
+                        print("<div class='alert alert-danger' role='alert'> Dit product staat al in uw winkelmand! </div>");
 
                     } elseif ($addItem[$productid] != null) {
                         if (isset ($_SESSION['cart'])) {
                             $_SESSION['cart'] += $addItem;
-                            echo "<p class='bg-success'> Het product" . $itemname . " is toegevoegd aan je winkelwagen </p>";
+                            echo "<div class='alert alert-success' role='alert'> Het product" . $itemname . " is toegevoegd aan je winkelwagen </div>";
                         } else {
                             $_SESSION['cart'] = $addItem;
-                            echo "<p class='bg-success'> Het product" . $itemname . " is toegevoegd aan je winkelwagen </p>";
+                            echo "<div class='alert alert-success' role='alert'> Het product" . $itemname . " is toegevoegd aan je winkelwagen </div>";
                         }
                     }
                 }

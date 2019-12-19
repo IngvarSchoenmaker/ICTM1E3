@@ -1,6 +1,5 @@
 <?php
 ob_start();
-//include '../Pages/ShoppingCartQueries.php';
 include '../incl/ConnectieFunctie.php';
 include_once '../incl/header.php';
 
