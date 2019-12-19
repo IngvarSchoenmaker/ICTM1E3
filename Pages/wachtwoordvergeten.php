@@ -36,7 +36,7 @@ if (isset($_POST['send'])) {
             $code = generateRandomString();
             $txt = 'Klik op deze link om u wachwoord te veranderen: http://localhost/HBO/ICTM1E3/Pages/veranderwachtwoord.php?code=' .$code . '';
             mail($to,$subject,$txt);
-            $sql = $conn->prepare("INSERT INTO customer (Generated_Key) VALUES ('?')WHERE Email=?");
+            $sql = $conn->prepare("INSERT INTO customer (Generated_Key) VALUES (?) WHERE Email=?");
             $sql->bind_param("ss", $code, $email);
             $sql->execute();
         }
