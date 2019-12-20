@@ -1,7 +1,6 @@
 <?php
 include '../incl/db.php';
 include '../incl/header.php';
-
 ?>
 <div class="container" style="margin-top:200px; margin-bottom: 100px; text-align: center">
     <div class="row">
@@ -70,8 +69,9 @@ include '../incl/header.php';
 
                         // Zodra er alles is gecontroleert en geen errors bevatten dan wordt de data toevoegd in de database
                     } else {
-                        $stmt = $conn->prepare("INSERT INTO contactform(First_name, Last_Name, Email, Phone, Message) VALUES(?,?,?,?,?)");
-                        $stmt->bind_param("sssss", $voornaam, $achternaam, $Email, $Telefoonnummer, $Opmerking);
+                        $Customer_ID = 1;
+                        $stmt = $conn->prepare("INSERT INTO contactform(First_name, Last_Name, Email, Phone, Message, Customer_ID) VALUES(?,?,?,?,?,?)");
+                        $stmt->bind_param("sssssi", $voornaam, $achternaam, $Email, $Telefoonnummer, $Opmerking, $Customer_ID);
                         $stmt->execute();
                         $stmt->close();
 

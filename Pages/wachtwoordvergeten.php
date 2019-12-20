@@ -1,5 +1,6 @@
 <?php
     include '../incl/header.php';
+    ini_set("display_errors", 1);
 ?>
 
 <div class="container" style="margin-top:200px; margin-bottom: 233px; text-align: center">
@@ -37,7 +38,7 @@ if (isset($_POST['send'])) {
             $txt = 'Klik op deze link om u wachwoord te veranderen: http://localhost/HBO/ICTM1E3/Pages/veranderwachtwoord.php?code=' .$code . '';
             mail($to,$subject,$txt);
             echo "Er is een mail verzonden naar u!";
-            $sql = $conn->prepare("UPDATE customer SET Generated_Key = ? WHERE Email = ?");
+            $sql = $conn->prepare("UPDATE customer SET Generated_Key =? WHERE Email = ?");
             $sql->bind_param("ss", $code, $email);
             $sql->execute();
             $sql->close();
