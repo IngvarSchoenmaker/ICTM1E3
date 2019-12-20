@@ -44,31 +44,33 @@ include '../incl/header.php';
                 <img src="https://assets.pcmag.com/media/images/237124-usb-missile-launcher.jpg?width=740" style="width: 540px; height: 200px;">
             </div>
         </div>
-        <?php
-        if (!empty($_SESSION['ID'])) {
-            include_once "../incl/productSugestions.php";
-            include_once "../incl/db.php";
-            $products = getSuggestions($_SESSION['ID'], $conn, $conn2);
-            echo $products;
-            if ($products != NULL) {
-                echo '<div class="col-lg-3">';
-                foreach ($products AS $value) {
-                    echo $value["StockItemName"];
-                }
-                echo '</div>';
-            }
-
-        }
-        ?>
+<!--        --><?php
+//        if (!empty($_SESSION['ID'])) {
+//            include_once "../incl/productSugestions.php";
+//            include_once "../incl/db.php";
+//            $products = getSuggestions($_SESSION['ID'], $conn, $conn2);
+//            echo $products;
+//            if ($products != NULL) {
+//                echo '<div class="col-lg-3">';
+//                foreach ($products AS $value) {
+//                    echo $value["StockItemName"];
+//                }
+//                echo '</div>';
+//            }
+//
+//        }
+//        ?>
     </div>
 <?php
 include '../incl/footer.php';
 ?>
 <?php
-if ($_SESSION['check'] === "true") {
-    if (isset($_SESSION['loginsucesesvol'])) {
-        print "<script>alert('Welkom terug, " . $_SESSION['loginsucesesvol'] . "!'); </script>";
-        $_SESSION['check'] = "false";
+if (isset($_SESSION['check'])) {
+    if ($_SESSION['check'] === "true") {
+        if (isset($_SESSION['loginsucesesvol'])) {
+            print "<script>alert('Welkom terug, " . $_SESSION['loginsucesesvol'] . "!'); </script>";
+            $_SESSION['check'] = "false";
+        }
     }
 }
 ?>
