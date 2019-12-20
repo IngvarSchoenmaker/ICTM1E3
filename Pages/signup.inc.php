@@ -33,38 +33,37 @@ if (isset($_POST['registreer'])) {
 
 // hier wordt gecontroleerd of de email wel geldig is.
     } elseif (!filter_var($Emailadres, FILTER_VALIDATE_EMAIL)) {
-        header("Location:signup.php?error=mail&mail=" . $Emailadres);
+        header("Location:signup.php?error=email&mail=" . $Emailadres ."&Voornaam=" . $voornaam . "&Tussenvoegsel=" . $Tussenvoegsels . "&Achternaam=" . $Achternaam . "");
 
 // hier wordt gecontroleerd of de mobiele nummer 10 cijfers heeft met een streepje = 11
 
     } elseif (!preg_match("/^(06)[0-9]*$/", $Telnnr) || (strlen($Telnnr) !== 10)) {
-        header("Location: signup.php?error=Tel&Tel=" . $Telnnr);
+        header("Location: signup.php?error=Tel&Tel=" . $Telnnr . "&mail=" . $Emailadres ."&Voornaam=" . $voornaam . "&Tussenvoegsel=" . $Tussenvoegsels . "&Achternaam=" . $Achternaam . "");
 
-// Hier moet pascal mee moet helpen.
+// Hier wordt gecontroleerd of het wachtwoord niet leeg staat
 
     } elseif ($Geboortedatum < "01-01-1950" || $Geboortedatum > "31-12-2002" || empty($Geboortedatum)) {
-        header("signup.php?error=gbdatum&gbdatum=" . $Geboortedatum);
+        header("signup.php?error=gbdatum&gbdatum=" . $Geboortedatum . "&mail=" . $Emailadres ."&Voornaam=" . $voornaam . "&Tussenvoegsel=" . $Tussenvoegsels . "&Achternaam=" . $Achternaam . "");
 
 // Hier wordt gecontroleerd of de postcode wel klopt.
 
     } elseif (!preg_match('/^[0-9]{4}[A-Z]{2}/', $Postcode)) {
-        header("Location: signup.php?error=Postcode&Postcode43=" . $Postcode);
+        header("Location: signup.php?error=Postcode&Postcode=" . $Postcode. "&gbdatum=" . $Geboortedatum . "&mail=" . $Emailadres ."&Voornaam=" . $voornaam . "&Tussenvoegsel=" . $Tussenvoegsels . "&Achternaam=" . $Achternaam . "&Tel=" . $Telnnr );
 
 //        Hier wordt gecontroleerd op straatnaam Met SQL injectie preventie
 
     } elseif (preg_match('/^[= or " " as # *]*$/', $Straatnaam) || (!preg_match('/^[a-zA-Z ]*$/', $Straatnaam))) {
 
-        header("location: Signup.php?error=Straatnaam&Straatnaam=" . $Straatnaam);
+        header("location: Signup.php?error=Straatnaam&Straatnaam=" . $Straatnaam  . "&Postcode=" . $Postcode. "&gbdatum=" . $Geboortedatum . "&mail=" . $Emailadres ."&Voornaam=" . $voornaam . "&Tussenvoegsel=" . $Tussenvoegsels . "&Achternaam=" . $Achternaam . "&Tel=" . $Telnnr);
 
 
         // hier wordt gecontroleerd op Huisnummer
     } elseif (!preg_match('/^[0-9]*$/', $Huisnummer) || $Huisnummer > 18926) {
-        header("Location: signup.php?error=Huisnummer&Huisnummer=" . $Huisnummer);
-
+        header("Location: signup.php?error=Huisnummer&Huisnummer=" . $Huisnummer . "&Straatnaam=" . $Straatnaam  . "&Postcode=" . $Postcode. "&gbdatum=" . $Geboortedatum . "&mail=" . $Emailadres ."&Voornaam=" . $voornaam . "&Tussenvoegsel=" . $Tussenvoegsels . "&Achternaam=" . $Achternaam . "&Tel=" . $Telnnr);
 
     }         // Hier wordt gecontroleerd of het wachtwoord met elkaar overeenkomen
     elseif ($Wachtwoord != $Wachtwoordherhaal || strlen($Wachtwoord) < 8) {
-        header("Location: signup.php?error=Wachtwoord");
+        header("Location: signup.php?error=Wachtwoord". "&Huisnummer=" . $Huisnummer . "&Straatnaam=" . $Straatnaam  . "&Postcode=" . $Postcode. "&gbdatum=" . $Geboortedatum . "&mail=" . $Emailadres ."&Voornaam=" . $voornaam . "&Tussenvoegsel=" . $Tussenvoegsels . "&Achternaam=" . $Achternaam . "&Tel=" . $Telnnr ."&Plaats=". $Plaats);
 
     } else {
 
@@ -76,7 +75,7 @@ if (isset($_POST['registreer'])) {
 
         if ($result->num_rows === 1) {
             $stmtselect->close();
-            header("Location: signup.php?error=Gebruikerbestaatal");
+            header("Location: signup.php?error=Gebruikerbestaatal". "&Huisnummer=" . $Huisnummer . "&Straatnaam=" . $Straatnaam  . "&Postcode=" . $Postcode. "&gbdatum=" . $Geboortedatum . "&mail=" . $Emailadres ."&Voornaam=" . $voornaam . "&Tussenvoegsel=" . $Tussenvoegsels . "&Achternaam=" . $Achternaam . "&Tel=" . $Telnnr ."&Plaats=". $Plaats);
             exit();
         } else {
             echo "ik doe de else uwu";
