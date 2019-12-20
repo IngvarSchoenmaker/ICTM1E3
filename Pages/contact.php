@@ -66,8 +66,7 @@ include '../incl/header.php';
 
                         // Controleert op telefoonnummer
                     } elseif (!preg_match("/^(06)[0-9]*$/", $Telefoonnummer) || (strlen($Telefoonnummer) !== 10)) {
-                        header('Location: contact.php');
-                       // $foutnummer = "Ingevoerde nummer is ongeldig!";
+                        $foutnummer = "Ingevoerde nummer is ongeldig!";
 
                         // Zodra er alles is gecontroleert en geen errors bevatten dan wordt de data toevoegd in de database
                     } else {
