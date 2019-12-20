@@ -9,14 +9,26 @@ include '../incl/header.php';
             <legend style="color: #008CBA">Stuur ons een bericht!</legend>
             <form method="post" action="contact.php">
                 <div class="form-group">
-                    <label for="voornaam">Voornaam:</label><input type="text" class="form-control" name="Voornaam">
+                    <label for="voornaam">Voornaam:</label><input type="text" class="form-control" name="Voornaam"  required <?php
+                    if (isset($_POST['verzenden'])) {
+                        if (isset($_GET['voornaam'])) {
+                            print("value= ".$_GET['voornaam']);
+                        }
+                    }
+                    ?>">
                 </div>
                 <div class="form-group">
-                    <label for="achternaam">Achternaam:</label><input type="text" class="form-control"
+                    <label for="achternaam">Achternaam:</label><input type="text" class="form-control" required
                                                                       name="Achternaam">
                 </div>
                 <div class="form-group">
-                    <label for="email">Emailadres:</label><input type="text" class="form-control" name="Email">
+                    <label for="email">Emailadres:</label><input type="text" class="form-control" name="Email"  required <?php
+                    if (isset($_POST['Email'])) {
+                        if (!empty($_GET['Email'])) {
+                            print("value= ".$_GET['Email']);
+                        }
+                    }
+                    ?>>
                 </div>
                 <div class="form-group">
                     <label for="telefoonnummer">Telefoonnummer:</label>
@@ -24,7 +36,7 @@ include '../incl/header.php';
                 </div>
                 <div class="form-group">
                     <label for="wachtwoord">Bericht:</label>
-                    <textarea class="form-control" name="Opmerking"></textarea>
+                    <textarea class="form-control" name="Opmerking" required></textarea>
                 </div>
 
 
@@ -44,16 +56,18 @@ include '../incl/header.php';
                     // controleert de voornaam en achternaam
                     if (!preg_match("/^[a-zA-Z ]*$/", $voornaam) || !preg_match("/^[a-zA-Z]*$/", $achternaam)) {
                         $foutchar = "De ingvoerde Voornaam of achternaam is ongeldig!";
-                        $_GET['Achternaam'] = $achternaam;
+
+
 
                         // controleert of de email wel geldig is. Maar ook voor gevaarlijke symbolen
                     } elseif (!filter_var(FILTER_VALIDATE_EMAIL) || !preg_match("/^[a-zA-Z0-9@_.]*$/", $Email) || preg_match("/^[#$=;or]*$/", $Email)) {
+                       $_GET['Email'];
                         $foutemail = "De ingevoerde Email is ongeldig!";
 
                         // Controleert op telefoonnummer
                     } elseif (!preg_match("/^(06)[0-9]*$/", $Telefoonnummer) || (strlen($Telefoonnummer) !== 10)) {
-
-                        $foutnummer = "Ingevoerde nummer is ongeldig!";
+                        header('Location: contact.php');
+                       // $foutnummer = "Ingevoerde nummer is ongeldig!";
 
                         // Zodra er alles is gecontroleert en geen errors bevatten dan wordt de data toevoegd in de database
                     } else {
