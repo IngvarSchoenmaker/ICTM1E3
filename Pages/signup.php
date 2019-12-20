@@ -127,7 +127,7 @@ if (isset($_GET['char'])) {
         <!--Hier wordt een straatnaam error gegeven als de error-straatnaam geset/actief is.-->
         <?php if (isset($_GET['error'])) {
             if ($_GET['error'] === "Straatnaam") {
-                Print("<div class='alert alert-danger' role='alert'>De ingevoerde straatnaam klopt niet!</div>>");
+                Print("<div class='alert alert-danger' role='alert'>De ingevoerde straatnaam klopt niet!</div>");
             }
         }
         ?>
@@ -135,7 +135,7 @@ if (isset($_GET['char'])) {
         <?php
         if (isset($_GET['error'])) {
             if ($_GET['error'] === "Huisnummer") {
-                print("<div class='alert alert-danger' role='alert'>Controleer uw huisnummer </div>>");
+                print("<div class='alert alert-danger' role='alert'>Controleer uw huisnummer </div>");
             }
         }
         ?>
@@ -157,13 +157,13 @@ if (isset($_GET['char'])) {
         // hier wordt een error gegeven als de gebruiker niet bestaat
         if (isset($_GET['error'])) {
             if ($_GET['error'] === "Wachtwoord") {
-                Print("<div class='alert alert-danger' role='alert'>De ingevoerde wachtwoord voldoet niet aan de eisen. <br>Controleer of het wachtwoord minimaal 8 tekens bevatten </div>>");
+                Print("<div class='alert alert-danger' role='alert'>De ingevoerde wachtwoord voldoet niet aan de eisen. <br>Controleer of het wachtwoord minimaal 8 tekens bevatten </div>");
             }
         }
         // hier wordt een error gegeven als de gebruiker al bestaat!
         if (isset($_GET['error'])) {
             if ($_GET['error'] === "Gebruikerbestaatal") {
-                Print("<div class='alert alert-danger' role='alert'>De ingevoerde emailadres bestaat al!</div>>");
+                Print("<div class='alert alert-danger' role='alert'>De ingevoerde emailadres bestaat al!</div>");
             }
         }
         ?>
