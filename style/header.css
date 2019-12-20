@@ -1,0 +1,56 @@
+.color {
+    background-color: #add8e6;
+    background-size: cover;
+}
+.bg-color {
+    background-color: #add8e6;
+}
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+.input-main {
+    width: 50%;
+    margin: 50px auto;
+}
+.fakeimg {
+    height: 200px;
+    background: #aaa;
+}
+
+.search-box input[type="text"], .result{
+    width: 100%;
+    box-sizing: border-box;
+}
+/* Formatting result items */
+.result{
+    position: absolute;
+    z-index: 999;
+    top: 100%;
+    left: 0;
+    background-color: white;
+}
+.result p{
+    margin: 0;
+    padding: 7px 10px;
+    border: 1px solid #CCCCCC;
+    border-top: none;
+    cursor: pointer;
+}
+.result p:hover{
+    background: #f2f2f2;
+}
+.img {
+    height: 200px;
+    width: auto;
+}
