@@ -1,7 +1,7 @@
 <?php
 include '../incl/db.php';
 include '../incl/header.php';
-
+session_start()
 ?>
 <div class="container" style="margin-top:200px; margin-bottom: 100px; text-align: center">
     <div class="row">
@@ -10,12 +10,13 @@ include '../incl/header.php';
             <form method="post" action="contact.php">
                 <div class="form-group">
                     <label for="voornaam">Voornaam:</label><input type="text" class="form-control" name="Voornaam"  required <?php
-                    if (isset($_POST['verzenden'])) {
-                        if (isset($_GET['voornaam'])) {
-                            print("value= ".$_GET['voornaam']);
+                    $voornaam = "";
+                    if (isset($_POST['Verzenden'])) {
+                        if (!empty($_GET['voornaam'])) {
+                            print("value= ".$voornaam);
                         }
                     }
-                    ?>">
+                    ?>>
                 </div>
                 <div class="form-group">
                     <label for="achternaam">Achternaam:</label><input type="text" class="form-control" required
@@ -56,7 +57,7 @@ include '../incl/header.php';
                     // controleert de voornaam en achternaam
                     if (!preg_match("/^[a-zA-Z ]*$/", $voornaam) || !preg_match("/^[a-zA-Z]*$/", $achternaam)) {
                         $foutchar = "De ingvoerde Voornaam of achternaam is ongeldig!";
-
+                        $_GET['voornaam'] = $voornaam;
 
 
                         // controleert of de email wel geldig is. Maar ook voor gevaarlijke symbolen
