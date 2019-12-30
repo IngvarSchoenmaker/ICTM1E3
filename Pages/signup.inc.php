@@ -120,8 +120,3 @@ if (isset($_POST['registreer'])) {
 
 
 exit;
-//if ($Wachtwoord != $Wachtwoordherhaal) {
-//    header("location: signup.php?error=wachtwoord"."&voornaam=".$voornaam."&Tussenvoegsel=".$Tussenvoegsels."&Achternaam=".$Achternaam);
-
-
-// ,$Plaats, $Postcode, $Straatnaam, $Huisnummer, $Toevoeging
