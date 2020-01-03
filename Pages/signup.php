@@ -11,9 +11,9 @@ require "../incl/header.php";
     <legend>Accountinformatie</legend>
     <div class="form-group">
         <label for="Voornaam">Voornaam:*</label>
-        <input type="text" class="form-control" name="Voornaam" <?php if (isset($_GET['Voornaam'])) {
-            if (!empty($_GET['Voornaam'])) {
-                echo 'value="' . $_GET['Voornaam'] . '"';
+        <input type="text" class="form-control" name="Voornaam" <?php if (isset($_GET['voornaam'])) {
+            if (!empty($_GET['voornaam'])) {
+                echo 'value="' . $_GET['voornaam'] . '"';
             } else {
                 echo 'placeholder="Voornaam"';
             }
@@ -48,35 +48,25 @@ require "../incl/header.php";
     </div>
     <div class="form-group">
         <label for="Emailadres">Emailadres:*</label>
-        <input type="text" class="form-control" name="Emailadres" <?php if (isset($_GET['mail'])) {
-            if (!empty($_GET['mail'])) {
-                echo 'value="' . $_GET['mail'] . '"';
+        <input type="text" class="form-control"
+               name="Emailadres" <?php if (isset($_GET['error']) === 'mail') {
+            if (!empty($_GET['Emailadres'])) {
+                echo 'value="' . $_GET['Emailadres'] . '"';
             } else {
-                echo 'placeholder="Emailadres"';
+                echo 'placeholder="emailadres"';
             }
         } else {
-            echo 'placeholder="Emailadres"';
+            echo 'placeholder="emailadres"';
         } ?> required>
     </div>
     <div class="form-group">
         <label for="Telefoonnummer">Telefoonnummer:*</label>
-        <input type="text" class="form-control" name="Telefoonnummer" PLACEHOLDER="06" required <?php
-        if(isset($_GET['Tel'])){
-            if(!empty($_GET['Tel'])) {
-                print("value =". $_GET['Tel'] );
-            }
-        }
-        ?>>
+        <input type="text" class="form-control" name="Telefoonnummer" PLACEHOLDER="06" required>
     </div>
     <div class="form-group">
         <label for="Geboortedatum">Geboortedatum:*</label>
         <input id="datum" class="form-control" type="date" name="Geboortedatum" min="1910-01-01"
-               max="2001-01-01" <?php  if(isset($_GET['gbdatum'])){
-                   if(!empty($_GET['gbdatum'])) {
-                print("value =". $_GET['gbdatum'] );
-            }
-        }
-        ?>>
+               max="2001-01-01">
     </div>
     <!--        Hier wordt er een telefoonnummer error gegeven als de error-tel geset/actief is.-->
 <?php
@@ -112,50 +102,19 @@ if (isset($_GET['char'])) {
         <legend>Factuuradres</legend>
         <div class="form-group">
             <label for="postcode">Postcode:*</label>
-            <input type="text" class="form-control" name="Postcode" placeholder="voorbeeld:1088AA"
-                <?php
-                if (isset($_GET['Postcode'])) {
-                    if(!empty($_GET['Postcode'])){
-                        print("value =". $_GET['Postcode'] );
-                    }
-                }
-                ?>
-                   required>
+            <input type="text" class="form-control" name="Postcode" placeholder="voorbeeld:1088AA" required>
         </div>
         <div class="form-group">
             <label for="straatnaam">Straatnaam:*</label>
-            <input type="text" class="form-control" name="Straatnaam"  <?php
-            if (isset($_GET['Straatnaam'])) {
-                if(!empty($_GET['Straatnaam'])){
-                    print("value =". $_GET['Straatnaam']);
-                }
-            }
-            ?>
-                   required>
+            <input type="text" class="form-control" name="Straatnaam" required>
         </div>
         <div class="form-group">
             <label for="huisnummer">Huisnummer:*</label>
-            <input type="text" class="form-control" name="Huisnummer"
-                   <?php
-                   if (isset($_GET['Huisnummer'])) {
-                       if(!empty($_GET['Huisnummer'])){
-                           print("value =". $_GET['Huisnummer']);
-                       }
-                   }
-                   ?>
-                   required>
+            <input type="text" class="form-control" name="Huisnummer" required>
         </div>
         <div class="form-group">
             <label for="plaats">Plaats:*</label>
-            <input type="text" class="form-control" name="Plaats"
-                   <?php
-                   if (isset($_GET['Plaats'])) {
-                       if(!empty($_GET['Plaats'])){
-                           print("value =". $_GET['Plaats']);
-                       }
-                   }
-                   ?>
-                   required>
+            <input type="text" class="form-control" name="Plaats" required>
         </div>
         <!--Hier wordt een Postcode error gegeven als de error-Postcode geset/actief is.-->
         <?php
@@ -168,7 +127,7 @@ if (isset($_GET['char'])) {
         <!--Hier wordt een straatnaam error gegeven als de error-straatnaam geset/actief is.-->
         <?php if (isset($_GET['error'])) {
             if ($_GET['error'] === "Straatnaam") {
-                Print("<div class='alert alert-danger' role='alert'>De ingevoerde straatnaam klopt niet!</div>>");
+                Print("<div class='alert alert-danger' role='alert'>De ingevoerde straatnaam klopt niet!</div>");
             }
         }
         ?>
@@ -176,7 +135,7 @@ if (isset($_GET['char'])) {
         <?php
         if (isset($_GET['error'])) {
             if ($_GET['error'] === "Huisnummer") {
-                print("<div class='alert alert-danger' role='alert'>Controleer uw huisnummer </div>>");
+                print("<div class='alert alert-danger' role='alert'>Controleer uw huisnummer </div>");
             }
         }
         ?>
@@ -198,13 +157,13 @@ if (isset($_GET['char'])) {
         // hier wordt een error gegeven als de gebruiker niet bestaat
         if (isset($_GET['error'])) {
             if ($_GET['error'] === "Wachtwoord") {
-                Print("<div class='alert alert-danger' role='alert'>Het ingevoerde wachtwoord voldoet niet aan de eisen. <br>Controleer of het wachtwoord minimaal 8 tekens bevatten </div>>");
+                Print("<div class='alert alert-danger' role='alert'>De ingevoerde wachtwoord voldoet niet aan de eisen. <br>Controleer of het wachtwoord minimaal 8 tekens bevatten </div>");
             }
         }
         // hier wordt een error gegeven als de gebruiker al bestaat!
         if (isset($_GET['error'])) {
             if ($_GET['error'] === "Gebruikerbestaatal") {
-                Print("<div class='alert alert-danger' role='alert'>Het ingevoerde emailadres bestaat al!</div>");
+                Print("<div class='alert alert-danger' role='alert'>De ingevoerde emailadres bestaat al!</div>");
             }
         }
         ?>
@@ -229,5 +188,3 @@ if (isset($_GET['error'])) {
         print("<div class='alert alert-danger' role='alert'>Er is een fout opgetreden op onze website!</p>");
     }
 }
-?>
-
