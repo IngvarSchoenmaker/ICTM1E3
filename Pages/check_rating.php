@@ -6,8 +6,8 @@ $_GET['item'];
 $_SESSION['ProductID'] = $productid;
 
 $server = "localhost";
-$username = "WWIadmin";
-$password = "QzWxEc123Rv";
+$username = "";
+$password = "";
 $dbname = "onzedbwwi";
 $conn2 = mysqli_connect($server, $username, $password, $dbname);
 

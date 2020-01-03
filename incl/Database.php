@@ -123,7 +123,7 @@
     // Wachtwoord veranderen
     // ################################################
 
-    // Check if we have to save password
+    // Controleren of we het wachtwoord moeten opslaan
     if (isset($_POST['opslaanWachtwoord'])) {
 
         // yes, we have to change password
@@ -143,10 +143,6 @@
 
     }
 
-
-
-
-//    if (!function_exists('ChangePassword')) {
         function ChangePassword($customerID)
         {
 
