@@ -2,6 +2,7 @@
 include '../incl/db.php';
 ?>
 <?php
+//stuurt alles naar de archives zodra het een datum heeft verlopen
 $sql = "SELECT * FROM customer where Validation = 0";
 $result = mysqli_query($conn, $sql);
 foreach($result as $t) {

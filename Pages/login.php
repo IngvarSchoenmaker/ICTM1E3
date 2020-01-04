@@ -35,6 +35,7 @@ require '../incl/header.php';
                                     $result = mysqli_stmt_get_result($stmt);
                                     $row = mysqli_fetch_array($result);
 
+                                    //kijkt of wachtwoord goed is
                                     if (!password_verify($password, $row['Password'])) {
                                         $passwordcheck = FALSE;
                                     } else {
@@ -43,6 +44,7 @@ require '../incl/header.php';
                                     if ($passwordcheck === false) {
                                         print('Incorrecte combinatie');
                                     } else {
+                                        //geeft alle sessie gegevens door en word terug gestuurt
                                         $_SESSION['loginsucesesvol'] = $email;
                                         $_SESSION['check'] = "true";
                                         $stmt = $conn->prepare("SELECT Customer_ID FROM Customer WHERE Email = ?");

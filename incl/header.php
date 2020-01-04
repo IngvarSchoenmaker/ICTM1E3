@@ -1,5 +1,5 @@
 <?php
-
+// de header die over de helewebsite gaat
 include 'db.php';
 session_start();
 ?>
@@ -49,6 +49,7 @@ session_start();
 
                 <ul class="navbar-nav ml-auto">
                     <?php
+                    //dit kijkt of je bent ingelogd
                     if (empty($_SESSION['loginsucesesvol'])) {
                         ?>
                         <li class="nav-item">

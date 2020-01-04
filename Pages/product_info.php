@@ -1,6 +1,7 @@
 <?php
 ob_start();
 include '../incl/header.php';
+//pakt het product id
 $productid = $_GET['item'];
 ?>
 
@@ -11,6 +12,7 @@ $username = "root";
 $password = "";
 $dbname = "wideworldimporters";
 $conn1 = mysqli_connect($server, $username, $password, $dbname);
+//haalt het product op
 $sql1 = "SELECT * FROM stockitems WHERE StockItemID = $productid";
 $sql2 = "SELECT QuantityOnHand FROM stockitemholdings WHERE StockItemID = $productid AND QuantityOnHand <= 20";
 $result = mysqli_query($conn1, $sql1);
@@ -95,6 +97,7 @@ $itemname = $row['StockItemName'];
             <!-- Data printen op site -->
             <div class="text col-md-6 col-sm-6">
                 <?php
+                //haalt alle informatie op
                 echo "<p>" . $row['StockItemName'] . "<br> €" . $row['RecommendedRetailPrice'] . "<br>" . $row['MarketingComments'] . "<br>" . $row['TypicalWeightPerUnit'] . " KG <br>" . $row['Size'] . "</p>";
                 if (mysqli_num_rows($result2) == 1) {
                     $stock = mysqli_fetch_assoc($result2);
@@ -104,7 +107,7 @@ $itemname = $row['StockItemName'];
 
 
                 <?php
-
+                //voegt het in de cart toe via de sessie
                 function addToCart($productid, $amount, $itemname)
                 {
 
@@ -137,6 +140,7 @@ $itemname = $row['StockItemName'];
                 </form>
 
                 <?php
+                //controlert het aantal
                 if (isset($_POST['Amount'])) {
                     $amount = $_POST['Amount'];
                 }
@@ -144,7 +148,6 @@ $itemname = $row['StockItemName'];
                 if (isset($_POST['addToCart'])) {
 
                     addToCart($productid, $amount, $itemname);
-
 
                 }
                 ?>

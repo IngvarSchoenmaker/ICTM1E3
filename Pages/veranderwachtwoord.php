@@ -13,6 +13,7 @@ include '../incl/header.php';
                 if (isset($_POST['send'])) {
                     $code = $_POST['code'];
                     $ww = $_POST['wachtwoord'];
+                    //hasded het nieuwe wachtwoord
                     $wachtwoord = password_hash($ww, PASSWORD_DEFAULT);
 
                     $sql = $conn->prepare("SELECT * FROM customer WHERE Generated_Key = ?");

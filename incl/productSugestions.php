@@ -1,6 +1,8 @@
 <?php
+//hier halen we de suggesties in op van hin laatst bestelde producten
 function getSuggestions($id, $conn, $conn2)
 {
+    //hier kijken wat het laatst gekochte product is van de klant
     $sql = "SELECT ID_Product FROM shoppinglist WHERE Shoppinglist_ID = (SELECT Shoppinglist_ID FROM customer WHERE Customer_ID = ?) AND date = (SELECT MAX(Date) FROM customer WHERE Customer_ID = ?)";
 
     if ($stmt = mysqli_prepare($conn, $sql)) {
@@ -14,6 +16,7 @@ function getSuggestions($id, $conn, $conn2)
             if (mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_array($result);
 
+                //hier halen we producten op die overheen komen met vorige prodcten
                 $sql2 = "SELECT StockItemName FROM stockitems WHERE tags LIKE (SELECT tags FROM stockitems WHERE StockItemID = ? ) LIMIT 3";
                 if ($stmt2 = mysqli_prepare($conn2, $sql2)) {
                     // Bind variables to the prepared statement as parameters

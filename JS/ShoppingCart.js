@@ -3,7 +3,7 @@ if (document.readyState == 'loading') {
 } else {
     ready()
 }
-
+    //dit laad de functionaliteiten van de pagina
     function ready() {
         var removeCartItemButtons = document.getElementsByClassName('verwijder');
         console.log(removeCartItemButtons);
@@ -23,7 +23,7 @@ if (document.readyState == 'loading') {
         orderButton.addEventListener('click',orderCart)
 }
 
-// javascript ajax naar post
+// haalt een product weg
 
 function removeCartItem(event){
         var buttonClicked= event.target;
@@ -31,6 +31,7 @@ function removeCartItem(event){
         updateCartTotal()
 }
 
+// verander het aantal
 function quantityChanged(event) {
     var input = event.target;
     input.value = Math.round(input.value);
@@ -43,6 +44,7 @@ function quantityChanged(event) {
     updateCartTotal()
 }
 
+//update de cart als er wat veranderd wordt
 function updateCartTotal() {
     var cartItemContainer = document.getElementsByClassName('cart-items')[0];
     var cartRows = cartItemContainer.getElementsByClassName('cart-row');
@@ -62,11 +64,7 @@ function updateCartTotal() {
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total;
 }
 
+//dit is zodat de knop klikbaar is voor andere veranderingen die er nog gemaakt kunnen worden
 function orderCart() {
 
-}
-
-function Refresh() {
-    document.getElementById("myForm").submit();
-    document.location.reload(true)
 }
