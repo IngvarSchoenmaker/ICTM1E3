@@ -19,8 +19,8 @@ include '../incl/Database.php';;
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">Ordernummer</th>
-            <th scope="col">Orderdatum</th>
+            <th scope="col">Bestelnummer</th>
+            <th scope="col">Besteldatum</th>
             <th scope="col">Verzonden aan</th>
         </tr>
     </thead>
