@@ -25,11 +25,11 @@ if($_SESSION['cart_ID'] === NULL){
 };
 
 $Customer_ID = $_SESSION['ID'];
-//$_SESSION['cart_ID'] = 3;
+
 $ShoppinglistID = $_SESSION['cart_ID'];
 
 
-if(isset($_SESSION['ID'])) {
+if($_SESSION['ID'] != 0) {
     if (isset($_POST['bestellen'])) {
         //Zet de bestelling in de database.
         $OrderID = 0;
@@ -56,11 +56,18 @@ if(isset($_SESSION['ID'])) {
         mysqli_stmt_execute($statement);
 
         //Print de bevestiging.
-        print("<p style=''>Je bestelling is succesvol geplaatst!</p><br>Je wordt doorgestuurd naar de homepage.<br><br><img src='../recources/voorbeeld%20fotos/check.png' width='150px'; <br>");
+        print("<p style=''>Je bestelling is succesvol geplaatst!</p><br>Je wordt doorgestuurd naar de startpagina.<br><br><img src='../recources/voorbeeld%20fotos/check.png' width='150px'; <br>");
 
         //Stuurt de klant na 4 seconden terug naar de homepage.
         header("refresh:4;url=../Pages/index.php");
     }
+
+}
+else {
+    //Laat de bezoeker een melding zien.
+    print "<script>alert('Je moet ingelogd zijn om een bestelling te kunnen plaatsen!'); </script>";
+    //Bezoeker wordt doorgestuurd naar de startpagina.
+    header("refresh:0.1;url=../Pages/index.php");
 }
 
 include '../incl/footer.php';

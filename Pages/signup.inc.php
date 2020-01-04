@@ -85,21 +85,13 @@ if (isset($_POST['registreer'])) {
             try {
                 $conn->autocommit(FALSE);
                 $stmt1 = $conn->prepare("INSERT INTO customer(First_Name, Middle_Name, Last_Name, Email, Birthdate, Password, Phone) VALUES (?,?,?,?,?,?,?)");
-                $stmt2 = $conn->prepare("INSERT INTO customer_archive(First_Name, Middle_Name, Last_Name, Email, Birthdate, Password, Phone) VALUES (?,?,?,?,?,?,?)");
-                $stmt3 = $conn->prepare("INSERT INTO address(City, Zip_Code, Street_Name, House_Number) VALUES (?,?,?,?)");
-                $stmt4 = $conn->prepare("INSERT INTO address_archive(City, Zip_Code, Street_Name, House_Number) VALUES (?,?,?,?)");
+                $stmt2 = $conn->prepare("INSERT INTO address(City, Zip_Code, Street_Name, House_Number) VALUES (?,?,?,?)");
                 $stmt1->bind_param("sssssss", $voornaam, $Tussenvoegsels, $Achternaam, $Emailadres, $Geboortedatum, $encrpted, $Telnnr);
-                $stmt2->bind_param("sssssss", $voornaam, $Tussenvoegsels, $Achternaam, $Emailadres, $Geboortedatum, $encrpted, $Telnnr);
-                $stmt3->bind_param("sssi", $Plaats, $Postcode, $Straatnaam, $Huisnummer);
-                $stmt4->bind_param("sssi", $Plaats, $Postcode, $Straatnaam, $Huisnummer);
+                $stmt2->bind_param("sssi", $Plaats, $Postcode, $Straatnaam, $Huisnummer);
                 $stmt1->execute();
                 $stmt1->close();
                 $stmt2->execute();
                 $stmt2->close();
-                $stmt3->execute();
-                $stmt3->close();
-                $stmt4->execute();
-                $stmt4->close();
                 $conn->autocommit(TRUE);
             } catch (Exception $e) {
                 if ($conn->errno === 1062) {

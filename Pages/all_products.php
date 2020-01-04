@@ -60,7 +60,7 @@ if ($queryResult > 0) {
     }
     echo "</div>";
 } else {
-    echo "Niks gevonden";
+    echo "Er zijn geen producten gevonden.";
 }
 ?>
     </div>

@@ -97,7 +97,7 @@ $photo = ($_SESSION['photo']);
         if (!empty($_SESSION['cart'])) {
             print("
         <div class='end-row'>
-            <tr><td></td><td>Totaal prijs</td><td class='cart-total-price'>$cartTotal<BR></td></tr>
+            <tr><td></td><td>Totaalprijs</td><td class='cart-total-price'>$cartTotal<BR></td></tr>
 
         </div>
         <form method='post' action='../Pages/AfrondenBestelling.php'>
