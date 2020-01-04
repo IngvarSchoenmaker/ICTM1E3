@@ -17,14 +17,11 @@ if (!$_SESSION['check'] AND !$_SESSION['ID'] = 0) {
     header("Location: ShoppingCartQueries.php");
 }
 
-
 $itemPrice = ($_SESSION['itemPrice']);
 $itemName = ($_SESSION['itemName']);
 $rating = ($_SESSION['rating']);
 $photo = ($_SESSION['photo']);
-//
-//
-//?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 <style>
@@ -69,7 +66,6 @@ $photo = ($_SESSION['photo']);
         $cartTotal = 0;
         if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $ID => $aantal) {
-//                $sterren = require "check_rating.php";
                 $itemTotal = ($aantal * $itemPrice[$ID]);
                 print("
 

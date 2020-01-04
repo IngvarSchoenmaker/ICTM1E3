@@ -65,6 +65,7 @@ include '../incl/header.php';
 include '../incl/footer.php';
 ?>
 <?php
+// de pop-up als je inlogt
 if (isset($_SESSION['check'])) {
     if ($_SESSION['check'] === "true") {
         if (isset($_SESSION['loginsucesesvol'])) {

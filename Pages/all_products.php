@@ -2,6 +2,7 @@
 ob_start();
 include '../incl/header.php';
 
+//zoekt naar het product via de zoekbar
 if (isset($_GET['search'])) {
     $searchartical = mysqli_real_escape_string($conn, $_GET['search']);
     $sql = "SELECT * FROM stockitems WHERE SearchDetails LIKE '%$searchartical%'";
@@ -11,11 +12,12 @@ if (isset($_GET['search'])) {
 }
 
 $queryResult = mysqli_num_rows($result);
+//wordt gelijk naar het product gestuurt
 if ($queryResult == 1) {
     $row = mysqli_fetch_assoc($result);
     header("Location:product_info.php?item=" . $row['StockItemID']);
-//    header("Location: product_info.php?item=$test");
 }
+//wordt naar een pagina gestuurt met de procuten die onder de zoek termen vallen
 if ($queryResult > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $json[] = $row;
@@ -25,6 +27,7 @@ if ($queryResult > 0) {
     <div class="col-lg-12">
     <div class="col-8">
     <form action="all_products.php" method="post">
+<!--        dit zijn de filer opties-->
         <input type="checkbox" name="huismerk" value="ans1"> Huismerk
         <input type="checkbox" name="sale" value="ans2" style="margin-left: 20px"> Korting
         <input type="checkbox" name="highlow" value="ans3" style="margin-left: 20px"> Prijs Hoog-Laag
@@ -35,6 +38,7 @@ if ($queryResult > 0) {
     </div>
     <?php
     foreach (array_chunk($json, 4) as $products) {
+//        laat alle producten zien
         echo "<div class='card-deck mb-4'>";
         foreach ($products as $row) {
             ?>

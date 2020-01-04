@@ -23,6 +23,7 @@ if (isset($_POST['send'])) {
         $result = mysqli_stmt_get_result($stmt);
         $row = mysqli_fetch_array($result);
         if ($row > 0){
+            //maakt een random string om om te slaan in de db voor het nieuwe wachtwoord maken
             function generateRandomString($length = 10) {
                 $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 $charactersLength = strlen($characters);
@@ -32,6 +33,7 @@ if (isset($_POST['send'])) {
                 }
                 return $randomString;
             }
+            //mailed de nieuwe code
             $to = $email;
             $subject = "wachtwoord veranderen";
             $code = generateRandomString();

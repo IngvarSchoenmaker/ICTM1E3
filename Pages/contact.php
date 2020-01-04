@@ -1,10 +1,6 @@
 <?php
 include '../incl/db.php';
 include '../incl/header.php';
-
-session_start()
-
-
 ?>
 <div class="container" style="margin-top:200px; margin-bottom: 100px; text-align: center">
     <div class="row">
@@ -48,7 +44,6 @@ session_start()
                 $foutchar = "";
                 $foutemail = "";
                 $foutnummer = "";
-
 
                 if (isset($_POST['verzenden'])) { // checkt of er gesubmit is
                     $voornaam = $_POST['Voornaam'];

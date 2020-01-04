@@ -81,7 +81,6 @@ if (isset($_POST['registreer'])) {
             echo "ik doe de else uwu";
         }
 
-
 // gegevens worden opgeslagen in de database
             try {
                 $conn->autocommit(FALSE);
@@ -103,20 +102,11 @@ if (isset($_POST['registreer'])) {
                 $stmt4->close();
                 $conn->autocommit(TRUE);
             } catch (Exception $e) {
-
                 if ($conn->errno === 1062) {
-
                     print("De ingevoerde gegevens bestaan al!");
                 }
-
             }
-
             header("Location: registratiegelukt.php?registratie=succes");
-
         }
-
-
     }
-
-
 exit;

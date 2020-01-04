@@ -1,3 +1,4 @@
+<!-- dit is de footer van de voledige website -->
 <footer id="footer" class="footer-1 top-buffer">
     <div class="main-footer widgets-dark typo-light">
         <div class="container">
@@ -71,4 +72,3 @@
         </div>
     </div>
 </footer>
-

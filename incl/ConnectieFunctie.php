@@ -8,8 +8,8 @@
         function get_connection()
         {
             $_database["server"] = "localhost";
-            $_database["username"] = "WWIadmin";
-            $_database["password"] = "QzWxEc123Rv";
+            $_database["username"] = "root";
+            $_database["password"] = "";
             $_database["name"] = "onzedbwwi";
             $_database["poort"] = "3306";
 
