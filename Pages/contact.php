@@ -69,9 +69,9 @@ include '../incl/header.php';
 
                         // Zodra er alles is gecontroleert en geen errors bevatten dan wordt de data toevoegd in de database
                     } else {
-                        $Customer_ID = 1;
-                        $stmt = $conn->prepare("INSERT INTO contactform(First_name, Last_Name, Email, Phone, Message, Customer_ID) VALUES(?,?,?,?,?,?)");
-                        $stmt->bind_param("sssssi", $voornaam, $achternaam, $Email, $Telefoonnummer, $Opmerking, $Customer_ID);
+
+                        $stmt = $conn->prepare("INSERT INTO contactform(First_name, Last_Name, Email, Phone, Message) VALUES(?,?,?,?,?)");
+                        $stmt->bind_param("sssss", $voornaam, $achternaam, $Email, $Telefoonnummer, $Opmerking);
                         $stmt->execute();
                         $stmt->close();
 

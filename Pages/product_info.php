@@ -135,7 +135,7 @@ $itemname = $row['StockItemName'];
                         <input type="text" name="Amount" value="1">
                     </div>
                     <div class="form-group">
-                        <input type="submit" name="addToCart" value="Add to cart" class="btn btn-primary"/>
+                        <input type="submit" name="addToCart" value="Toevoegen aan winkelmand" class="btn btn-primary"/>
                     </div>
                 </form>
 

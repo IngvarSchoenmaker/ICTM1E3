@@ -22,10 +22,6 @@ mogelijkheid tot wijzigen -->
 <div class="factuuradres">
     <form action="../incl/Database.php" method="post">
         <div class="form-group">
-            <label for="TAV">Ter attentie van:*</label>
-            <input type="text" class="form-control" id="naam" name="naam" value="<?= ($fullname) ?>" readonly required>
-        </div>
-        <div class="form-group">
             <label for="plaats">Plaats:*</label>
             <input type="text" class="form-control" id="naam" name="plaats" value="<?= ($plaats) ?>" readonly required>
         </div>

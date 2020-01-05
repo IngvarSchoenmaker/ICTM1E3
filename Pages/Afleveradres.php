@@ -28,10 +28,6 @@ include '../incl/Database.php';
             <!--        De functie in de onklick zorgt ervoor dat er gegevens gewijzigd kunnen worden-->
             <!--        wanneer er op de knop wijzig gedrukt word.-->
             <div class="form-group">
-                <label for="TAV">Ter attentie van:*</label>
-                <input type="text" class="form-control" id="naam" name="naam" value="<?= ($fullname) ?>" readonly required>
-            </div>
-            <div class="form-group">
                 <label for="plaats">Plaats:*</label>
                 <input type="text" class="form-control" id="naam" name="plaats" value="<?= ($plaats) ?>" readonly required>
             </div>

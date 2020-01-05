@@ -70,11 +70,9 @@ if (isset($_POST['plaatsreview'])) {
     if (!isset($_SESSION['ID'])) {
         print "<script>alert('Je moet ingelogd zijn om een review te plaatsen!'); </script>";
     } else {
+        //Ophalen van de gegevens omtrent de reviews
+        //om die gegevens vervolgens in de database te zetten.
         $productDB = $_SESSION['ProductID'];
-//
-//    $statement = mysqli_prepare($conn = get_connection(), "INSERT INTO product_information VALUES($productDB, NULL)");
-//    mysqli_stmt_execute($statement);
-
         $emailDB = $_POST['mail'];
         $scoreDB = $_POST['star'];
         $beoordelingDB = $_POST['beoordeling'];

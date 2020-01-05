@@ -163,7 +163,7 @@ if (isset($_GET['char'])) {
         // hier wordt een error gegeven als de gebruiker al bestaat!
         if (isset($_GET['error'])) {
             if ($_GET['error'] === "Gebruikerbestaatal") {
-                Print("<div class='alert alert-danger' role='alert'>De ingevoerde emailadres bestaat al!</div>");
+                Print("<div class='alert alert-danger' role='alert'>Het ingevoerde emailadres bestaat al!</div>");
             }
         }
         ?>
