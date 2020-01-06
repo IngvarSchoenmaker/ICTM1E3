@@ -1,18 +1,11 @@
 <?php
 session_start();
 include '../incl/ConnectieFunctie.php';
+include '../incl/db.php';
 //  *** Verbindingsvariabelen voor SQL functies***
-$servername = "localhost";
-$DBusername = "root";
-$DBpassword = "";
-$port = "3306";
 $customer_ID=$_SESSION['ID'];
-$connWWI = mysqli_connect($servername, $DBusername, $DBpassword, "wideworldimporters", $port) or
-die("Could not connect: " . mysqli_error());
-$connOnzeDB = mysqli_connect($servername, $DBusername, $DBpassword, "onzedbwwi", $port) or
-die("Could not connect: " . mysqli_error());
 
-$shoppinglist_ID = (SqlGetSingleRow("SELECT shoppinglist_ID FROM shoppinglist WHERE customer_ID ='$customer_ID'", $connOnzeDB));
+$shoppinglist_ID = (SqlGetSingleRow("SELECT shoppinglist_ID FROM shoppinglist WHERE customer_ID ='$customer_ID'", $conn2));
 $shoppinglist_ID = implode('|',$shoppinglist_ID);
 $_SESSION['cart_ID']=$shoppinglist_ID;
 $cartproduct = GetData("SELECT ID_Product FROM shoppinglist WHERE Shoppinglist_ID='$shoppinglist_ID'", false);
@@ -32,8 +25,8 @@ if(!isset($_SESSION['cart'])){
 }
 //  *** Voor elk item in de shoppingcart array wordt de informatie hier opgehaald en aan variabelen toegekend***
 foreach ($_SESSION['cart'] as $ID => $aantal) {
-    $unitPrice[$ID] = SqlGetSingleRow("SELECT UnitPrice FROM stockitems WHERE StockItemID = '$ID'", $connWWI);
-    $itemName[$ID] = SqlGetSingleRow("SELECT StockItemName FROM stockitems WHERE StockItemID = '$ID'", $connWWI);
+    $unitPrice[$ID] = SqlGetSingleRow("SELECT UnitPrice FROM stockitems WHERE StockItemID = '$ID'", $conn);
+    $itemName[$ID] = SqlGetSingleRow("SELECT StockItemName FROM stockitems WHERE StockItemID = '$ID'", $conn);
     $rating[$ID] = GetData("SELECT AVG(Stars) FROM Reviews WHERE ID_Product='$ID'", false);
     $photo[$ID] = GetData("SELECT Photo FROM product_information WHERE ID_Product='$ID'", false);
     $itemTotal[$ID] = $aantal * $unitPrice[$ID]['UnitPrice'];

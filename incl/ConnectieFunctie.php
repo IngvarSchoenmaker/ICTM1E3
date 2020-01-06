@@ -10,7 +10,7 @@
             $_database["server"] = "localhost";
             $_database["username"] = "root";
             $_database["password"] = "";
-            $_database["name"] = "onzedbwwi";
+            $_database["name"] = "wwi_customers";
             $_database["poort"] = "3306";
 
             $conn = mysqli_connect($_database["server"], $_database["username"], $_database["password"], $_database["name"], $_database["poort"]);

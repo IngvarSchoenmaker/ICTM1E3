@@ -1,5 +1,5 @@
 <?php
-include "../incl/dbwwi.php";
+include "../incl/db.php";
 
 if (isset($_POST['huismerk'])) {
     $huismerk = $_POST['huismerk'];

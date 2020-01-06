@@ -3,7 +3,7 @@ if (isset($_REQUEST["term"])) {
     // Prepare a select statement
     $sql = "SELECT * FROM stockitems WHERE SearchDetails LIKE ?";
 //    $sql = "SELECT * FROM stockitems WHERE MATCH(tags, searchdetails, MarketingComments)AGAINST(? IN NATURAL LANGUAGE MODE)";
-    require '../incl/dbwwi.php';
+    require '../incl/db.php';
 
     if ($stmt = mysqli_prepare($conn, $sql)) {
         // Bind variables to the prepared statement as parameters
