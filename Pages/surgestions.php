@@ -5,7 +5,7 @@ if (isset($_REQUEST["term"])) {
 //    $sql = "SELECT * FROM stockitems WHERE MATCH(tags, searchdetails, MarketingComments)AGAINST(? IN NATURAL LANGUAGE MODE)";
     require '../incl/db.php';
 
-    if ($stmt = mysqli_prepare($conn, $sql)) {
+    if ($stmt = mysqli_prepare($conn2, $sql)) {
         // Bind variables to the prepared statement as parameters
         mysqli_stmt_bind_param($stmt, "s", $param_term);
 
@@ -28,7 +28,7 @@ if (isset($_REQUEST["term"])) {
                 echo "<p>No matches found</p>";
             }
         } else {
-            echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+            echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn2);
         }
     }
 

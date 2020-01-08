@@ -4,7 +4,7 @@ include '../incl/header.php';
 
 //zoekt naar het product via de zoekbar
 if (isset($_GET['search'])) {
-    $searchartical = mysqli_real_escape_string($conn, $_GET['search']);
+    $searchartical = mysqli_real_escape_string($conn2, $_GET['search']);
     $sql = "SELECT * FROM stockitems WHERE SearchDetails LIKE '%$searchartical%'";
     $result = mysqli_query($conn2, $sql);
 } else {
