@@ -6,7 +6,7 @@ $_SESSION['ProductID'] = $productid;
 
 //hier wordt het average van de sterren opgehaald
 $sql1 = "SELECT ID_Product, Email, AVG(Stars), Message FROM reviews WHERE ID_Product = $productid GROUP BY ID_Product";
-$result1 = mysqli_query($conn2, $sql1);
+$result1 = mysqli_query($conn, $sql1);
 
 while ($row = mysqli_fetch_assoc($result1)) {
     $stars = $row['AVG(Stars)'];

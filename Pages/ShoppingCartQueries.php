@@ -5,7 +5,7 @@ include '../incl/db.php';
 //  *** Verbindingsvariabelen voor SQL functies***
 $customer_ID=$_SESSION['ID'];
 
-$shoppinglist_ID = (SqlGetSingleRow("SELECT shoppinglist_ID FROM shoppinglist WHERE customer_ID ='$customer_ID'", $conn2));
+$shoppinglist_ID = (SqlGetSingleRow("SELECT shoppinglist_ID FROM shoppinglist WHERE customer_ID ='$customer_ID'", $conn));
 $shoppinglist_ID = implode('|',$shoppinglist_ID);
 $_SESSION['cart_ID']=$shoppinglist_ID;
 $cartproduct = GetData("SELECT ID_Product FROM shoppinglist WHERE Shoppinglist_ID='$shoppinglist_ID'", false);
@@ -25,8 +25,8 @@ if(!isset($_SESSION['cart'])){
 }
 //  *** Voor elk item in de shoppingcart array wordt de informatie hier opgehaald en aan variabelen toegekend***
 foreach ($_SESSION['cart'] as $ID => $aantal) {
-    $unitPrice[$ID] = SqlGetSingleRow("SELECT UnitPrice FROM stockitems WHERE StockItemID = '$ID'", $conn);
-    $itemName[$ID] = SqlGetSingleRow("SELECT StockItemName FROM stockitems WHERE StockItemID = '$ID'", $conn);
+    $unitPrice[$ID] = SqlGetSingleRow("SELECT UnitPrice FROM stockitems WHERE StockItemID = '$ID'", $conn2);
+    $itemName[$ID] = SqlGetSingleRow("SELECT StockItemName FROM stockitems WHERE StockItemID = '$ID'", $conn2);
     $rating[$ID] = GetData("SELECT AVG(Stars) FROM Reviews WHERE ID_Product='$ID'", false);
     $photo[$ID] = GetData("SELECT Photo FROM product_information WHERE ID_Product='$ID'", false);
     $itemTotal[$ID] = $aantal * $unitPrice[$ID]['UnitPrice'];

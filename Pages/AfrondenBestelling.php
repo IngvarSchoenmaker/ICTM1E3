@@ -45,8 +45,8 @@ if($_SESSION['ID'] != 0) {
 
         //Zet de shoppingcart gegevens in het archief.
         foreach ($_SESSION['cart'] as $productID => $aantal) {
-            $statement = mysqli_prepare($conn = get_connection(), 'INSERT INTO Shoppinglist_archive VALUES(?,?,?,?,?,?,?)');
-            mysqli_stmt_bind_param($statement, 'iisiisi', $ShoppinglistID, $productID, $aantal, $Price, $PaymentID, $Datum, $Customer_ID);
+            $statement = mysqli_prepare($conn = get_connection(), 'INSERT INTO Shoppinglist_archive VALUES(?,?,?,?,?,?,?,?)');
+            mysqli_stmt_bind_param($statement, 'iisiisii', $ShoppinglistID, $productID, $aantal, $Price, $PaymentID, $Datum, $Customer_ID, $OrderID);
             mysqli_stmt_execute($statement);
         }
 
@@ -56,8 +56,13 @@ if($_SESSION['ID'] != 0) {
         mysqli_stmt_execute($statement);
 
         //Print de bevestiging.
+        echo "<div class=\"container\" style=\"margin-top:200px; margin-bottom: 233px; text-align: center\">
+        <div class=\"row\">
+            <div class=\"col-lg-12\">";
         print("<p style=''>Je bestelling is succesvol geplaatst!</p><br>Je wordt doorgestuurd naar de startpagina.<br><br><img src='../recources/voorbeeld%20fotos/check.png' width='150px'; <br>");
-
+        echo "</div>
+              </div>
+              </div>";
         //Stuurt de klant na 4 seconden terug naar de homepage.
         header("refresh:4;url=../Pages/index.php");
     }
